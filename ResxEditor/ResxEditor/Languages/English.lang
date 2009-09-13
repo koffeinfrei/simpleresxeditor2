@@ -1,0 +1,45 @@
+﻿txtDown1		= Do you want to download now?
+txtDown2		= A new version is available!
+txtSave1		= Do you want to save changes to file?
+txtSave2		= You have unsaved changes
+txtOpen1		= Resources files
+txtOpen2		= Open resources file
+btnSave			= Save
+btnClose		= Close
+btnCancel		= Cancel
+
+# Form: About
+frmAbout		= About
+lblCoded		= Coded by
+lblTranslated	= Translated by Matías
+btnWebsite		= Website
+
+# Form: Main
+statusHEquals	= {0} coincidences have been found
+statusHDiffs	= {0} differences have been found
+statusHText		= {0} cells containing text have been found
+statusClear		= All highlights have been removed
+statusFText		= Showing {0} cells of {1} containing translatable strings
+statusFAll		= Showing all cells ({0})
+tsbtnOpen		= Open
+tsbtnSave		= Save
+tsbtnKeys		= Show/Hide keys
+tsbtnFText		= Filter: text only
+tsbtnFAll		= Filter: all
+tsbtnHDiffs		= Highligh: differences
+tsbtnHEquals	= Highligh: equals
+tsbtnHText		= Highligh: text
+tsbtnClear		= Clear highlights
+tsbtnSettings	= Settings
+tsbtnAbout		= About
+
+# Form: Settings
+frmSettings		= Settings
+tpgInterface	= Interface
+tpgBehavior		= Behaviour
+lblLanguage		= Language:
+lblColor1		= Color diff:
+lblColor2		= Color equals:
+lblColor3		= Color unsaved cells:
+lblColor4		= Color keys:
+lblColor5		= Color text:

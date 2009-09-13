@@ -1,0 +1,45 @@
+﻿txtDown1		= ¿Desea descargarla ahora?
+txtDown2		= ¡Hay disponible una nueva versión!
+txtSave1		= ¿Desea guardar los cambios?
+txtSave2		= Tiene cambios sin guardar
+txtOpen1		= Archivos de recursos
+txtOpen2		= Abrir archivo de recursos
+btnSave			= Guardar
+btnClose		= Cerrar
+btnCancel		= Cancelar
+
+# Form: About
+frmAbout		= Acerca de
+lblCoded		= Programado por
+lblTranslated	= Traducido por Matías
+btnWebsite		= Sitio web
+
+# Form: Main
+statusHEquals	= {0} coincidencias han sido encontradas
+statusHDiffs	= {0} diferencias han sido encontradas
+statusHText		= {0} celdas conteniendo texto han sido encontradas
+statusClear		= Todos los destacados han sido removidos
+statusFText		= Mostrando {0} celdas de {1} conteniendo frases para traducir
+statusFAll		= Mostrando todas las celdas ({0})
+tsbtnOpen		= Abrir
+tsbtnSave		= Guardar
+tsbtnKeys		= Mostrar/Ocultar claves
+tsbtnFText		= Filtrar: solo texto
+tsbtnFAll		= Filtrar: todo
+tsbtnHDiffs		= Destacar: diferencias
+tsbtnHEquals	= Destacar: igualdades
+tsbtnHText		= Destacar: texto
+tsbtnClear		= Remover destacados
+tsbtnSettings	= Preferencias
+tsbtnAbout		= Acerca de
+
+# Form: Settings
+frmSettings		= Preferencias
+tpgInterface	= Interfaz
+tpgBehavior		= Comportamiento
+lblLanguage		= Idioma:
+lblColor1		= Color de diferencias:
+lblColor2		= Color de igualdades:
+lblColor3		= Color de celdas modificadas:
+lblColor4		= Color de las claves:
+lblColor5		= Color de celdas con texto:
