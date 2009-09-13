@@ -53,6 +53,7 @@ namespace ResxEditor.Forms
             }
 
             tspMain.ImageList = imgListMain;
+
             tsbtnOpen.ImageIndex        = 0;
             tsbtnOpen.ImageScaling      = ToolStripItemImageScaling.SizeToFit;
             tsbtnSave.ImageIndex        = 1;
@@ -63,12 +64,12 @@ namespace ResxEditor.Forms
             tsbtnFText.ImageScaling     = ToolStripItemImageScaling.SizeToFit;
             tsbtnFAll.ImageIndex        = 4;
             tsbtnFAll.ImageScaling      = ToolStripItemImageScaling.SizeToFit;
-            tsbtnHDiffs.ImageIndex      = 5;
-            tsbtnHDiffs.ImageScaling    = ToolStripItemImageScaling.SizeToFit;
-            tsbtnHEquals.ImageIndex     = 6;
-            tsbtnHDiffs.ImageScaling    = ToolStripItemImageScaling.SizeToFit;
-            tsbtnHText.ImageIndex       = 7;
+            tsbtnHText.ImageIndex       = 5;
             tsbtnHText.ImageScaling     = ToolStripItemImageScaling.SizeToFit;
+            tsbtnHDiffs.ImageIndex      = 6;
+            tsbtnHDiffs.ImageScaling    = ToolStripItemImageScaling.SizeToFit;
+            tsbtnHEquals.ImageIndex     = 7;
+            tsbtnHEquals.ImageScaling   = ToolStripItemImageScaling.SizeToFit;
             tsbtnClear.ImageIndex       = 8;
             tsbtnClear.ImageScaling     = ToolStripItemImageScaling.SizeToFit;
             tsbtnSettings.ImageIndex    = 9;
