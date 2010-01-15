@@ -32,6 +32,7 @@ tsbtnHText		= Highligh: text
 tsbtnClear		= Clear highlights
 tsbtnSettings	= Settings
 tsbtnAbout		= About
+errorSaving		= An error ocurred trying to save changes
 
 # Form: Settings
 frmSettings		= Settings

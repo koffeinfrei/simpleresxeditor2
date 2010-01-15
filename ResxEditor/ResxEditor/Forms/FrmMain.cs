@@ -19,14 +19,14 @@ namespace ResxEditor.Forms
         public FrmMain()
         {
             InitializeComponent();
-            
-#if (!DEBUG)
-            checkNewVersion();
-#else            
+
+#if (DEBUG)
             string[] args = Environment.GetCommandLineArgs();
-            foreach (var s in args)
-                MessageBox.Show(s);
+            //foreach (var s in args)
+            //    MessageBox.Show(s);
             if (args.Length > 1) loadResxFiles(args);
+#else       
+            checkNewVersion();
 #endif
         }
 
@@ -80,14 +80,7 @@ namespace ResxEditor.Forms
 
         private void loadResxFiles(string[] filenames)
         {
-            if (unsavedChanges)
-            {
-                if (DialogResult.Yes == MessageBox.Show(this, LangHandler.KV["txtSave1"], LangHandler.KV["txtSave2"], MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                {
-                    saveResxFiles();
-                    unsavedChanges = false;
-                }
-            }
+            saveResxFiles(true);
 
             initialChanges = true;
 
@@ -115,7 +108,7 @@ namespace ResxEditor.Forms
                 {
                     dataGridView.Columns.Add("keys", "Keys");
                     dataGridView.Columns["keys"].Visible = false;
-                    dataGridView.Columns["keys"].DefaultCellStyle.BackColor = Color.FromName(SettingsHandler.KV["Color4"]);
+                    dataGridView.Columns["keys"].DefaultCellStyle.BackColor = Color.FromArgb(SettingsHandler.Instance.Color4);
                 }
 
                 int newColIndex = dataGridView.Columns.Add(file, Path.GetFileName(file));
@@ -156,28 +149,28 @@ namespace ResxEditor.Forms
         private void loadLanguageStrings()
         {
             Text = Global.GetNameWithVersion();
-            tsbtnOpen.Text              = LangHandler.KV["tsbtnOpen"];
-            tsbtnOpen.ToolTipText       = LangHandler.KV["tsbtnOpen"];
-            tsbtnSave.Text              = LangHandler.KV["tsbtnSave"];
-            tsbtnSave.ToolTipText       = LangHandler.KV["tsbtnSave"];
-            tsbtnKeys.Text              = LangHandler.KV["tsbtnKeys"];
-            tsbtnKeys.ToolTipText       = LangHandler.KV["tsbtnKeys"];
-            tsbtnFText.Text             = LangHandler.KV["tsbtnFText"];
-            tsbtnFText.ToolTipText      = LangHandler.KV["tsbtnFText"];
-            tsbtnFAll.Text              = LangHandler.KV["tsbtnFAll"];
-            tsbtnFAll.ToolTipText       = LangHandler.KV["tsbtnFAll"];
-            tsbtnHDiffs.Text            = LangHandler.KV["tsbtnHDiffs"];
-            tsbtnHDiffs.ToolTipText     = LangHandler.KV["tsbtnHDiffs"];
-            tsbtnHEquals.Text           = LangHandler.KV["tsbtnHEquals"];
-            tsbtnHEquals.ToolTipText    = LangHandler.KV["tsbtnHEquals"];
-            tsbtnHText.Text             = LangHandler.KV["tsbtnHText"];
-            tsbtnHText.ToolTipText      = LangHandler.KV["tsbtnHText"];
-            tsbtnClear.Text             = LangHandler.KV["tsbtnClear"];
-            tsbtnClear.ToolTipText      = LangHandler.KV["tsbtnClear"];
-            tsbtnSettings.Text          = LangHandler.KV["tsbtnSettings"];
-            tsbtnSettings.ToolTipText   = LangHandler.KV["tsbtnSettings"];
-            tsbtnAbout.Text             = LangHandler.KV["tsbtnAbout"];
-            tsbtnAbout.ToolTipText      = LangHandler.KV["tsbtnAbout"];
+            tsbtnOpen.Text              = LangHandler.GetString("tsbtnOpen");
+            tsbtnOpen.ToolTipText       = LangHandler.GetString("tsbtnOpen");
+            tsbtnSave.Text              = LangHandler.GetString("tsbtnSave");
+            tsbtnSave.ToolTipText       = LangHandler.GetString("tsbtnSave");
+            tsbtnKeys.Text              = LangHandler.GetString("tsbtnKeys");
+            tsbtnKeys.ToolTipText       = LangHandler.GetString("tsbtnKeys");
+            tsbtnFText.Text             = LangHandler.GetString("tsbtnFText");
+            tsbtnFText.ToolTipText      = LangHandler.GetString("tsbtnFText");
+            tsbtnFAll.Text              = LangHandler.GetString("tsbtnFAll");
+            tsbtnFAll.ToolTipText       = LangHandler.GetString("tsbtnFAll");
+            tsbtnHDiffs.Text            = LangHandler.GetString("tsbtnHDiffs");
+            tsbtnHDiffs.ToolTipText     = LangHandler.GetString("tsbtnHDiffs");
+            tsbtnHEquals.Text           = LangHandler.GetString("tsbtnHEquals");
+            tsbtnHEquals.ToolTipText    = LangHandler.GetString("tsbtnHEquals");
+            tsbtnHText.Text             = LangHandler.GetString("tsbtnHText");
+            tsbtnHText.ToolTipText      = LangHandler.GetString("tsbtnHText");
+            tsbtnClear.Text             = LangHandler.GetString("tsbtnClear");
+            tsbtnClear.ToolTipText      = LangHandler.GetString("tsbtnClear");
+            tsbtnSettings.Text          = LangHandler.GetString("tsbtnSettings");
+            tsbtnSettings.ToolTipText   = LangHandler.GetString("tsbtnSettings");
+            tsbtnAbout.Text             = LangHandler.GetString("tsbtnAbout");
+            tsbtnAbout.ToolTipText      = LangHandler.GetString("tsbtnAbout");
         }
 
         private void checkNewVersion()
@@ -237,33 +230,57 @@ namespace ResxEditor.Forms
                 dataGridView.ResumeLayout();
 
                 if (reportEquals)
-                    tsslStatus.Text = string.Format(LangHandler.KV["statusHEquals"], numColumns * numRows - numDiffs);
+                    tsslStatus.Text = string.Format(LangHandler.GetString("statusHEquals"), numColumns * numRows - numDiffs);
                 else
-                    tsslStatus.Text = string.Format(LangHandler.KV["statusHDiffs"], numDiffs);
+                    tsslStatus.Text = string.Format(LangHandler.GetString("statusHDiffs"), numDiffs);
             }
         }
 
-        private void saveResxFiles()
+        private void saveResxFiles(bool askUnsaved)
         {
-            for (int column = 1; column < dataGridView.Columns.Count; column++)
+            try
             {
-                using (ResXResourceWriter resourceWriter = new ResXResourceWriter(dataGridView.Columns[column].Name))
+                if (askUnsaved)
                 {
-                    for (int row = 0; row < dataGridView.Rows.Count; row++)
+                    if (!unsavedChanges)
                     {
-                        if (dataGridView.Rows[row].Cells[column].Value != null)
-                        {
-                            resourceWriter.AddResource((string)dataGridView.Rows[row].Cells["keys"].Value, dataGridView.Rows[row].Cells[column].Value);
-                        }
+                        return;
                     }
 
-                    resourceWriter.Generate();
-                    resourceWriter.Close();
+                    if (DialogResult.No == MessageBox.Show(this, LangHandler.GetString("txtSave1"), LangHandler.GetString("txtSave2"), MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                    {
+                        return;
+                    }
                 }
-            }
 
-            unsavedChanges = false;
-            resetColors();
+                for (int column = 1; column < dataGridView.Columns.Count; column++)
+                {
+                    using (ResXResourceWriter resourceWriter = new ResXResourceWriter(dataGridView.Columns[column].Name))
+                    {
+                        for (int row = 0; row < dataGridView.Rows.Count; row++)
+                        {
+                            if (dataGridView.Rows[row].Cells[column].Value != null)
+                            {
+                                resourceWriter.AddResource((string)dataGridView.Rows[row].Cells["keys"].Value, dataGridView.Rows[row].Cells[column].Value);
+                            }
+                        }
+
+                        resourceWriter.Generate();
+                        resourceWriter.Close();
+                    }
+                }
+
+                unsavedChanges = false;
+                resetColors();
+            }
+            catch (Exception ex)
+            {
+#if (DEBUG)
+                MessageBox.Show(this, string.Format("{0}\n\n{1}", ex.Message, ex.StackTrace), LangHandler.GetString("errorSaving"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+#else
+                MessageBox.Show(this, ex.Message, LangHandler.GetString("errorSaving"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+#endif
+            }
         }
 
         private void resetColors()
@@ -272,7 +289,7 @@ namespace ResxEditor.Forms
             for (int row = 0; row < dataGridView.Rows.Count; row++)
             {
                 dataGridView.Rows[row].DefaultCellStyle.BackColor = Color.Empty;
-                dataGridView.Rows[row].Cells["keys"].Style.BackColor = Color.FromName(SettingsHandler.KV["Color4"]);
+                dataGridView.Rows[row].Cells["keys"].Style.BackColor = Color.FromArgb(SettingsHandler.Instance.Color4);
                 for (int column = 1; column < dataGridView.Columns.Count; column++)
                 {
                     dataGridView.Rows[row].Cells[column].Style.BackColor = Color.Empty;
@@ -301,7 +318,7 @@ namespace ResxEditor.Forms
         {
             if (!initialChanges)
             {
-                dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.FromName(SettingsHandler.KV["Color3"]);
+                dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.FromArgb(SettingsHandler.Instance.Color3);
                 unsavedChanges = true;
             }
         }
@@ -334,14 +351,19 @@ namespace ResxEditor.Forms
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (unsavedChanges)
-            {
-                if (DialogResult.Yes == MessageBox.Show(this, LangHandler.KV["txtSave1"], LangHandler.KV["txtSave2"], MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                {
-                    saveResxFiles();
-                    unsavedChanges = false;
-                }
-            }
+            saveResxFiles(true);
+            SettingsHandler.Instance.MainWindowState = WindowState;
+        }
+
+        private void FrmMain_ResizeEnd(object sender, EventArgs e)
+        {
+            SettingsHandler.Instance.MainWindowSize = Size;
+        }
+
+        private void FrmMain_Move(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                SettingsHandler.Instance.MainWindowPosition = Location;
         }
 
         private void Settings_SettingsChanged(object sender, EventArgs e)
@@ -354,9 +376,9 @@ namespace ResxEditor.Forms
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
                 DefaultExt  = "resx",
-                Filter      = string.Format("{0}|*.resx", LangHandler.KV["txtOpen1"]),
+                Filter      = string.Format("{0}|*.resx", LangHandler.GetString("txtOpen1")),
                 Multiselect = true,
-                Title       = LangHandler.KV["txtOpen2"]
+                Title       = LangHandler.GetString("txtOpen2")
             };
 
             if (DialogResult.OK == openFileDialog.ShowDialog())
@@ -367,7 +389,7 @@ namespace ResxEditor.Forms
 
         private void tsbtnSave_Click(object sender, EventArgs e)
         {
-            saveResxFiles();
+            saveResxFiles(false);
         }
 
         private void tsbtnKeys_Click(object sender, EventArgs e)
@@ -404,7 +426,7 @@ namespace ResxEditor.Forms
                 }
                 dataGridView.ResumeLayout();
 
-                tsslStatus.Text = string.Format(LangHandler.KV["statusFText"], numTextRows, numRows);
+                tsslStatus.Text = string.Format(LangHandler.GetString("statusFText"), numTextRows, numRows);
             }
         }
 
@@ -415,17 +437,17 @@ namespace ResxEditor.Forms
             for (int row = 0; row < numRows; row++)
                 dataGridView.Rows[row].Visible = true;
             dataGridView.ResumeLayout();
-            tsslStatus.Text = string.Format(LangHandler.KV["statusFAll"], numRows);
+            tsslStatus.Text = string.Format(LangHandler.GetString("statusFAll"), numRows);
         }
 
         private void tsbtnHDiffs_Click(object sender, EventArgs e)
         {
-            checkDiffs(false, Color.FromName(SettingsHandler.KV["Color1"]), Color.Empty);
+            checkDiffs(false, Color.FromArgb(SettingsHandler.Instance.Color1), Color.Empty);
         }
 
         private void tsbtnHEquals_Click(object sender, EventArgs e)
         {
-            checkDiffs(true, Color.Empty, Color.FromName(SettingsHandler.KV["Color2"]));
+            checkDiffs(true, Color.Empty, Color.FromArgb(SettingsHandler.Instance.Color2));
         }
 
         private void tsbtnHText_Click(object sender, EventArgs e)
@@ -442,7 +464,7 @@ namespace ResxEditor.Forms
                     if (dataGridView.Rows[row].Cells["keys"].Value.ToString().EndsWith(".Text") ||
                         dataGridView.Rows[row].Cells["keys"].Value.ToString().EndsWith(".ToolTipText"))
                     {
-                        dataGridView.Rows[row].DefaultCellStyle.BackColor = Color.FromName(SettingsHandler.KV["Color5"]);
+                        dataGridView.Rows[row].DefaultCellStyle.BackColor = Color.FromArgb(SettingsHandler.Instance.Color5);
                         numTextCells++;
                     }
                     else
@@ -452,20 +474,34 @@ namespace ResxEditor.Forms
                 }
                 dataGridView.ResumeLayout();
 
-                tsslStatus.Text = string.Format(LangHandler.KV["statusHText"], numTextCells);
+                tsslStatus.Text = string.Format(LangHandler.GetString("statusHText"), numTextCells);
             }
         }
 
         private void tsbtnClear_Click(object sender, EventArgs e)
         {
             resetColors();
-            tsslStatus.Text = LangHandler.KV["statusClear"];
+            tsslStatus.Text = LangHandler.GetString("statusClear");
         }
 
         private void tsbtnSettings_Click(object sender, EventArgs e)
         {
             FrmSettings frmSettings = new FrmSettings();
-            frmSettings.Show(this);
+
+            if (SettingsHandler.Instance.PrefWindowPosition.IsEmpty)
+            {
+                frmSettings.StartPosition = FormStartPosition.WindowsDefaultLocation;
+            }
+            else
+            {
+                frmSettings.StartPosition = FormStartPosition.Manual;
+                frmSettings.Location = SettingsHandler.Instance.PrefWindowPosition;
+            }
+
+            frmSettings.Size = SettingsHandler.Instance.PrefWindowSize;
+            frmSettings.WindowState = SettingsHandler.Instance.PrefWindowState;
+
+            frmSettings.Show();
         }
 
         private void tsbtnAbout_Click(object sender, EventArgs e)

@@ -67,7 +67,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(596, 308);
+            this.tabControl1.Size = new System.Drawing.Size(560, 309);
             this.tabControl1.TabIndex = 0;
             // 
             // tpgInterface
@@ -76,7 +76,7 @@
             this.tpgInterface.Location = new System.Drawing.Point(4, 22);
             this.tpgInterface.Name = "tpgInterface";
             this.tpgInterface.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgInterface.Size = new System.Drawing.Size(588, 282);
+            this.tpgInterface.Size = new System.Drawing.Size(552, 283);
             this.tpgInterface.TabIndex = 0;
             this.tpgInterface.Text = "tpgInterface";
             this.tpgInterface.UseVisualStyleBackColor = true;
@@ -111,7 +111,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(582, 276);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(546, 277);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblLanguage
@@ -241,7 +241,7 @@
             this.tpgBehavior.Location = new System.Drawing.Point(4, 22);
             this.tpgBehavior.Name = "tpgBehavior";
             this.tpgBehavior.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgBehavior.Size = new System.Drawing.Size(588, 282);
+            this.tpgBehavior.Size = new System.Drawing.Size(552, 283);
             this.tpgBehavior.TabIndex = 1;
             this.tpgBehavior.Text = "tpgBehavior";
             this.tpgBehavior.UseVisualStyleBackColor = true;
@@ -250,7 +250,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.AutoSize = true;
-            this.btnSave.Location = new System.Drawing.Point(452, 326);
+            this.btnSave.Location = new System.Drawing.Point(416, 327);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
@@ -262,7 +262,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.AutoSize = true;
-            this.btnCancel.Location = new System.Drawing.Point(533, 326);
+            this.btnCancel.Location = new System.Drawing.Point(497, 327);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -274,7 +274,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 361);
+            this.ClientSize = new System.Drawing.Size(584, 362);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl1);
@@ -282,6 +282,9 @@
             this.Name = "FrmSettings";
             this.Text = "FrmSettings";
             this.Load += new System.EventHandler(this.FrmSettings_Load);
+            this.Move += new System.EventHandler(this.FrmSettings_Move);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSettings_FormClosing);
+            this.ResizeEnd += new System.EventHandler(this.FrmSettings_ResizeEnd);
             this.tabControl1.ResumeLayout(false);
             this.tpgInterface.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

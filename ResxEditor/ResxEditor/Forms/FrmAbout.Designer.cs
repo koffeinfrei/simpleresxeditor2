@@ -58,7 +58,7 @@
             this.tlpAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tlpAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tlpAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpAbout.Size = new System.Drawing.Size(232, 186);
+            this.tlpAbout.Size = new System.Drawing.Size(294, 172);
             this.tlpAbout.TabIndex = 0;
             // 
             // lblCoded
@@ -66,9 +66,9 @@
             this.lblCoded.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCoded.AutoSize = true;
             this.tlpAbout.SetColumnSpan(this.lblCoded, 2);
-            this.lblCoded.Location = new System.Drawing.Point(3, 38);
+            this.lblCoded.Location = new System.Drawing.Point(3, 35);
             this.lblCoded.Name = "lblCoded";
-            this.lblCoded.Size = new System.Drawing.Size(226, 13);
+            this.lblCoded.Size = new System.Drawing.Size(288, 13);
             this.lblCoded.TabIndex = 2;
             this.lblCoded.Text = "lblCoded";
             // 
@@ -77,9 +77,9 @@
             this.llblAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.llblAuthor.AutoSize = true;
             this.tlpAbout.SetColumnSpan(this.llblAuthor, 2);
-            this.llblAuthor.Location = new System.Drawing.Point(3, 68);
+            this.llblAuthor.Location = new System.Drawing.Point(3, 63);
             this.llblAuthor.Name = "llblAuthor";
-            this.llblAuthor.Size = new System.Drawing.Size(226, 13);
+            this.llblAuthor.Size = new System.Drawing.Size(288, 13);
             this.llblAuthor.TabIndex = 3;
             this.llblAuthor.TabStop = true;
             this.llblAuthor.Text = "llblAuthor";
@@ -90,9 +90,9 @@
             this.lblTranslated.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTranslated.AutoSize = true;
             this.tlpAbout.SetColumnSpan(this.lblTranslated, 2);
-            this.lblTranslated.Location = new System.Drawing.Point(3, 98);
+            this.lblTranslated.Location = new System.Drawing.Point(3, 91);
             this.lblTranslated.Name = "lblTranslated";
-            this.lblTranslated.Size = new System.Drawing.Size(226, 13);
+            this.lblTranslated.Size = new System.Drawing.Size(288, 13);
             this.lblTranslated.TabIndex = 4;
             this.lblTranslated.Text = "lblTranslated";
             // 
@@ -100,7 +100,7 @@
             // 
             this.btnWebsite.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnWebsite.AutoSize = true;
-            this.btnWebsite.Location = new System.Drawing.Point(3, 156);
+            this.btnWebsite.Location = new System.Drawing.Point(3, 144);
             this.btnWebsite.Name = "btnWebsite";
             this.btnWebsite.Size = new System.Drawing.Size(75, 23);
             this.btnWebsite.TabIndex = 0;
@@ -112,7 +112,7 @@
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnClose.AutoSize = true;
-            this.btnClose.Location = new System.Drawing.Point(154, 156);
+            this.btnClose.Location = new System.Drawing.Point(216, 144);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 1;
@@ -124,7 +124,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(232, 186);
+            this.ClientSize = new System.Drawing.Size(294, 172);
             this.Controls.Add(this.tlpAbout);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System;
 
 namespace ResxEditor.Forms
 {
@@ -45,6 +44,14 @@ namespace ResxEditor.Forms
                     KV[keyValue[0].Trim()] = keyValue[1].Trim();
                 }
             }
+        }
+
+        public static string GetString(string key)
+        {
+            if (KV.ContainsKey(key))
+                return KV[key];
+            else
+                return string.Format("##{0}##", key);
         }
     }
 }

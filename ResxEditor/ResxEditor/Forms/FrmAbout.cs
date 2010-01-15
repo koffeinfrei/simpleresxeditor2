@@ -13,18 +13,18 @@ namespace ResxEditor.Forms
 
         private void loadLanguageStrings()
         {
-            Text = Global.GetNameWithVersion(LangHandler.KV["frmAbout"], string.Empty);
+            Text = Global.GetNameWithVersion(LangHandler.GetString("frmAbout"), string.Empty);
 
             // Labels
-            lblCoded.Text = string.Format("{0} {1}", LangHandler.KV["lblCoded"], Global.GetAuthor());
-            lblTranslated.Text = LangHandler.KV["lblTranslated"];
+            lblCoded.Text = string.Format("{0} {1}", LangHandler.GetString("lblCoded"), Global.GetAuthor());
+            lblTranslated.Text = LangHandler.GetString("lblTranslated");
 
             // LinkLabels
             llblAuthor.Text = Global.GetEmail();
 
             // Buttons
-            btnClose.Text = LangHandler.KV["btnClose"];
-            btnWebsite.Text = LangHandler.KV["btnWebsite"];
+            btnClose.Text = LangHandler.GetString("btnClose");
+            btnWebsite.Text = LangHandler.GetString("btnWebsite");
         }
 
         #region Events

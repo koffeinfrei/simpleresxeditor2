@@ -13,15 +13,37 @@ namespace ResxEditor
         [STAThread]
         static void Main()
         {
-            // Read global settings
-            Helpers.SettingsHandler.Read();
-
-            // Load localized strings
-            Forms.LangHandler.LoadLanguage(SettingsHandler.KV["Language"]);
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+            Application.ThreadExit += new EventHandler(Application_ThreadExit);
+
+            // Read global settings
+            SettingsHandler.Instance.Read();
+
+            // Load localized strings
+            LangHandler.LoadLanguage(SettingsHandler.Instance.Language);
+
+            FrmMain frmMain = new FrmMain();
+            
+            if (SettingsHandler.Instance.MainWindowPosition.IsEmpty)
+            {
+                frmMain.StartPosition = FormStartPosition.WindowsDefaultLocation;
+            }
+            else
+            {
+                frmMain.StartPosition = FormStartPosition.Manual;
+                frmMain.Location = SettingsHandler.Instance.MainWindowPosition;
+            }
+
+            frmMain.Size = SettingsHandler.Instance.MainWindowSize;
+            frmMain.WindowState = SettingsHandler.Instance.MainWindowState;
+
+            Application.Run(frmMain);
+        }
+
+        static void Application_ThreadExit(object sender, EventArgs e)
+        {
+            SettingsHandler.Instance.Save();
         }
     }
 }

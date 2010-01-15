@@ -1,74 +1,122 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace ResxEditor.Helpers
 {
-    class SettingsHandler
+    public sealed class SettingsHandler
     {
-        public static event EventHandler SettingsChanged;
+        #region Singleton
 
-        // These are default settings and will be overwritten if settings.ini exists
-        public static Dictionary<string, string> KV = new Dictionary<string, string>() {
-            { "Color1", "LightSalmon" },
-            { "Color2", "LightGreen" },
-            { "Color3", "LightSkyBlue" },
-            { "Color4", "LightGray" },
-            { "Color5", "Aquamarine" },
-            { "Language", "English" }
-        };
+        static readonly SettingsHandler instance = new SettingsHandler();
 
-        public static void Read()
+        // Explicit static constructor to tell C# compiler
+        // not to mark type as beforefieldinit
+        static SettingsHandler()
         {
-            string writableFilename = GetWritableFilename();
+        }
+
+        SettingsHandler()
+        {
+        }
+
+        public static SettingsHandler Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+        #endregion
+
+        public static event EventHandler SettingsChanged;
+        public int Color1 { get; set; }
+        public int Color2 { get; set; }
+        public int Color3 { get; set; }
+        public int Color4 { get; set; }
+        public int Color5 { get; set; }
+        public string Language { get; set; }
+        public Size MainWindowSize { get; set; }
+        public Size PrefWindowSize { get; set; }
+        public Point MainWindowPosition { get; set; }
+        public Point PrefWindowPosition { get; set; }
+        public FormWindowState MainWindowState { get; set; }
+        public FormWindowState PrefWindowState { get; set; }
+
+        public void Read()
+        {
+            string writableFilename = getWritableFilename();
 
             // If no path is returned then there is nothing to read
             if (string.IsNullOrEmpty(writableFilename))
                 return;
 
-            using (StreamReader reader = new StreamReader(writableFilename))
+            FileInfo fileInfo = new FileInfo(writableFilename);
+
+            if (File.Exists(writableFilename) && fileInfo.Length != 0)
             {
-                string line;
-
-                while ((line = reader.ReadLine()) != null)
+                XmlSerializer serializer = new XmlSerializer(typeof(SettingsHandler));
+                using (StreamReader reader = new StreamReader(writableFilename))
                 {
-                    // Avoid empty lines or comments
-                    if (line == string.Empty || line.StartsWith("#"))
-                        continue;
-
-                    string[] keyValue = line.Split('=');
-
-                    // There is a missing key or value
-                    if (keyValue.Length != 2)
-                        continue;
-
-                    KV[keyValue[0].Trim()] = keyValue[1].Trim();
+                    SettingsHandler settingsData = (SettingsHandler)serializer.Deserialize(reader);
+                    instance.Color1 = settingsData.Color1;
+                    instance.Color2 = settingsData.Color2;
+                    instance.Color3 = settingsData.Color3;
+                    instance.Color4 = settingsData.Color4;
+                    instance.Color5 = settingsData.Color5;
+                    instance.Language = settingsData.Language;
+                    instance.MainWindowSize = settingsData.MainWindowSize;
+                    instance.PrefWindowSize = settingsData.PrefWindowSize;
+                    instance.MainWindowPosition = settingsData.MainWindowPosition;
+                    instance.PrefWindowPosition = settingsData.PrefWindowPosition;
+                    instance.MainWindowState = settingsData.MainWindowState;
+                    instance.PrefWindowState = settingsData.PrefWindowState;
                 }
+            }
+            else
+            {
+                SettingsHandler.Instance.loadDefaultSettings();
             }
         }
 
-        public static void Save()
+        public void Save()
         {
-            string writableFilename = GetWritableFilename();
+            string writableFilename = getWritableFilename();
 
             if (string.IsNullOrEmpty(writableFilename))
                 return;
 
+            XmlSerializer serialized = new XmlSerializer(typeof(SettingsHandler));
+
             using (StreamWriter writer = new StreamWriter(writableFilename))
-            {
-                foreach (var item in KV)
-                {
-                    writer.WriteLine(string.Format("{0} = {1}", item.Key, item.Value));
-                }
-            }
+                serialized.Serialize(writer, Instance);
 
             if (SettingsChanged != null)
                 SettingsChanged(null, EventArgs.Empty);
         }
 
-        private static string GetWritableFilename()
+        private void loadDefaultSettings()
         {
-            string settingsFilename = "settings.ini";
+            Color1 = Color.LightSalmon.ToArgb();
+            Color2 = Color.LightGreen.ToArgb();
+            Color3 = Color.LightSkyBlue.ToArgb();
+            Color4 = Color.LightGray.ToArgb();
+            Color5 = Color.Aquamarine.ToArgb();
+            Language = "English";
+            MainWindowSize = new Size(600, 300);
+            MainWindowState = FormWindowState.Normal;
+            MainWindowPosition = new Point();
+            PrefWindowSize = new Size(600, 400);
+            PrefWindowState = FormWindowState.Normal;
+            PrefWindowPosition = new Point();
+        }
+
+        private string getWritableFilename()
+        {
+            string settingsFilename = "settings.xml";
             string[] possiblePaths = new string[] {
                 System.Windows.Forms.Application.StartupPath,
                 Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Simple Resx Editor")
@@ -92,7 +140,6 @@ namespace ResxEditor.Helpers
                 }
                 catch (UnauthorizedAccessException)
                 {
-
                 }
             }
 

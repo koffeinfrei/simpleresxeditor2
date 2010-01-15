@@ -32,6 +32,7 @@ tsbtnHText		= Destacar: texto
 tsbtnClear		= Remover destacados
 tsbtnSettings	= Preferencias
 tsbtnAbout		= Acerca de
+errorSaving		= Ocurrió un error al intentar guardar los cambios
 
 # Form: Settings
 frmSettings		= Preferencias

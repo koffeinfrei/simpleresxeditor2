@@ -28,7 +28,7 @@ namespace ResxEditor.Helpers
                 {
                     if (!currentVersion.Equals(onlineVersion))
                     {
-                        if (DialogResult.Yes == MessageBox.Show(LangHandler.KV["txtDown1"], LangHandler.KV["txtDown2"], MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                        if (DialogResult.Yes == MessageBox.Show(LangHandler.GetString("txtDown1"), LangHandler.GetString("txtDown2"), MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                         {
                             Process.Start(Global.GetURL());
                         }

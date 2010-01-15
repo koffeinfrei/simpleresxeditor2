@@ -62,12 +62,13 @@
             // dataGridView
             // 
             this.dataGridView.AllowDrop = true;
-            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCellsExceptHeader;
+            this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 0);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(592, 212);
+            this.dataGridView.Size = new System.Drawing.Size(584, 201);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             this.dataGridView.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dataGridView_SortCompare);
@@ -81,11 +82,11 @@
             // 
             this.tscContainer.ContentPanel.Controls.Add(this.dataGridView);
             this.tscContainer.ContentPanel.Controls.Add(this.ssBottom);
-            this.tscContainer.ContentPanel.Size = new System.Drawing.Size(592, 234);
+            this.tscContainer.ContentPanel.Size = new System.Drawing.Size(584, 223);
             this.tscContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tscContainer.Location = new System.Drawing.Point(0, 0);
             this.tscContainer.Name = "tscContainer";
-            this.tscContainer.Size = new System.Drawing.Size(592, 273);
+            this.tscContainer.Size = new System.Drawing.Size(584, 262);
             this.tscContainer.TabIndex = 2;
             // 
             // tscContainer.TopToolStripPanel
@@ -96,9 +97,9 @@
             // 
             this.ssBottom.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslStatus});
-            this.ssBottom.Location = new System.Drawing.Point(0, 212);
+            this.ssBottom.Location = new System.Drawing.Point(0, 201);
             this.ssBottom.Name = "ssBottom";
-            this.ssBottom.Size = new System.Drawing.Size(592, 22);
+            this.ssBottom.Size = new System.Drawing.Size(584, 22);
             this.ssBottom.TabIndex = 2;
             // 
             // tsslStatus
@@ -273,13 +274,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 273);
+            this.ClientSize = new System.Drawing.Size(584, 262);
             this.Controls.Add(this.tscContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(400, 100);
             this.Name = "FrmMain";
             this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.Move += new System.EventHandler(this.FrmMain_Move);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
+            this.ResizeEnd += new System.EventHandler(this.FrmMain_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.tscContainer.ContentPanel.ResumeLayout(false);
             this.tscContainer.ContentPanel.PerformLayout();
