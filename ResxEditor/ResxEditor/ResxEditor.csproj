@@ -93,6 +93,7 @@
   <ItemGroup>
     <None Include="Languages\English.lang" />
     <None Include="Languages\Español.lang" />
+    <None Include="Languages\Italiano.lang" />
     <None Include="Resources\toolbar.png" />
   </ItemGroup>
   <ItemGroup>
