@@ -1,0 +1,47 @@
+﻿txtDown1		= Vuoi scaricarlo adesso?
+txtDown2		= Nuova versione disponibile!
+txtSave1		= Vuoi salvare le modifiche al file?
+txtSave2		= Hai cambie senza guardare
+txtOpen1		= Archivio di ricorso
+txtOpen2		= Apri l'archivio di ricorso
+btnSave			= Salvare
+btnClose		= Chiudi
+btnCancel		= Annulla
+
+# Form: About
+frmAbout		= Circa
+lblCoded		= Sviluppato da
+lblTranslated	= Tradotto da Mariana Palomeque
+btnWebsite		= Sito web
+btnDonate		= Donate
+
+# Form: Main
+statusHEquals	= {0} coincidenze trovate
+statusHDiffs	= {0} differenze trovate
+statusHText		= Trovate {0} celle contenente testo
+statusClear		= Tutte le selezioni sono state rimosse
+statusFText		= Mostrate {0} celle di {1} che contengono stringhe tradotte
+statusFAll		= Mostra tutte le celle ({0})
+tsbtnOpen		= Apri
+tsbtnSave		= Salva
+tsbtnKeys		= Mostra/Nascondi chiavi
+tsbtnFText		= Filtra: solo testo
+tsbtnFAll		= Filtra: tutto
+tsbtnHDiffs		= Evidenzia: differenze
+tsbtnHEquals	= Evidenzia: uguale
+tsbtnHText		= Evidenzia: testo
+tsbtnClear		= Cancella evidenziazione
+tsbtnSettings	= Impostazioni
+tsbtnAbout		= About
+errorSaving		= An error ocurred trying to save changes
+
+# Form: Settings
+frmSettings		= Impostazioni
+tpgInterface	= Interfaccia
+tpgBehavior		= Comportamento
+lblLanguage		= Lingua:
+lblColor1		= Colore differenze:
+lblColor2		= Colore uguali:
+lblColor3		= Color celle non salvate:
+lblColor4		= Colore chiavi:
+lblColor5		= Colore testo:

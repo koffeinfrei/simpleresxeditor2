@@ -67,9 +67,93 @@ namespace ResxEditor.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap toolbar {
+        internal static System.Drawing.Bitmap Logo128 {
             get {
-                object obj = ResourceManager.GetObject("toolbar", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tsbtnAbout {
+            get {
+                object obj = ResourceManager.GetObject("tsbtnAbout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tsbtnClear {
+            get {
+                object obj = ResourceManager.GetObject("tsbtnClear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tsbtnFAll {
+            get {
+                object obj = ResourceManager.GetObject("tsbtnFAll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tsbtnFText {
+            get {
+                object obj = ResourceManager.GetObject("tsbtnFText", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tsbtnHDiffs {
+            get {
+                object obj = ResourceManager.GetObject("tsbtnHDiffs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tsbtnHEquals {
+            get {
+                object obj = ResourceManager.GetObject("tsbtnHEquals", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tsbtnHText {
+            get {
+                object obj = ResourceManager.GetObject("tsbtnHText", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tsbtnKeys {
+            get {
+                object obj = ResourceManager.GetObject("tsbtnKeys", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tsbtnOpen {
+            get {
+                object obj = ResourceManager.GetObject("tsbtnOpen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tsbtnSave {
+            get {
+                object obj = ResourceManager.GetObject("tsbtnSave", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tsbtnSettings {
+            get {
+                object obj = ResourceManager.GetObject("tsbtnSettings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tsbtnTranslator {
+            get {
+                object obj = ResourceManager.GetObject("tsbtnTranslator", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

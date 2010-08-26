@@ -11,8 +11,9 @@ btnCancel		= Cancelar
 # Form: About
 frmAbout		= Acerca de
 lblCoded		= Programado por
-lblTranslated	= Traducido por Matías
+lblTranslated	= Traducido por Matías E. Palomeque
 btnWebsite		= Sitio web
+btnDonate		= Donar
 
 # Form: Main
 statusHEquals	= {0} coincidencias han sido encontradas

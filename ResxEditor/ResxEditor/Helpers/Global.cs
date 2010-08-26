@@ -8,7 +8,8 @@ namespace ResxEditor.Helpers
         private static readonly string AUTHOR = "Matías E. Palomeque";
         private static readonly string EMAIL = "matias.ar@gmail.com";
         private static readonly string URL_WEBSITE = "http://simpleresxeditor.blogspot.com";
-        private static readonly string URL_VERSION = "http://cablemodem.fibertel.com.ar/qwerty/sre/version.txt";
+        private static readonly string URL_VERSION = "http://simpleresxeditor.googlecode.com/files/version.txt";
+        private static readonly string URL_DONATIONS = "http://code.google.com/p/simpleresxeditor/wiki/Donations";
 
         public static string GetAuthor()
         {
@@ -23,6 +24,11 @@ namespace ResxEditor.Helpers
         public static string GetURL()
         {
             return URL_WEBSITE;
+        }
+
+        public static string GetURLDonations()
+        {
+            return URL_DONATIONS;
         }
 
         public static string GetURLVersion()

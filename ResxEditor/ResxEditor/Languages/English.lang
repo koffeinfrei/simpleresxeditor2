@@ -11,8 +11,9 @@ btnCancel		= Cancel
 # Form: About
 frmAbout		= About
 lblCoded		= Coded by
-lblTranslated	= Translated by Matías
+lblTranslated	= Translated by Matías E. Palomeque
 btnWebsite		= Website
+btnDonate		= Donate
 
 # Form: Main
 statusHEquals	= {0} coincidences have been found
@@ -31,8 +32,11 @@ tsbtnHEquals	= Highligh: equals
 tsbtnHText		= Highligh: text
 tsbtnClear		= Clear highlights
 tsbtnSettings	= Settings
+tsbtnTranslator = Translator
 tsbtnAbout		= About
 errorSaving		= An error ocurred trying to save changes
+gbComment		= Comment:
+gbValue			= Value:
 
 # Form: Settings
 frmSettings		= Settings
@@ -44,3 +48,14 @@ lblColor2		= Color equals:
 lblColor3		= Color unsaved cells:
 lblColor4		= Color keys:
 lblColor5		= Color text:
+errorLoading	= Unable to load settings, invalid format!
+
+# Form: Translator
+frmTranslator	= Translator (Powered by Bing)
+lblLanguages	= Languages:
+itemAutoDetect	= Auto-Detect
+btnSwap			= Swap
+btnTranslate	= Translate
+llblClearAll	= Clear all
+llblCopy1		= Copy source text to clipboard
+llblCopy2		= Copy translated text to clipboard

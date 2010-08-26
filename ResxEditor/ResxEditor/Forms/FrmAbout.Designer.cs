@@ -29,124 +29,124 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAbout));
-            this.tlpAbout = new System.Windows.Forms.TableLayoutPanel();
             this.lblCoded = new System.Windows.Forms.Label();
             this.llblAuthor = new System.Windows.Forms.LinkLabel();
             this.lblTranslated = new System.Windows.Forms.Label();
             this.btnWebsite = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.tlpAbout.SuspendLayout();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnDonate = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tlpAbout
-            // 
-            this.tlpAbout.ColumnCount = 2;
-            this.tlpAbout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpAbout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpAbout.Controls.Add(this.lblCoded, 0, 1);
-            this.tlpAbout.Controls.Add(this.llblAuthor, 0, 2);
-            this.tlpAbout.Controls.Add(this.lblTranslated, 0, 3);
-            this.tlpAbout.Controls.Add(this.btnWebsite, 0, 5);
-            this.tlpAbout.Controls.Add(this.btnClose, 1, 5);
-            this.tlpAbout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpAbout.Location = new System.Drawing.Point(0, 0);
-            this.tlpAbout.Name = "tlpAbout";
-            this.tlpAbout.RowCount = 6;
-            this.tlpAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpAbout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpAbout.Size = new System.Drawing.Size(294, 172);
-            this.tlpAbout.TabIndex = 0;
             // 
             // lblCoded
             // 
-            this.lblCoded.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCoded.AutoSize = true;
-            this.tlpAbout.SetColumnSpan(this.lblCoded, 2);
-            this.lblCoded.Location = new System.Drawing.Point(3, 35);
+            this.lblCoded.Location = new System.Drawing.Point(157, 23);
             this.lblCoded.Name = "lblCoded";
-            this.lblCoded.Size = new System.Drawing.Size(288, 13);
-            this.lblCoded.TabIndex = 2;
+            this.lblCoded.Size = new System.Drawing.Size(48, 13);
+            this.lblCoded.TabIndex = 0;
             this.lblCoded.Text = "lblCoded";
             // 
             // llblAuthor
             // 
-            this.llblAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.llblAuthor.AutoSize = true;
-            this.tlpAbout.SetColumnSpan(this.llblAuthor, 2);
-            this.llblAuthor.Location = new System.Drawing.Point(3, 63);
+            this.llblAuthor.Location = new System.Drawing.Point(157, 46);
             this.llblAuthor.Name = "llblAuthor";
-            this.llblAuthor.Size = new System.Drawing.Size(288, 13);
-            this.llblAuthor.TabIndex = 3;
+            this.llblAuthor.Size = new System.Drawing.Size(50, 13);
+            this.llblAuthor.TabIndex = 1;
             this.llblAuthor.TabStop = true;
             this.llblAuthor.Text = "llblAuthor";
             this.llblAuthor.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAuthor_LinkClicked);
             // 
             // lblTranslated
             // 
-            this.lblTranslated.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTranslated.AutoSize = true;
-            this.tlpAbout.SetColumnSpan(this.lblTranslated, 2);
-            this.lblTranslated.Location = new System.Drawing.Point(3, 91);
+            this.lblTranslated.Location = new System.Drawing.Point(157, 69);
             this.lblTranslated.Name = "lblTranslated";
-            this.lblTranslated.Size = new System.Drawing.Size(288, 13);
-            this.lblTranslated.TabIndex = 4;
+            this.lblTranslated.Size = new System.Drawing.Size(67, 13);
+            this.lblTranslated.TabIndex = 2;
             this.lblTranslated.Text = "lblTranslated";
             // 
             // btnWebsite
             // 
-            this.btnWebsite.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnWebsite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnWebsite.AutoSize = true;
-            this.btnWebsite.Location = new System.Drawing.Point(3, 144);
+            this.btnWebsite.Location = new System.Drawing.Point(266, 117);
             this.btnWebsite.Name = "btnWebsite";
             this.btnWebsite.Size = new System.Drawing.Size(75, 23);
-            this.btnWebsite.TabIndex = 0;
+            this.btnWebsite.TabIndex = 4;
             this.btnWebsite.Text = "btnWebsite";
             this.btnWebsite.UseVisualStyleBackColor = true;
             this.btnWebsite.Click += new System.EventHandler(this.btnWebsite_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.AutoSize = true;
-            this.btnClose.Location = new System.Drawing.Point(216, 144);
+            this.btnClose.Location = new System.Drawing.Point(347, 117);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 1;
+            this.btnClose.TabIndex = 5;
             this.btnClose.Text = "btnClose";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ResxEditor.Properties.Resources.Logo128;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnDonate
+            // 
+            this.btnDonate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDonate.AutoSize = true;
+            this.btnDonate.Location = new System.Drawing.Point(185, 117);
+            this.btnDonate.Name = "btnDonate";
+            this.btnDonate.Size = new System.Drawing.Size(75, 23);
+            this.btnDonate.TabIndex = 3;
+            this.btnDonate.Text = "btnDonate";
+            this.btnDonate.UseVisualStyleBackColor = true;
+            this.btnDonate.Click += new System.EventHandler(this.btnDonate_Click);
             // 
             // FrmAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 172);
-            this.Controls.Add(this.tlpAbout);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ClientSize = new System.Drawing.Size(434, 152);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lblCoded);
+            this.Controls.Add(this.llblAuthor);
+            this.Controls.Add(this.lblTranslated);
+            this.Controls.Add(this.btnDonate);
+            this.Controls.Add(this.btnWebsite);
+            this.Controls.Add(this.btnClose);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(450, 190);
             this.Name = "FrmAbout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmAbout";
             this.Load += new System.EventHandler(this.FrmAbout_Load);
-            this.tlpAbout.ResumeLayout(false);
-            this.tlpAbout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tlpAbout;
         private System.Windows.Forms.Button btnWebsite;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblCoded;
         private System.Windows.Forms.LinkLabel llblAuthor;
         private System.Windows.Forms.Label lblTranslated;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnDonate;
     }
 }

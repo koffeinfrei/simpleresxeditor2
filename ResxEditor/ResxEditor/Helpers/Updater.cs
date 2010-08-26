@@ -12,6 +12,18 @@ namespace ResxEditor.Helpers
     {
         public static void CheckForUpdates()
         {
+            // Check updates only once every 24hours
+            DateTime date = DateTime.FromBinary(SettingsHandler.Instance.LastUpdateCheck);
+            date = date.AddDays(1);
+            switch (date.CompareTo(DateTime.Now))
+            {
+                case -1:
+                    break;
+                case 0:
+                case 1:
+                    return;
+            }
+
             string currentVersion = Global.GetVersion();
             string onlineVersion = string.Empty;
 
@@ -34,6 +46,8 @@ namespace ResxEditor.Helpers
                         }
                     }
                 }
+
+                SettingsHandler.Instance.LastUpdateCheck = DateTime.Now.Ticks;
             }
             catch (Exception)
             {

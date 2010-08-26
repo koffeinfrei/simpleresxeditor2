@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
@@ -11,77 +13,75 @@ namespace ResxEditor.Forms
 {
     public partial class FrmMain : Form
     {
-        private readonly int SKIN_WIDTH = 352;
-        private readonly int SKIN_HEIGHT = 32;
-        private bool initialChanges;
-        private bool unsavedChanges;
+        private readonly int BACK_ALT = 15;
+        private readonly string PATH_FLAGS = Path.Combine(Application.StartupPath, "Flags");
+        private readonly string PATH_SKINS = Path.Combine(Application.StartupPath, "Skins");
+        private bool initialChanges = false;
+        private bool unsavedChanges = false;
 
         public FrmMain()
         {
             InitializeComponent();
-
-#if (DEBUG)
             string[] args = Environment.GetCommandLineArgs();
-            //foreach (var s in args)
-            //    MessageBox.Show(s);
-            if (args.Length > 1) loadResxFiles(args);
-#else       
+            if (args.Length > 1)
+                loadResxFiles(args);
+#if (!DEBUG)
             checkNewVersion();
 #endif
         }
 
         private void loadSkin()
         {
-            Bitmap bmp;
+            //Bitmap bmp;
 
-            // Load default skin
-            imgListMain.Images.AddStrip(Properties.Resources.toolbar);
+            //// Load default skin
+            //imgListMain.Images.AddStrip(Properties.Resources.toolbar);
 
-            // User-defined skin
-            string skinFilename = Path.Combine(Application.StartupPath, "toolbar.png");
+            //// User-defined skin
+            //string skinFilename = Path.Combine(Application.StartupPath, "toolbar.png");
 
-            if (File.Exists(skinFilename))
-            {
-                bmp = new Bitmap(skinFilename);
-                // Check if it is a valid skin file
-                if (bmp.Height == SKIN_HEIGHT && bmp.Width == SKIN_WIDTH)
-                {
-                    // Use user-defined skin
-                    imgListMain.Images.Clear();
-                    imgListMain.Images.AddStrip(bmp);
-                }
-            }
+            //if (File.Exists(skinFilename))
+            //{
+            //    bmp = new Bitmap(skinFilename);
+            //    // Check if it is a valid skin file
+            //    if (bmp.Height == SKIN_HEIGHT && bmp.Width == SKIN_WIDTH)
+            //    {
+            //        // Use user-defined skin
+            //        imgListMain.Images.Clear();
+            //        imgListMain.Images.AddStrip(bmp);
+            //    }
+            //}
 
             tspMain.ImageList = imgListMain;
+            tsbtnOpen.Image = Properties.Resources.tsbtnOpen;
+            tsbtnSave.Image = Properties.Resources.tsbtnSave;
+            tsbtnKeys.Image = Properties.Resources.tsbtnKeys;
+            tsbtnFText.Image = Properties.Resources.tsbtnFText;
+            tsbtnFAll.Image = Properties.Resources.tsbtnFAll;
+            tsbtnHText.Image = Properties.Resources.tsbtnHText;
+            tsbtnHDiffs.Image = Properties.Resources.tsbtnHDiffs;
+            tsbtnHEquals.Image = Properties.Resources.tsbtnHEquals;
+            tsbtnClear.Image = Properties.Resources.tsbtnClear;
+            tsbtnSettings.Image = Properties.Resources.tsbtnSettings;
+            tsbtnAbout.Image = Properties.Resources.tsbtnAbout;
+            tsbtnTranslator.Image = Properties.Resources.tsbtnTranslator;
 
-            tsbtnOpen.ImageIndex        = 0;
-            tsbtnOpen.ImageScaling      = ToolStripItemImageScaling.SizeToFit;
-            tsbtnSave.ImageIndex        = 1;
-            tsbtnSave.ImageScaling      = ToolStripItemImageScaling.SizeToFit;
-            tsbtnKeys.ImageIndex        = 2;
-            tsbtnKeys.ImageScaling      = ToolStripItemImageScaling.SizeToFit;
-            tsbtnFText.ImageIndex       = 3;
-            tsbtnFText.ImageScaling     = ToolStripItemImageScaling.SizeToFit;
-            tsbtnFAll.ImageIndex        = 4;
-            tsbtnFAll.ImageScaling      = ToolStripItemImageScaling.SizeToFit;
-            tsbtnHText.ImageIndex       = 5;
-            tsbtnHText.ImageScaling     = ToolStripItemImageScaling.SizeToFit;
-            tsbtnHDiffs.ImageIndex      = 6;
-            tsbtnHDiffs.ImageScaling    = ToolStripItemImageScaling.SizeToFit;
-            tsbtnHEquals.ImageIndex     = 7;
-            tsbtnHEquals.ImageScaling   = ToolStripItemImageScaling.SizeToFit;
-            tsbtnClear.ImageIndex       = 8;
-            tsbtnClear.ImageScaling     = ToolStripItemImageScaling.SizeToFit;
-            tsbtnSettings.ImageIndex    = 9;
-            tsbtnSettings.ImageScaling  = ToolStripItemImageScaling.SizeToFit;
-            tsbtnAbout.ImageIndex       = 10;
-            tsbtnAbout.ImageScaling     = ToolStripItemImageScaling.SizeToFit;
+            //tsbtnOpen.ImageScaling      = ToolStripItemImageScaling.SizeToFit;
+            //tsbtnSave.ImageScaling = ToolStripItemImageScaling.SizeToFit;
+            //tsbtnKeys.ImageScaling = ToolStripItemImageScaling.SizeToFit;
+            //tsbtnFText.ImageScaling = ToolStripItemImageScaling.SizeToFit;
+            //tsbtnFAll.ImageScaling = ToolStripItemImageScaling.SizeToFit;
+            //tsbtnHText.ImageScaling = ToolStripItemImageScaling.SizeToFit;
+            //tsbtnHDiffs.ImageScaling = ToolStripItemImageScaling.SizeToFit;
+            //tsbtnHEquals.ImageScaling = ToolStripItemImageScaling.SizeToFit;
+            //tsbtnClear.ImageScaling = ToolStripItemImageScaling.SizeToFit;
+            //tsbtnSettings.ImageScaling = ToolStripItemImageScaling.SizeToFit;
+            //tsbtnAbout.ImageScaling = ToolStripItemImageScaling.SizeToFit;
         }
 
         private void loadResxFiles(string[] filenames)
         {
             saveResxFiles(true);
-
             initialChanges = true;
 
             int numFiles = filenames.Length;
@@ -113,31 +113,42 @@ namespace ResxEditor.Forms
 
                 int newColIndex = dataGridView.Columns.Add(file, Path.GetFileName(file));
 
-                using (ResXResourceSet resourceSet = new ResXResourceSet(file))
+                using (ResXResourceReader resxReader = new ResXResourceReader(file))
                 {
-                    foreach (DictionaryEntry o in resourceSet)
+                    resxReader.UseResXDataNodes = true;
+                    IEnumerator enumerator = resxReader.GetEnumerator();
+                    while (enumerator.MoveNext())
                     {
-                        object key = o.Key;
-                        object value = o.Value;
-
+                        DictionaryEntry dicEntry = (DictionaryEntry)enumerator.Current;
+                        ResXDataNode dataNode = (ResXDataNode)dicEntry.Value;
+                        string dataNodeName = dataNode.Name.Trim();
                         int rowIndex = -1;
-
                         for (int row = 0; row < dataGridView.Rows.Count; row++)
                         {
-                            if ((string)dataGridView.Rows[row].Cells["keys"].Value == (string)key)
+                            if (dataGridView.Rows[row].Cells["keys"].Value as string == dataNodeName)
                             {
                                 rowIndex = row;
                                 break;
                             }
                         }
-
                         if (rowIndex == -1)
                         {
                             rowIndex = dataGridView.Rows.Add();
-                            dataGridView.Rows[rowIndex].Cells["keys"].Value = key;
+                            dataGridView.Rows[rowIndex].Cells["keys"].Value = dataNodeName;
                         }
 
-                        dataGridView.Rows[rowIndex].Cells[newColIndex].Value = value;
+                        if (dataNode.FileRef != null)
+                        {
+                            dataGridView.Rows[rowIndex].Cells[newColIndex].Style = new DataGridViewCellStyle() { BackColor = Color.Red };
+                            dataGridView.Rows[rowIndex].Cells[newColIndex].Value = null;
+                            dataGridView.Rows[rowIndex].Cells[newColIndex].Tag = dataNode;
+                            dataGridView.Rows[rowIndex].Cells[newColIndex].ReadOnly = true;
+                        }
+                        else
+                        {
+                            dataGridView.Rows[rowIndex].Cells[newColIndex].Value = dataNode.GetValue(new AssemblyName[] { });
+                            dataGridView.Rows[rowIndex].Cells[newColIndex].Tag = dataNode;
+                        }
                     }
                 }
             }
@@ -149,28 +160,32 @@ namespace ResxEditor.Forms
         private void loadLanguageStrings()
         {
             Text = Global.GetNameWithVersion();
-            tsbtnOpen.Text              = LangHandler.GetString("tsbtnOpen");
-            tsbtnOpen.ToolTipText       = LangHandler.GetString("tsbtnOpen");
-            tsbtnSave.Text              = LangHandler.GetString("tsbtnSave");
-            tsbtnSave.ToolTipText       = LangHandler.GetString("tsbtnSave");
-            tsbtnKeys.Text              = LangHandler.GetString("tsbtnKeys");
-            tsbtnKeys.ToolTipText       = LangHandler.GetString("tsbtnKeys");
-            tsbtnFText.Text             = LangHandler.GetString("tsbtnFText");
-            tsbtnFText.ToolTipText      = LangHandler.GetString("tsbtnFText");
-            tsbtnFAll.Text              = LangHandler.GetString("tsbtnFAll");
-            tsbtnFAll.ToolTipText       = LangHandler.GetString("tsbtnFAll");
-            tsbtnHDiffs.Text            = LangHandler.GetString("tsbtnHDiffs");
-            tsbtnHDiffs.ToolTipText     = LangHandler.GetString("tsbtnHDiffs");
-            tsbtnHEquals.Text           = LangHandler.GetString("tsbtnHEquals");
-            tsbtnHEquals.ToolTipText    = LangHandler.GetString("tsbtnHEquals");
-            tsbtnHText.Text             = LangHandler.GetString("tsbtnHText");
-            tsbtnHText.ToolTipText      = LangHandler.GetString("tsbtnHText");
-            tsbtnClear.Text             = LangHandler.GetString("tsbtnClear");
-            tsbtnClear.ToolTipText      = LangHandler.GetString("tsbtnClear");
-            tsbtnSettings.Text          = LangHandler.GetString("tsbtnSettings");
-            tsbtnSettings.ToolTipText   = LangHandler.GetString("tsbtnSettings");
-            tsbtnAbout.Text             = LangHandler.GetString("tsbtnAbout");
-            tsbtnAbout.ToolTipText      = LangHandler.GetString("tsbtnAbout");
+            tsbtnOpen.Text = LangHandler.GetString("tsbtnOpen");
+            tsbtnOpen.ToolTipText = LangHandler.GetString("tsbtnOpen");
+            tsbtnSave.Text = LangHandler.GetString("tsbtnSave");
+            tsbtnSave.ToolTipText = LangHandler.GetString("tsbtnSave");
+            tsbtnKeys.Text = LangHandler.GetString("tsbtnKeys");
+            tsbtnKeys.ToolTipText = LangHandler.GetString("tsbtnKeys");
+            tsbtnFText.Text = LangHandler.GetString("tsbtnFText");
+            tsbtnFText.ToolTipText = LangHandler.GetString("tsbtnFText");
+            tsbtnFAll.Text = LangHandler.GetString("tsbtnFAll");
+            tsbtnFAll.ToolTipText = LangHandler.GetString("tsbtnFAll");
+            tsbtnHDiffs.Text = LangHandler.GetString("tsbtnHDiffs");
+            tsbtnHDiffs.ToolTipText = LangHandler.GetString("tsbtnHDiffs");
+            tsbtnHEquals.Text = LangHandler.GetString("tsbtnHEquals");
+            tsbtnHEquals.ToolTipText = LangHandler.GetString("tsbtnHEquals");
+            tsbtnHText.Text = LangHandler.GetString("tsbtnHText");
+            tsbtnHText.ToolTipText = LangHandler.GetString("tsbtnHText");
+            tsbtnClear.Text = LangHandler.GetString("tsbtnClear");
+            tsbtnClear.ToolTipText = LangHandler.GetString("tsbtnClear");
+            tsbtnTranslator.Text = LangHandler.GetString("tsbtnTranslator");
+            tsbtnTranslator.ToolTipText = LangHandler.GetString("tsbtnTranslator");
+            tsbtnSettings.Text = LangHandler.GetString("tsbtnSettings");
+            tsbtnSettings.ToolTipText = LangHandler.GetString("tsbtnSettings");
+            tsbtnAbout.Text = LangHandler.GetString("tsbtnAbout");
+            tsbtnAbout.ToolTipText = LangHandler.GetString("tsbtnAbout");
+            gbComment.Text = LangHandler.GetString("gbComment");
+            gbValue.Text = LangHandler.GetString("gbValue");
         }
 
         private void checkNewVersion()
@@ -243,15 +258,14 @@ namespace ResxEditor.Forms
                 if (askUnsaved)
                 {
                     if (!unsavedChanges)
-                    {
                         return;
-                    }
 
                     if (DialogResult.No == MessageBox.Show(this, LangHandler.GetString("txtSave1"), LangHandler.GetString("txtSave2"), MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                    {
                         return;
-                    }
                 }
+
+                txtComment_Leave(null, EventArgs.Empty);
+                txtValue_Leave(null, EventArgs.Empty);
 
                 for (int column = 1; column < dataGridView.Columns.Count; column++)
                 {
@@ -259,9 +273,21 @@ namespace ResxEditor.Forms
                     {
                         for (int row = 0; row < dataGridView.Rows.Count; row++)
                         {
-                            if (dataGridView.Rows[row].Cells[column].Value != null)
+                            ResXDataNode currentNode = dataGridView.Rows[row].Cells[column].Tag as ResXDataNode;
+                            Object currentValue = dataGridView.Rows[row].Cells[column].Value as Object;
+                            bool isReadOnly = dataGridView.Rows[row].Cells[column].ReadOnly;
+
+                            if (currentValue != null && !isReadOnly)
                             {
-                                resourceWriter.AddResource((string)dataGridView.Rows[row].Cells["keys"].Value, dataGridView.Rows[row].Cells[column].Value);
+                                ResXDataNode nodeToAdd = new ResXDataNode((string)dataGridView.Rows[row].Cells["keys"].Value, currentValue);
+                                if (currentNode != null) nodeToAdd.Comment = currentNode.Comment;
+                                resourceWriter.AddResource(nodeToAdd);
+                                continue;
+                            }
+
+                            if (currentNode != null && isReadOnly)
+                            {
+                                resourceWriter.AddResource(currentNode);
                             }
                         }
 
@@ -338,6 +364,36 @@ namespace ResxEditor.Forms
             e.Handled = true;
         }
 
+        private void dataGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewCell cell = dataGridView[e.ColumnIndex, e.RowIndex];
+            bool enabled = !cell.ReadOnly && !(e.RowIndex == dataGridView.Rows.Count - 1);
+
+            txtComment.Enabled = enabled;
+            txtValue.Enabled = enabled;
+
+            if (!enabled)
+            {
+                txtComment.Text = txtValue.Text = null;
+            }
+            else
+            {
+                if (e.ColumnIndex == 0)
+                {
+                    txtComment.Enabled = false;
+                    txtComment.Text = null;
+                }
+                else
+                {
+                    ResXDataNode node = cell.Tag as ResXDataNode;
+                    txtComment.Enabled = true;
+                    txtComment.Text = (node != null ? node.Comment : null);
+                }
+
+                txtValue.Text = (cell.Value != null ? cell.Value.ToString() : null);
+            }
+        }
+
         #endregion
 
         #region Events
@@ -346,13 +402,17 @@ namespace ResxEditor.Forms
         {
             loadSkin();
             loadLanguageStrings();
-            SettingsHandler.SettingsChanged += new EventHandler(Settings_SettingsChanged);
+            splitContainer1.SplitterDistance = SettingsHandler.Instance.SplitterH;
+            splitContainer2.SplitterDistance = SettingsHandler.Instance.SplitterV;
+            SettingsHandler.Instance.SettingsChanged += new EventHandler(Settings_SettingsChanged);
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             saveResxFiles(true);
             SettingsHandler.Instance.MainWindowState = WindowState;
+            SettingsHandler.Instance.SplitterH = splitContainer1.SplitterDistance;
+            SettingsHandler.Instance.SplitterV = splitContainer2.SplitterDistance;
         }
 
         private void FrmMain_ResizeEnd(object sender, EventArgs e)
@@ -382,9 +442,7 @@ namespace ResxEditor.Forms
             };
 
             if (DialogResult.OK == openFileDialog.ShowDialog())
-            {
                 loadResxFiles(openFileDialog.FileNames);
-            }
         }
 
         private void tsbtnSave_Click(object sender, EventArgs e)
@@ -395,11 +453,7 @@ namespace ResxEditor.Forms
         private void tsbtnKeys_Click(object sender, EventArgs e)
         {
             if (dataGridView.Columns.Contains("keys"))
-            {
-                dataGridView.SuspendLayout();
                 dataGridView.Columns["keys"].Visible = !dataGridView.Columns["keys"].Visible;
-                dataGridView.ResumeLayout();
-            }
         }
 
         private void tsbtnFText_Click(object sender, EventArgs e)
@@ -432,12 +486,9 @@ namespace ResxEditor.Forms
 
         private void tsbtnFAll_Click(object sender, EventArgs e)
         {
-            int numRows = dataGridView.Rows.Count - 1;
-            dataGridView.SuspendLayout();
-            for (int row = 0; row < numRows; row++)
-                dataGridView.Rows[row].Visible = true;
-            dataGridView.ResumeLayout();
-            tsslStatus.Text = string.Format(LangHandler.GetString("statusFAll"), numRows);
+            foreach (DataGridViewRow row in dataGridView.Rows)
+                row.Visible = true;
+            tsslStatus.Text = string.Format(LangHandler.GetString("statusFAll"), dataGridView.Rows.Count - 1);
         }
 
         private void tsbtnHDiffs_Click(object sender, EventArgs e)
@@ -510,6 +561,103 @@ namespace ResxEditor.Forms
             frmAbout.ShowDialog(this);
         }
 
+        private void txtValue_Leave(object sender, EventArgs e)
+        {
+            if (dataGridView.SelectedCells.Count == 0)
+                return;
+
+            var selectedCell = dataGridView.SelectedCells[0];
+
+            if (selectedCell == null)
+                return;
+
+            if (selectedCell.Value == null && string.IsNullOrEmpty(txtValue.Text))
+                return;
+
+            selectedCell.Value = txtValue.Text;
+        }
+
+        private void txtComment_Leave(object sender, EventArgs e)
+        {
+            //if (string.IsNullOrEmpty(textBox1.Text))
+            //    return; // No se escribio ningún comentario
+
+            if (dataGridView.SelectedCells.Count == 0)
+                return; // No hay nada seleccionado
+
+            var selectedCell = dataGridView.SelectedCells[0];
+
+            if (selectedCell == null)
+                return;
+
+            if (selectedCell.Tag == null)
+                return;
+
+            if (selectedCell.Tag.GetType() == typeof(ResXDataNode))
+                ((ResXDataNode)selectedCell.Tag).Comment = txtComment.Text;
+        }
+
         #endregion
+
+        private void dataGridView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                if (e.Value == null)
+                    return;
+                var langName = e.Value.ToString().ToLower().Replace(".resx", "");
+                var indexLastDot = langName.LastIndexOf('.');
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All & ~DataGridViewPaintParts.ContentForeground);
+                if (indexLastDot != -1)
+                {
+                    try
+                    {
+                        langName = langName.Substring(++indexLastDot);
+                        CultureInfo culture = new CultureInfo(langName);
+                        RegionInfo region = new RegionInfo(culture.TextInfo.LCID);
+                        Image flag = Image.FromFile(Path.Combine(PATH_FLAGS, string.Format("{0}.png", region.TwoLetterISORegionName)));
+                        Rectangle flagRect = new Rectangle(e.CellBounds.Location, flag.Size);
+                        flagRect.Offset(4, 10);
+                        e.Graphics.DrawImage(flag, flagRect);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+                e.PaintContent(e.CellBounds);
+                e.Handled = true;
+            }
+            else
+            {
+                if (e.RowIndex % 2 == 0)
+                {
+                    //int R = e.CellStyle.BackColor.R + BACK_ALT > 255 ? e.CellStyle.BackColor.R - BACK_ALT : e.CellStyle.BackColor.R + BACK_ALT;
+                    //int G = e.CellStyle.BackColor.G + BACK_ALT > 255 ? e.CellStyle.BackColor.G - BACK_ALT : e.CellStyle.BackColor.G + BACK_ALT;
+                    //int B = e.CellStyle.BackColor.B + BACK_ALT > 255 ? e.CellStyle.BackColor.B - BACK_ALT : e.CellStyle.BackColor.B + BACK_ALT;
+                    int R = e.CellStyle.BackColor.R - BACK_ALT < 0 ? e.CellStyle.BackColor.R : e.CellStyle.BackColor.R - BACK_ALT;
+                    int G = e.CellStyle.BackColor.G - BACK_ALT < 0 ? e.CellStyle.BackColor.G : e.CellStyle.BackColor.G - BACK_ALT;
+                    int B = e.CellStyle.BackColor.B - BACK_ALT < 0 ? e.CellStyle.BackColor.B : e.CellStyle.BackColor.B - BACK_ALT;
+                    e.CellStyle.BackColor = Color.FromArgb(e.CellStyle.BackColor.A, R, G, B);
+                }
+            }
+        }
+
+        private void tsbtnTranslator_Click(object sender, EventArgs e)
+        {
+            FrmTranslator frmTranslator = new FrmTranslator();
+
+            if (SettingsHandler.Instance.TranWindowPosition.IsEmpty)
+            {
+                frmTranslator.StartPosition = FormStartPosition.WindowsDefaultLocation;
+            }
+            else
+            {
+                frmTranslator.StartPosition = FormStartPosition.Manual;
+                frmTranslator.Location = SettingsHandler.Instance.TranWindowPosition;
+            }
+
+            frmTranslator.Size = SettingsHandler.Instance.TranWindowSize;
+            frmTranslator.Show();
+        }
     }
 }

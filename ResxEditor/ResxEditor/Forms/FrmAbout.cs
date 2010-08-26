@@ -25,6 +25,7 @@ namespace ResxEditor.Forms
             // Buttons
             btnClose.Text = LangHandler.GetString("btnClose");
             btnWebsite.Text = LangHandler.GetString("btnWebsite");
+            btnDonate.Text = LangHandler.GetString("btnDonate");
         }
 
         #region Events
@@ -39,6 +40,11 @@ namespace ResxEditor.Forms
             Process.Start(string.Format("mailto:{0}", Global.GetEmail()));
         }
 
+        private void btnDonate_Click(object sender, System.EventArgs e)
+        {
+            Process.Start(Global.GetURLDonations());
+        }
+
         private void btnWebsite_Click(object sender, System.EventArgs e)
         {
             Process.Start(Global.GetURL());
@@ -48,7 +54,7 @@ namespace ResxEditor.Forms
         {
             Close();
         }
-
+        
         #endregion
     }
 }

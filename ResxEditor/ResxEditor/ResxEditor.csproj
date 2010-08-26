@@ -9,11 +9,12 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ResxEditor</RootNamespace>
-    <AssemblyName>ResxEditor</AssemblyName>
+    <AssemblyName>Simple Resx Editor</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <StartupObject>ResxEditor.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,6 +60,12 @@
     <Compile Include="Forms\FrmSettings.Designer.cs">
       <DependentUpon>FrmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmTranslator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmTranslator.Designer.cs">
+      <DependentUpon>FrmTranslator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSettings.resx">
       <DependentUpon>FrmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmTranslator.resx">
+      <DependentUpon>FrmTranslator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -91,6 +101,7 @@
     <None Include="Resources\logo.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Languages\Italiano %28Mariana%29.lang" />
     <None Include="Languages\English.lang" />
     <None Include="Languages\Español.lang" />
     <None Include="Languages\Italiano.lang" />
@@ -98,6 +109,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\tsbtnTranslator.png" />
+    <None Include="Resources\tsbtnSettings.png" />
+    <None Include="Resources\tsbtnSave.png" />
+    <None Include="Resources\tsbtnOpen.png" />
+    <None Include="Resources\tsbtnKeys.png" />
+    <None Include="Resources\tsbtnHText.png" />
+    <None Include="Resources\tsbtnHEquals.png" />
+    <None Include="Resources\tsbtnHDiffs.png" />
+    <None Include="Resources\tsbtnFText.png" />
+    <None Include="Resources\tsbtnFAll.png" />
+    <None Include="Resources\tsbtnClear.png" />
+    <None Include="Resources\tsbtnAbout.png" />
+    <None Include="Resources\bingtranslator.gif" />
+    <None Include="Resources\Icon\128.png" />
+    <None Include="Resources\Icon\64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

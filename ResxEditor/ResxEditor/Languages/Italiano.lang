@@ -13,6 +13,7 @@ frmAbout		= About
 lblCoded		= Sviluppato da
 lblTranslated	= Tradotto da Salvo Rapisarda (sdrapisarda@gmail.com)
 btnWebsite		= Sito web
+btnDonate		= Donate
 
 # Form: Main
 statusHEquals	= {0} coincidenze trovate

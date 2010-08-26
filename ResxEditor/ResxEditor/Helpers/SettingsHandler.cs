@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using ResxEditor.Forms;
 
 namespace ResxEditor.Helpers
 {
@@ -32,20 +33,49 @@ namespace ResxEditor.Helpers
 
         #endregion
 
-        public static event EventHandler SettingsChanged;
+        public event EventHandler SettingsChanged = delegate { };
+
         public int Color1 { get; set; }
         public int Color2 { get; set; }
         public int Color3 { get; set; }
         public int Color4 { get; set; }
         public int Color5 { get; set; }
+        public int SplitterH { get; set; }
+        public int SplitterV { get; set; }
         public string Language { get; set; }
+        public string BaseLanguage { get; set; }
         public Size MainWindowSize { get; set; }
         public Size PrefWindowSize { get; set; }
+        public Size TranWindowSize { get; set; }
         public Point MainWindowPosition { get; set; }
         public Point PrefWindowPosition { get; set; }
+        public Point TranWindowPosition { get; set; }
         public FormWindowState MainWindowState { get; set; }
         public FormWindowState PrefWindowState { get; set; }
+        public long LastUpdateCheck { get; set; }
 
+        private void loadDefaultValues()
+        {
+            Color1 = Color.LightSalmon.ToArgb();
+            Color2 = Color.LightGreen.ToArgb();
+            Color3 = Color.LightSkyBlue.ToArgb();
+            Color4 = Color.LightGray.ToArgb();
+            Color5 = Color.Aquamarine.ToArgb();
+            SplitterH = 100;
+            SplitterV = 200;
+            Language = "English";
+            BaseLanguage = "en.resx";
+            MainWindowSize = new Size(600, 300);
+            PrefWindowSize = new Size(600, 400);
+            TranWindowSize = new Size(400, 300);
+            MainWindowPosition = new Point();
+            PrefWindowPosition = new Point();
+            TranWindowPosition = new Point();
+            MainWindowState = FormWindowState.Normal;
+            PrefWindowState = FormWindowState.Normal;
+            LastUpdateCheck = DateTime.Now.AddDays(-2).Ticks;
+        }
+        
         public void Read()
         {
             string writableFilename = getWritableFilename();
@@ -61,24 +91,39 @@ namespace ResxEditor.Helpers
                 XmlSerializer serializer = new XmlSerializer(typeof(SettingsHandler));
                 using (StreamReader reader = new StreamReader(writableFilename))
                 {
-                    SettingsHandler settingsData = (SettingsHandler)serializer.Deserialize(reader);
-                    instance.Color1 = settingsData.Color1;
-                    instance.Color2 = settingsData.Color2;
-                    instance.Color3 = settingsData.Color3;
-                    instance.Color4 = settingsData.Color4;
-                    instance.Color5 = settingsData.Color5;
-                    instance.Language = settingsData.Language;
-                    instance.MainWindowSize = settingsData.MainWindowSize;
-                    instance.PrefWindowSize = settingsData.PrefWindowSize;
-                    instance.MainWindowPosition = settingsData.MainWindowPosition;
-                    instance.PrefWindowPosition = settingsData.PrefWindowPosition;
-                    instance.MainWindowState = settingsData.MainWindowState;
-                    instance.PrefWindowState = settingsData.PrefWindowState;
+                    try
+                    {
+                        SettingsHandler settingsData = (SettingsHandler)serializer.Deserialize(reader);
+                        instance.Color1 = settingsData.Color1;
+                        instance.Color2 = settingsData.Color2;
+                        instance.Color3 = settingsData.Color3;
+                        instance.Color4 = settingsData.Color4;
+                        instance.Color5 = settingsData.Color5;
+                        instance.Language = settingsData.Language;
+                        instance.BaseLanguage = settingsData.BaseLanguage;
+                        instance.MainWindowSize = settingsData.MainWindowSize;
+                        instance.PrefWindowSize = settingsData.PrefWindowSize;
+                        instance.TranWindowSize = settingsData.TranWindowSize;
+                        instance.MainWindowPosition = settingsData.MainWindowPosition;
+                        instance.PrefWindowPosition = settingsData.PrefWindowPosition;
+                        instance.TranWindowPosition = settingsData.TranWindowPosition;
+                        instance.MainWindowState = settingsData.MainWindowState;
+                        instance.PrefWindowState = settingsData.PrefWindowState;
+                        instance.SplitterH = settingsData.SplitterH;
+                        instance.SplitterV = settingsData.SplitterV;
+                        instance.LastUpdateCheck = settingsData.LastUpdateCheck;
+                    }
+                    catch(Exception ex)
+                    {
+                        // Can't use LangHandler here because it is not initialized yet
+                        MessageBox.Show(ex.Message, "Unable to load settings, invalid format!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        loadDefaultValues();
+                    }
                 }
             }
             else
             {
-                SettingsHandler.Instance.loadDefaultSettings();
+                loadDefaultValues();
             }
         }
 
@@ -96,22 +141,6 @@ namespace ResxEditor.Helpers
 
             if (SettingsChanged != null)
                 SettingsChanged(null, EventArgs.Empty);
-        }
-
-        private void loadDefaultSettings()
-        {
-            Color1 = Color.LightSalmon.ToArgb();
-            Color2 = Color.LightGreen.ToArgb();
-            Color3 = Color.LightSkyBlue.ToArgb();
-            Color4 = Color.LightGray.ToArgb();
-            Color5 = Color.Aquamarine.ToArgb();
-            Language = "English";
-            MainWindowSize = new Size(600, 300);
-            MainWindowState = FormWindowState.Normal;
-            MainWindowPosition = new Point();
-            PrefWindowSize = new Size(600, 400);
-            PrefWindowState = FormWindowState.Normal;
-            PrefWindowPosition = new Point();
         }
 
         private string getWritableFilename()
