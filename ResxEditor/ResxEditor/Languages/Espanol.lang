@@ -32,8 +32,11 @@ tsbtnHEquals	= Destacar: igualdades
 tsbtnHText		= Destacar: texto
 tsbtnClear		= Remover destacados
 tsbtnSettings	= Preferencias
+tsbtnTranslator = Traductor
 tsbtnAbout		= Acerca de
 errorSaving		= Ocurrió un error al intentar guardar los cambios
+gbComment		= Comentario:
+gbValue			= Valor:
 
 # Form: Settings
 frmSettings		= Preferencias
@@ -45,3 +48,14 @@ lblColor2		= Color de igualdades:
 lblColor3		= Color de celdas modificadas:
 lblColor4		= Color de las claves:
 lblColor5		= Color de celdas con texto:
+errorLoading	= No se han podido cargar las preferencias. ¡Formato inválido!
+
+# Form: Translator
+frmTranslator	= Traductor (Bing)
+lblLanguages	= Idiomas:
+itemAutoDetect	= Detección automática
+btnSwap			= Invertir
+btnTranslate	= Traducir
+llblClearAll	= Limpiar campos
+llblCopy1		= Copiar original al portapapeles
+llblCopy2		= Copiar traducción al portapapeles

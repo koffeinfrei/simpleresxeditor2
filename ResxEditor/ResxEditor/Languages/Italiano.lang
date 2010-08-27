@@ -32,8 +32,11 @@ tsbtnHEquals	= Evidenzia: uguale
 tsbtnHText		= Evidenzia: testo
 tsbtnClear		= Cancella evidenziazione
 tsbtnSettings	= Impostazioni
+tsbtnTranslator = Translator
 tsbtnAbout		= About
 errorSaving		= An error ocurred trying to save changes
+gbComment		= Comment:
+gbValue			= Value:
 
 # Form: Settings
 frmSettings		= Impostazioni
@@ -45,3 +48,14 @@ lblColor2		= Colore uguali:
 lblColor3		= Color celle non salvate:
 lblColor4		= Colore chiavi:
 lblColor5		= Colore testo:
+errorLoading	= Unable to load settings, invalid format!
+
+# Form: Translator
+frmTranslator	= Translator (Powered by Bing)
+lblLanguages	= Languages:
+itemAutoDetect	= Auto-Detect
+btnSwap			= Swap
+btnTranslate	= Translate
+llblClearAll	= Clear all
+llblCopy1		= Copy source text to clipboard
+llblCopy2		= Copy translated text to clipboard
