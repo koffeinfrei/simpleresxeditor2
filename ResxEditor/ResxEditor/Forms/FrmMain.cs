@@ -27,6 +27,8 @@ namespace ResxEditor.Forms
                 loadResxFiles(args);
 #if (!DEBUG)
             checkNewVersion();
+#else
+            MessageBox.Show("Debug build");
 #endif
         }
 

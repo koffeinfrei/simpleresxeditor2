@@ -101,14 +101,14 @@
     <None Include="Resources\logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Languages\Italiano %28Mariana%29.lang" />
     <None Include="Languages\English.lang" />
-    <None Include="Languages\Español.lang" />
     <None Include="Languages\Italiano.lang" />
     <None Include="Resources\toolbar.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Languages\Dutch.lang" />
+    <None Include="Languages\Espanol.lang" />
     <None Include="Resources\tsbtnTranslator.png" />
     <None Include="Resources\tsbtnSettings.png" />
     <None Include="Resources\tsbtnSave.png" />
