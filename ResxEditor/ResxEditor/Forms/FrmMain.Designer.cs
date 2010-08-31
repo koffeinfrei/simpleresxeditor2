@@ -54,12 +54,12 @@
             this.tsbtnHText = new System.Windows.Forms.ToolStripButton();
             this.tsbtnClear = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbtnSettings = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
             this.tsbtnTranslator = new System.Windows.Forms.ToolStripButton();
-            this.imgListMain = new System.Windows.Forms.ImageList(this.components);
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
+            this.imgListMain = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.tscContainer.ContentPanel.SuspendLayout();
             this.tscContainer.TopToolStripPanel.SuspendLayout();
@@ -187,6 +187,7 @@
             this.txtComment.Location = new System.Drawing.Point(12, 22);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
+            this.txtComment.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtComment.Size = new System.Drawing.Size(182, 79);
             this.txtComment.TabIndex = 0;
             this.txtComment.Leave += new System.EventHandler(this.txtComment_Leave);
@@ -215,6 +216,7 @@
             this.txtValue.Location = new System.Drawing.Point(6, 22);
             this.txtValue.Multiline = true;
             this.txtValue.Name = "txtValue";
+            this.txtValue.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtValue.Size = new System.Drawing.Size(364, 79);
             this.txtValue.TabIndex = 0;
             this.txtValue.Leave += new System.EventHandler(this.txtValue_Leave);
@@ -257,7 +259,7 @@
             this.tsbtnAbout});
             this.tspMain.Location = new System.Drawing.Point(3, 0);
             this.tspMain.Name = "tspMain";
-            this.tspMain.Size = new System.Drawing.Size(349, 25);
+            this.tspMain.Size = new System.Drawing.Size(316, 25);
             this.tspMain.TabIndex = 0;
             this.tspMain.Text = "tspMain";
             // 
@@ -358,6 +360,19 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
+            // tsbtnTranslator
+            // 
+            this.tsbtnTranslator.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnTranslator.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnTranslator.Name = "tsbtnTranslator";
+            this.tsbtnTranslator.Size = new System.Drawing.Size(23, 22);
+            this.tsbtnTranslator.Click += new System.EventHandler(this.tsbtnTranslator_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
             // tsbtnSettings
             // 
             this.tsbtnSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -367,10 +382,10 @@
             this.tsbtnSettings.Text = "tsbtnSettings";
             this.tsbtnSettings.Click += new System.EventHandler(this.tsbtnSettings_Click);
             // 
-            // toolStripSeparator4
+            // toolStripSeparator5
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbtnAbout
             // 
@@ -381,24 +396,11 @@
             this.tsbtnAbout.Text = "tsbtnAbout";
             this.tsbtnAbout.Click += new System.EventHandler(this.tsbtnAbout_Click);
             // 
-            // tsbtnTranslator
-            // 
-            this.tsbtnTranslator.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnTranslator.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnTranslator.Name = "tsbtnTranslator";
-            this.tsbtnTranslator.Size = new System.Drawing.Size(23, 22);
-            this.tsbtnTranslator.Click += new System.EventHandler(this.tsbtnTranslator_Click);
-            // 
             // imgListMain
             // 
             this.imgListMain.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             this.imgListMain.ImageSize = new System.Drawing.Size(32, 32);
             this.imgListMain.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
             // FrmMain
             // 
