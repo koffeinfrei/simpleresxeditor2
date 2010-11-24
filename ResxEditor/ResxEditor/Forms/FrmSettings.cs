@@ -5,7 +5,7 @@ using ResxEditor.Helpers;
 
 namespace ResxEditor.Forms
 {
-    public partial class FrmSettings : Form
+    public partial class FrmSettings : BaseForm
     {
         public FrmSettings()
         {

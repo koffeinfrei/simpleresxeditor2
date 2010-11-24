@@ -1,0 +1,76 @@
+﻿txtDown1		= Voulez-vous télécharger maintenant?
+txtDown2		= Une nouvelle version est disponible!
+txtSave1		= Voulez-vous enregistrer les modifications apportées au fichier?
+txtSave2		= Vous avez des modifications non enregistrées
+txtOpen1		= Fichiers ressources
+txtOpen2		= Ouvrir le fichier de ressources
+btnSave			= Enregistrer
+btnClose		= Fermer
+btnCancel		= Annuler
+
+# Form: About
+frmAbout		= A propos
+lblCoded		= Codé par:
+lblTranslated	= Traduit par: Eman Ali Fhoula ** ali.fhoula@lycos.com
+btnWebsite		= Site Web
+btnDonate		= Un Don
+
+# Form: Main
+statusHEquals	= {0} Coïncidences ont été trouvés
+statusHDiffs	= {0} Différences ont été trouvées
+statusHText		= {0} Les cellules contenant du texte ont été trouvés
+statusClear		= Toutes les mettre en évidence ont été enlevés
+statusFText		= Affichage {0} cellules de {1} contenant les chaînes traduisibles
+statusFAll		= Affichage de toutes les cellules ({0})
+tsbtnOpen		= Ouvrir
+tsbtnSave		= Enregistrer
+tsbtnKeys		= Afficher / Masquer les valeurs
+tsbtnFText		= Filtrer: texte seulement
+tsbtnFAll		= Filtrer: Tous
+tsbtnHDiffs		= Mise en évidence: Les différences
+tsbtnHEquals	= Mise en évidence: Est égal à
+tsbtnHText		= Mise en évidence: Le texte
+tsbtnClear		= Effacer mettre en évidence
+tsbtnSettings	= Paramètres
+tsbtnTranslator = Traducteur
+tsbtnAbout		= A propos
+errorSaving		= Une erreur s'est produite en essayant enregistrer les changements
+gbComment		= Commentaire:
+gbValue			= Valeur:
+
+# Form: Settings
+frmSettings		= Paramètres
+tpgInterface	= Interface
+tpgBehavior		= Comportement
+lblLanguage		= Langue:
+lblColor1		= Couleur de la différence:
+lblColor2		= Couleur est égal à:
+lblColor3		= Couleur cellules non enregistrées :
+lblColor4		= Couleur des valeurs:
+lblColor5		= Couleur du texte:
+errorLoading	= Impossible de charger les paramètres, format non valide!
+
+# Form: Translator
+frmTranslator	= Traducteur (Par le soutien de Bing)
+lblLanguages	= Langues:
+itemAutoDetect	= Détection automatique
+btnSwap			= Intervertir
+btnTranslate	= Traduire
+llblClearAll	= Effacer tous
+llblCopy1		= Copier le texte source dans le presse papier
+llblCopy2		= Copiez le texte traduit dans le presse papier
+
+# Form: Find
+FrmFind			= Chercher
+FrmFindReplace	= Chercher & Remplacer
+lblTextToFind	= Chercher:
+lblReplaceWith	= Remplacer:
+btnReplace		= Remplacer
+btnReplaceAll	= Remplacer tout
+btnFindPrevious	= Chercher précédent
+btnFindNext		= Chercher suivant
+ckbCaseSensitive= Cas sensible
+strEndReached_title	= Atteindre la fin du document
+strEndReached_msg	= Atteindre la dernière cellule!
+strBegReached_title = Atteindre le début du document
+strBegReached_msg	= Atteindre la première cellule!

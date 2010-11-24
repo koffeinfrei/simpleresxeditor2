@@ -1,0 +1,76 @@
+﻿txtDown1		= هل تريد التحميل الآن؟
+txtDown2		= !إصدار جديد متاح
+txtSave1		= هل تريد حفظ التغييرات في الملف؟
+txtSave2		= لم تقم بحفظ بعض التغييرات
+txtOpen1		= ملفات الموارد
+txtOpen2		= فتح ملف الموارد
+btnSave			= حفظ
+btnClose		= غلق
+btnCancel		= إلغاء
+
+# Form: About
+frmAbout		= بخصوص
+lblCoded		= مشفرة عن طريق
+lblTranslated	= Translated by Eman Ali Fhoula ** ali.fhoula@lycos.com
+btnWebsite		= الموقع
+btnDonate		= التبرع
+
+# Form: Main
+statusHEquals	= {0} تم العثور على المتوافقين
+statusHDiffs	= {0} تم العثور على المختلفين
+statusHText		= {0} تم العثور على الخلايا التي تحتوي على نضّ
+statusClear		= كافة تسليطات الأضواء أزيلت
+statusFText		= عرض {0} خلايا {1} تحتوي على سلاسل للترجمة
+statusFAll		= ({0}) عرض كافة الخلايا
+tsbtnOpen		= فتح
+tsbtnSave		= حفظ
+tsbtnKeys		= إخفاء/عرض المفاتيح
+tsbtnFText		= المرشح: النضّ أولا
+tsbtnFAll		= المرشح: كافة
+tsbtnHDiffs		= تسليط الضوء على: الإختلافات
+tsbtnHEquals	= تسليط الضوء على: المتساوين
+tsbtnHText		= تسليط الضوء على: النص
+tsbtnClear		= مسح تسليطات الضوء
+tsbtnSettings	= إعدادات
+tsbtnTranslator = المترجم
+tsbtnAbout		= بخصوص
+errorSaving		= حدث خطأ أثناء محاولة حفظ التغييرات
+gbComment		= التعليق:
+gbValue			= القيمة:
+
+# Form: Settings
+frmSettings		= الإعدادات
+tpgInterface	= الواجهة
+tpgBehavior		= السلوك
+lblLanguage		= اللغة:
+lblColor1		= لون المختلفين:
+lblColor2		= لون المتساوين:
+lblColor3		= لون خلايا لم يتم حفظها:
+lblColor4		= لون المفاتيح:
+lblColor5		= لون النضّ:
+errorLoading	= !غير قادر على تحميل الإعدادات،صيغة غير صالحة
+
+# Form: Translator
+frmTranslator	= (المترجم (بدعم من بنج
+lblLanguages	= اللغة:
+itemAutoDetect	= الكشف التلقائي
+btnSwap			= مبادلة
+btnTranslate	= ترجم
+llblClearAll	= مسح الكلّ
+llblCopy1		= نسخ النص المصدر إلى الحافظة
+llblCopy2		= نسخ النص المترجم إلى الحافظة
+
+# Form: Find
+FrmFind			= البحث
+FrmFindReplace	= البحث و الإستبدال
+lblTextToFind	= البحث:
+lblReplaceWith	= استبدال:
+btnReplace		= استبدال
+btnReplaceAll	= استبدال الكل
+btnFindPrevious	= البحث السابق
+btnFindNext		= البحث التالي
+ckbCaseSensitive= مربع الأحرف متغير
+strEndReached_title	= وصل إلى نهاية الوثيقة
+strEndReached_msg	= !وصل إلى الخلية الأخيرة
+strBegReached_title = وصل إلى بداية الوثيقة
+strBegReached_msg	= !وصل إلى الخلية الأولى

@@ -59,3 +59,18 @@ btnTranslate	= Translate
 llblClearAll	= Clear all
 llblCopy1		= Copy source text to clipboard
 llblCopy2		= Copy translated text to clipboard
+
+# Form: Find
+FrmFind			= Find
+FrmFindReplace	= Find & Replace
+lblTextToFind	= Find:
+lblReplaceWith	= Replace:
+btnReplace		= Replace
+btnReplaceAll	= Replace All
+btnFindPrevious	= Find Prev
+btnFindNext		= Find Next
+ckbCaseSensitive= Case sensitive
+strEndReached_title	= Document end reached
+strEndReached_msg	= Last cell reached!
+strBegReached_title = Document begin reached
+strBegReached_msg	= First cell reached!

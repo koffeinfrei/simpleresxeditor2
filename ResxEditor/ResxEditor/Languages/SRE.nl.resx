@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="txtDown1" xml:space="preserve">
+    <value>Nu downloaden?</value>
+  </data>
+  <data name="txtDown2" xml:space="preserve">
+    <value>Een nieuwe versie is beschikbaar!</value>
+  </data>
+  <data name="txtSave1" xml:space="preserve">
+    <value>De veranderingen opslaan?</value>
+  </data>
+  <data name="txtSave2" xml:space="preserve">
+    <value>Niet alle wijzigingen zijn opgeslagen</value>
+  </data>
+  <data name="txtOpen1" xml:space="preserve">
+    <value>Resources bestanden</value>
+  </data>
+  <data name="txtOpen2" xml:space="preserve">
+    <value>Open resources bestand</value>
+  </data>
+  <data name="btnSave" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="btnClose" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="frmAbout" xml:space="preserve">
+    <value>Over</value>
+  </data>
+  <data name="lblCoded" xml:space="preserve">
+    <value>Geprogrammeerd door</value>
+  </data>
+  <data name="lblTranslated" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnWebsite" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="btnDonate" xml:space="preserve">
+    <value>Doneer</value>
+  </data>
+  <data name="statusHEquals" xml:space="preserve">
+    <value>{0} overeenkomsten gevonden</value>
+  </data>
+  <data name="statusHDiffs" xml:space="preserve">
+    <value>{0} verschillen gevonden</value>
+  </data>
+  <data name="statusHText" xml:space="preserve">
+    <value>{0} cellen met de tekst gevonden</value>
+  </data>
+  <data name="statusClear" xml:space="preserve">
+    <value>Alle markeringen verwijderd</value>
+  </data>
+  <data name="statusFText" xml:space="preserve">
+    <value>Toont {0} van de {1} cellen die vertaalbare teksten bevatten</value>
+  </data>
+  <data name="statusFAll" xml:space="preserve">
+    <value>Alle cellen getoont ({0})</value>
+  </data>
+  <data name="tsbtnOpen" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="tsbtnSave" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="tsbtnKeys" xml:space="preserve">
+    <value>Toon/Verberg sleutels</value>
+  </data>
+  <data name="tsbtnFText" xml:space="preserve">
+    <value>Filter: alleen tekst</value>
+  </data>
+  <data name="tsbtnFAll" xml:space="preserve">
+    <value>Filter: alles</value>
+  </data>
+  <data name="tsbtnHDiffs" xml:space="preserve">
+    <value>Markeer: verschillen</value>
+  </data>
+  <data name="tsbtnHEquals" xml:space="preserve">
+    <value>Markeer: overeenkomsten</value>
+  </data>
+  <data name="tsbtnHText" xml:space="preserve">
+    <value>Markeer: tekst</value>
+  </data>
+  <data name="tsbtnClear" xml:space="preserve">
+    <value>Markeringen verwijderen</value>
+  </data>
+  <data name="tsbtnSettings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="tsbtnTranslator" xml:space="preserve">
+    <value>Vertaler</value>
+  </data>
+  <data name="tsbtnAbout" xml:space="preserve">
+    <value>Over</value>
+  </data>
+  <data name="errorSaving" xml:space="preserve">
+    <value>Er is een fout opgetreden tijdens het opslaan van de veranderingen</value>
+  </data>
+  <data name="gbComment" xml:space="preserve">
+    <value>Commentaar:</value>
+  </data>
+  <data name="gbValue" xml:space="preserve">
+    <value>Waarde:</value>
+  </data>
+  <data name="frmSettings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="tpgInterface" xml:space="preserve">
+    <value>Interface</value>
+  </data>
+  <data name="tpgBehavior" xml:space="preserve">
+    <value>Gedrag</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Taal:</value>
+  </data>
+  <data name="lblColor1" xml:space="preserve">
+    <value>Kleur verschil:</value>
+  </data>
+  <data name="lblColor2" xml:space="preserve">
+    <value>Kleur gelijk:</value>
+  </data>
+  <data name="lblColor3" xml:space="preserve">
+    <value>Kleur niet opgeslagen cellen:</value>
+  </data>
+  <data name="lblColor4" xml:space="preserve">
+    <value>Kleur sleutels:</value>
+  </data>
+  <data name="lblColor5" xml:space="preserve">
+    <value>Kleur tekst:</value>
+  </data>
+  <data name="errorLoading" xml:space="preserve">
+    <value>Instellingen niet geladen wegens een corrupt bestand.</value>
+  </data>
+  <data name="frmTranslator" xml:space="preserve">
+    <value>Vertaler (Powered by Bing)</value>
+  </data>
+  <data name="lblLanguages" xml:space="preserve">
+    <value>Talen:</value>
+  </data>
+  <data name="itemAutoDetect" xml:space="preserve">
+    <value>Auto-Detectie</value>
+  </data>
+  <data name="btnSwap" xml:space="preserve">
+    <value>Wissel</value>
+  </data>
+  <data name="btnTranslate" xml:space="preserve">
+    <value>Vertaal</value>
+  </data>
+  <data name="llblClearAll" xml:space="preserve">
+    <value>Alles wissen</value>
+  </data>
+  <data name="llblCopy1" xml:space="preserve">
+    <value>Kopieer bron tekst naar klembord</value>
+  </data>
+  <data name="llblCopy2" xml:space="preserve">
+    <value>Kopieer vertaling naar klembord</value>
+  </data>
+  <data name="FrmFind			" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="FrmFindReplace	" xml:space="preserve">
+    <value>Find &amp; Replace</value>
+  </data>
+  <data name="lblTextToFind	" xml:space="preserve">
+    <value>Find:</value>
+  </data>
+  <data name="lblReplaceWith	" xml:space="preserve">
+    <value>Replace:</value>
+  </data>
+  <data name="btnReplace		" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="btnReplaceAll	" xml:space="preserve">
+    <value>Replace All</value>
+  </data>
+  <data name="btnFindPrevious	" xml:space="preserve">
+    <value>Find Prev</value>
+  </data>
+  <data name="btnFindNext		" xml:space="preserve">
+    <value>Find Next</value>
+  </data>
+  <data name="ckbCaseSensitive" xml:space="preserve">
+    <value>Case sensitive</value>
+  </data>
+  <data name="strEndReached_title	" xml:space="preserve">
+    <value>Document end reached</value>
+  </data>
+  <data name="strEndReached_msg	" xml:space="preserve">
+    <value>Last cell reached!</value>
+  </data>
+  <data name="strBegReached_title" xml:space="preserve">
+    <value>Document begin reached</value>
+  </data>
+  <data name="strBegReached_msg	" xml:space="preserve">
+    <value>First cell reached!</value>
+  </data>
+</root>

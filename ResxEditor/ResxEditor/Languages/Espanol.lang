@@ -59,3 +59,18 @@ btnTranslate	= Traducir
 llblClearAll	= Limpiar campos
 llblCopy1		= Copiar original al portapapeles
 llblCopy2		= Copiar traducción al portapapeles
+
+# Form: Find
+FrmFind			= Buscar
+FrmFindReplace	= Buscar y Reemplazar
+lblTextToFind	= Buscar:
+lblReplaceWith	= Reemplazar:
+btnReplace		= Reemplazar
+btnReplaceAll	= Reemplazar Todas
+btnFindPrevious	= Buscar Prev
+btnFindNext		= Buscar Sig
+ckbCaseSensitive= Distinguir mayúsculas de minúsculas
+strEndReached_title	= Fin del documento
+strEndReached_msg	= ¡Se alcanzó la última celda!
+strBegReached_title = Inicio del documento
+strBegReached_msg	= ¡Se alcanzó la primera celda!

@@ -54,6 +54,12 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmFind.Designer.cs">
+      <DependentUpon>FrmFind.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,10 @@
     <Compile Include="Forms\FrmTranslator.Designer.cs">
       <DependentUpon>FrmTranslator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Translator.cs" />
+    <Compile Include="Helpers\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Helpers\Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +86,9 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmFind.resx">
+      <DependentUpon>FrmFind.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSettings.resx">
       <DependentUpon>FrmSettings.cs</DependentUpon>
@@ -88,6 +101,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\CommonResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -96,6 +113,11 @@
     <Compile Include="Helpers\SettingsHandler.cs" />
     <Compile Include="Helpers\LangHandler.cs" />
     <Compile Include="Helpers\Updater.cs" />
+    <Compile Include="Resources\CommonResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo.ico" />
@@ -103,7 +125,6 @@
   <ItemGroup>
     <None Include="Languages\English.lang" />
     <None Include="Languages\Italiano.lang" />
-    <None Include="Resources\toolbar.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
@@ -121,7 +142,6 @@
     <None Include="Resources\tsbtnFAll.png" />
     <None Include="Resources\tsbtnClear.png" />
     <None Include="Resources\tsbtnAbout.png" />
-    <None Include="Resources\bingtranslator.gif" />
     <None Include="Resources\Icon\128.png" />
     <None Include="Resources\Icon\64.png" />
   </ItemGroup>

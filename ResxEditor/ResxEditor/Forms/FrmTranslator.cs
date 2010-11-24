@@ -9,7 +9,7 @@ using ResxEditor.Helpers;
 
 namespace ResxEditor.Forms
 {
-    public partial class FrmTranslator : Form
+    public partial class FrmTranslator : BaseForm
     {
         class Language
         {

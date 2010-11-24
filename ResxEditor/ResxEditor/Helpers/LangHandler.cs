@@ -51,7 +51,7 @@ namespace ResxEditor.Forms
             if (KV.ContainsKey(key))
                 return KV[key];
             else
-                return string.Format("##{0}##", key);
+                return string.Empty;
         }
     }
 }

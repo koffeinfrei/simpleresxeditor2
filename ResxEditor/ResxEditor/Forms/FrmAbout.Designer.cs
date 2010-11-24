@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAbout));
             this.lblCoded = new System.Windows.Forms.Label();
             this.llblAuthor = new System.Windows.Forms.LinkLabel();
             this.lblTranslated = new System.Windows.Forms.Label();
@@ -125,7 +124,6 @@
             this.Controls.Add(this.btnDonate);
             this.Controls.Add(this.btnWebsite);
             this.Controls.Add(this.btnClose);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(450, 190);

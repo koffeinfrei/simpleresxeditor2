@@ -8,10 +8,11 @@ using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
 using ResxEditor.Helpers;
+using System.Collections.Generic;
 
 namespace ResxEditor.Forms
 {
-    public partial class FrmMain : Form
+    public partial class FrmMain : BaseForm
     {
         private readonly int BACK_ALT = 15;
         private readonly string PATH_FLAGS = Path.Combine(Application.StartupPath, "Flags");
@@ -28,7 +29,7 @@ namespace ResxEditor.Forms
 #if (!DEBUG)
             checkNewVersion();
 #else
-            MessageBox.Show("Debug build");
+            MessageBox.Show("This is a debug build", "Debug Build", MessageBoxButtons.OK, MessageBoxIcon.Information);
 #endif
         }
 
@@ -104,6 +105,8 @@ namespace ResxEditor.Forms
                 }
             }
 
+            var ContextMenus = new Dictionary<int, ContextMenuStrip>();
+
             foreach (string file in resxFilenames)
             {
                 if (dataGridView.ColumnCount == 0)
@@ -111,9 +114,17 @@ namespace ResxEditor.Forms
                     dataGridView.Columns.Add("keys", "Keys");
                     dataGridView.Columns["keys"].Visible = false;
                     dataGridView.Columns["keys"].DefaultCellStyle.BackColor = Color.FromArgb(SettingsHandler.Instance.Color4);
+                    dataGridView.Columns["keys"].Tag = "Keys";
                 }
 
                 int newColIndex = dataGridView.Columns.Add(file, Path.GetFileName(file));
+
+                // Create context menus for each column, empty right now, they'll be filled when we know what columns we have
+                var column = dataGridView.Columns[newColIndex];
+                ContextMenus.Add(newColIndex, new ContextMenuStrip());
+                column.ContextMenuStrip = ContextMenus[newColIndex];
+                var lang = GetLanguageFromFileName(column.Name) ?? "en"; //TODO: configurable default language?
+                column.Tag = lang;
 
                 using (ResXResourceReader resxReader = new ResXResourceReader(file))
                 {
@@ -153,10 +164,83 @@ namespace ResxEditor.Forms
                         }
                     }
                 }
+                dataGridView.CellMouseDown += new DataGridViewCellMouseEventHandler(dataGridView_CellMouseDown);
+            }
+
+            //Create context menus, one per column
+            foreach (var contextMenu in ContextMenus)
+            {
+                foreach (var rawColumn in dataGridView.Columns)
+                {
+                    var column = rawColumn as DataGridViewColumn;
+                    if (column.Index != contextMenu.Key)
+                    {
+                        var language = column.Tag;
+                        contextMenu.Value.Items.Add("Translate from " + language, null, AutoTranslationClick).Tag = column.Index;  //TODO: Translate
+                    }
+                }
             }
 
             dataGridView.ResumeLayout();
             initialChanges = false;
+        }
+
+        // Makes sure the cell under the context menu is selected
+        void dataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+            {
+                txtComment_Leave(null, EventArgs.Empty);
+                txtValue_Leave(null, EventArgs.Empty);
+                var ex = new DataGridViewCellEventArgs(e.ColumnIndex, e.RowIndex);
+                dataGridView_CellEnter(sender, ex);
+                dataGridView.ClearSelection();
+                dataGridView[e.ColumnIndex, e.RowIndex].Selected = true;
+            }
+        }
+
+        // Translate
+        private void AutoTranslationClick(object sender, EventArgs e)
+        {
+            var item = (ToolStripItem)sender;
+            var cell = dataGridView.SelectedCells[0];
+
+            var fromColumn = (int)item.Tag;
+            var sourceCell = dataGridView.Rows[cell.RowIndex].Cells[fromColumn];
+
+            var cellvalue = (string)sourceCell.Value;
+            if (string.IsNullOrEmpty(cellvalue))
+            {
+                MessageBox.Show("Empty source data"); //TODO: Translate
+                return;
+            }
+
+            var fromLanguage = dataGridView.Columns[sourceCell.ColumnIndex].Tag as string;
+            if (fromLanguage == "Keys")
+                fromLanguage = "en"; //TODO: configurable default language?
+            var toLanguage = dataGridView.Columns[cell.ColumnIndex].Tag as string;
+
+            var translation = Translator.Translate(fromLanguage, toLanguage, cellvalue);
+            txtValue.Text = translation;
+        }
+
+        private string GetLanguageFromFileName(string filename)
+        {
+            var langName = filename.ToLower().Replace(".resx", "");
+            var indexLastDot = langName.LastIndexOf('.');
+            if (indexLastDot != -1)
+            {
+                try
+                {
+                    langName = langName.Substring(++indexLastDot);
+                    var culture = new CultureInfo(langName);
+                    return culture.TwoLetterISOLanguageName;
+                }
+                catch (Exception)
+                {
+                }
+            }
+            return null;
         }
 
         private void loadLanguageStrings()
@@ -253,6 +337,20 @@ namespace ResxEditor.Forms
             }
         }
 
+        private void openResxFiles()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                DefaultExt = "resx",
+                Filter = string.Format("{0}|*.resx", LangHandler.GetString("txtOpen1")),
+                Multiselect = true,
+                Title = LangHandler.GetString("txtOpen2")
+            };
+
+            if (DialogResult.OK == openFileDialog.ShowDialog())
+                loadResxFiles(openFileDialog.FileNames);
+        }
+
         private void saveResxFiles(bool askUnsaved)
         {
             try
@@ -311,6 +409,26 @@ namespace ResxEditor.Forms
             }
         }
 
+        private void showSettings()
+        {
+            FrmSettings frmSettings = new FrmSettings();
+
+            if (SettingsHandler.Instance.PrefWindowPosition.IsEmpty)
+            {
+                frmSettings.StartPosition = FormStartPosition.WindowsDefaultLocation;
+            }
+            else
+            {
+                frmSettings.StartPosition = FormStartPosition.Manual;
+                frmSettings.Location = SettingsHandler.Instance.PrefWindowPosition;
+            }
+
+            frmSettings.Size = SettingsHandler.Instance.PrefWindowSize;
+            frmSettings.WindowState = SettingsHandler.Instance.PrefWindowState;
+
+            frmSettings.ShowDialog();
+        }
+
         private void resetColors()
         {
             dataGridView.SuspendLayout();
@@ -332,11 +450,13 @@ namespace ResxEditor.Forms
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             loadResxFiles(files);
+            this.Activate();
+            this.dataGridView.ClearSelection();
         }
 
         private void dataGridView_DragEnter(object sender, DragEventArgs e)
         {
-            if( e.Data.GetDataPresent(DataFormats.FileDrop,false))
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
             {
                 e.Effect = DragDropEffects.All;
             }
@@ -396,6 +516,49 @@ namespace ResxEditor.Forms
             }
         }
 
+        private void dataGridView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                if (e.Value == null)
+                    return;
+                var langName = e.Value.ToString().ToLower().Replace(".resx", "");
+                var indexLastDot = langName.LastIndexOf('.');
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All & ~DataGridViewPaintParts.ContentForeground);
+                if (indexLastDot != -1)
+                {
+                    try
+                    {
+                        langName = langName.Substring(++indexLastDot);
+                        CultureInfo culture = new CultureInfo(langName);
+                        RegionInfo region = new RegionInfo(culture.TextInfo.LCID);
+                        Image flag = Image.FromFile(Path.Combine(PATH_FLAGS, string.Format("{0}.png", region.TwoLetterISORegionName)));
+                        Rectangle flagRect = new Rectangle(e.CellBounds.Location, flag.Size);
+                        flagRect.Offset(4, 10);
+                        e.Graphics.DrawImage(flag, flagRect);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+                e.PaintContent(e.CellBounds);
+                e.Handled = true;
+            }
+            else
+            {
+                if (e.RowIndex % 2 == 0)
+                {
+                    //int R = e.CellStyle.BackColor.R + BACK_ALT > 255 ? e.CellStyle.BackColor.R - BACK_ALT : e.CellStyle.BackColor.R + BACK_ALT;
+                    //int G = e.CellStyle.BackColor.G + BACK_ALT > 255 ? e.CellStyle.BackColor.G - BACK_ALT : e.CellStyle.BackColor.G + BACK_ALT;
+                    //int B = e.CellStyle.BackColor.B + BACK_ALT > 255 ? e.CellStyle.BackColor.B - BACK_ALT : e.CellStyle.BackColor.B + BACK_ALT;
+                    int R = e.CellStyle.BackColor.R - BACK_ALT < 0 ? e.CellStyle.BackColor.R : e.CellStyle.BackColor.R - BACK_ALT;
+                    int G = e.CellStyle.BackColor.G - BACK_ALT < 0 ? e.CellStyle.BackColor.G : e.CellStyle.BackColor.G - BACK_ALT;
+                    int B = e.CellStyle.BackColor.B - BACK_ALT < 0 ? e.CellStyle.BackColor.B : e.CellStyle.BackColor.B - BACK_ALT;
+                    e.CellStyle.BackColor = Color.FromArgb(e.CellStyle.BackColor.A, R, G, B);
+                }
+            }
+        }
+
         #endregion
 
         #region Events
@@ -435,16 +598,7 @@ namespace ResxEditor.Forms
 
         private void tsbtnOpen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog()
-            {
-                DefaultExt  = "resx",
-                Filter      = string.Format("{0}|*.resx", LangHandler.GetString("txtOpen1")),
-                Multiselect = true,
-                Title       = LangHandler.GetString("txtOpen2")
-            };
-
-            if (DialogResult.OK == openFileDialog.ShowDialog())
-                loadResxFiles(openFileDialog.FileNames);
+            openResxFiles();
         }
 
         private void tsbtnSave_Click(object sender, EventArgs e)
@@ -539,22 +693,7 @@ namespace ResxEditor.Forms
 
         private void tsbtnSettings_Click(object sender, EventArgs e)
         {
-            FrmSettings frmSettings = new FrmSettings();
-
-            if (SettingsHandler.Instance.PrefWindowPosition.IsEmpty)
-            {
-                frmSettings.StartPosition = FormStartPosition.WindowsDefaultLocation;
-            }
-            else
-            {
-                frmSettings.StartPosition = FormStartPosition.Manual;
-                frmSettings.Location = SettingsHandler.Instance.PrefWindowPosition;
-            }
-
-            frmSettings.Size = SettingsHandler.Instance.PrefWindowSize;
-            frmSettings.WindowState = SettingsHandler.Instance.PrefWindowState;
-
-            frmSettings.Show();
+            showSettings();
         }
 
         private void tsbtnAbout_Click(object sender, EventArgs e)
@@ -593,56 +732,13 @@ namespace ResxEditor.Forms
                 return;
 
             if (selectedCell.Tag == null)
-                return;
+                selectedCell.Tag = new ResXDataNode(dataGridView[0, selectedCell.RowIndex].Value.ToString(), string.Empty);
 
             if (selectedCell.Tag.GetType() == typeof(ResXDataNode))
                 ((ResXDataNode)selectedCell.Tag).Comment = txtComment.Text;
         }
 
         #endregion
-
-        private void dataGridView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            if (e.RowIndex == -1)
-            {
-                if (e.Value == null)
-                    return;
-                var langName = e.Value.ToString().ToLower().Replace(".resx", "");
-                var indexLastDot = langName.LastIndexOf('.');
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All & ~DataGridViewPaintParts.ContentForeground);
-                if (indexLastDot != -1)
-                {
-                    try
-                    {
-                        langName = langName.Substring(++indexLastDot);
-                        CultureInfo culture = new CultureInfo(langName);
-                        RegionInfo region = new RegionInfo(culture.TextInfo.LCID);
-                        Image flag = Image.FromFile(Path.Combine(PATH_FLAGS, string.Format("{0}.png", region.TwoLetterISORegionName)));
-                        Rectangle flagRect = new Rectangle(e.CellBounds.Location, flag.Size);
-                        flagRect.Offset(4, 10);
-                        e.Graphics.DrawImage(flag, flagRect);
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-                e.PaintContent(e.CellBounds);
-                e.Handled = true;
-            }
-            else
-            {
-                if (e.RowIndex % 2 == 0)
-                {
-                    //int R = e.CellStyle.BackColor.R + BACK_ALT > 255 ? e.CellStyle.BackColor.R - BACK_ALT : e.CellStyle.BackColor.R + BACK_ALT;
-                    //int G = e.CellStyle.BackColor.G + BACK_ALT > 255 ? e.CellStyle.BackColor.G - BACK_ALT : e.CellStyle.BackColor.G + BACK_ALT;
-                    //int B = e.CellStyle.BackColor.B + BACK_ALT > 255 ? e.CellStyle.BackColor.B - BACK_ALT : e.CellStyle.BackColor.B + BACK_ALT;
-                    int R = e.CellStyle.BackColor.R - BACK_ALT < 0 ? e.CellStyle.BackColor.R : e.CellStyle.BackColor.R - BACK_ALT;
-                    int G = e.CellStyle.BackColor.G - BACK_ALT < 0 ? e.CellStyle.BackColor.G : e.CellStyle.BackColor.G - BACK_ALT;
-                    int B = e.CellStyle.BackColor.B - BACK_ALT < 0 ? e.CellStyle.BackColor.B : e.CellStyle.BackColor.B - BACK_ALT;
-                    e.CellStyle.BackColor = Color.FromArgb(e.CellStyle.BackColor.A, R, G, B);
-                }
-            }
-        }
 
         private void tsbtnTranslator_Click(object sender, EventArgs e)
         {
@@ -660,6 +756,161 @@ namespace ResxEditor.Forms
 
             frmTranslator.Size = SettingsHandler.Instance.TranWindowSize;
             frmTranslator.Show();
+        }
+
+        private FrmFind frmFind = null;
+        private FindOptions findOptions = null;
+        private int currentCell_Col = 0;
+        private int currentCell_Row = 0;
+        private bool endReached = false;
+        private bool beginningReached = false;
+        
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F3:
+                    if (findOptions == null)
+                        openFindForm(false);
+                    else
+                        findText(findOptions);
+                    return true;
+                case Keys.Control | Keys.F:
+                    openFindForm(false);
+                    return true;
+                case Keys.Control | Keys.H:
+                    openFindForm(true);
+                    return true;
+                case Keys.Control | Keys.O:
+                    openResxFiles();
+                    return true;
+                case Keys.Control | Keys.P:
+                    showSettings();
+                    return true;
+            }
+
+            return false;
+        }
+
+        private void openFindForm(bool enableReplace)
+        {
+            if (frmFind == null || frmFind.IsDisposed)
+            {
+                frmFind = new FrmFind(findOptions);
+                frmFind.FindText += new EventHandler(frmFind_FindText);
+
+                if (SettingsHandler.Instance.FindWindowPosition.IsEmpty)
+                    frmFind.StartPosition = FormStartPosition.WindowsDefaultLocation;
+                else
+                {
+                    frmFind.StartPosition = FormStartPosition.Manual;
+                    frmFind.Location = SettingsHandler.Instance.FindWindowPosition;
+                }
+
+                frmFind.Size = SettingsHandler.Instance.FindWindowSize;
+                frmFind.Show();
+            }
+
+            if (enableReplace)
+                frmFind.EnableReplace();
+            else
+                frmFind.DisableReplace();
+
+            frmFind.Activate();
+        }
+
+        private void moveToPrevCell()
+        {
+            int lastRowIndex = dataGridView.Rows.Count - 2;
+            int lastColIndex = dataGridView.Columns.Count - 1;
+            beginningReached = false;
+            currentCell_Row--;
+
+            if (currentCell_Row < 0)
+            {
+                currentCell_Row = lastRowIndex;
+                currentCell_Col--;
+
+                if (currentCell_Col < 0)
+                {
+                    beginningReached = true;
+                    currentCell_Row = lastRowIndex;
+                    currentCell_Col = lastColIndex;
+                    MessageBox.Show(LangHandler.GetString("strBegReached_msg"), LangHandler.GetString("strBegReached_title"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void moveToNextCell()
+        {
+            int lastRowIndex = dataGridView.Rows.Count - 2;
+            int lastColIndex = dataGridView.Columns.Count - 1;
+            endReached = false;
+            currentCell_Row++;
+
+            if (currentCell_Row > lastRowIndex)
+            {
+                currentCell_Row = 0;
+                currentCell_Col++;
+
+                if (currentCell_Col > lastColIndex)
+                {
+                    endReached = true;
+                    currentCell_Row = 0;
+                    currentCell_Col = 0;
+                    MessageBox.Show(LangHandler.GetString("strEndReached_msg"), LangHandler.GetString("strEndReached_title"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void setStartCell()
+        {
+            if (dataGridView.SelectedCells.Count > 0)
+            {
+                currentCell_Row = dataGridView.SelectedCells[0].RowIndex;
+                currentCell_Col = dataGridView.SelectedCells[0].ColumnIndex;
+            }
+            else
+            {
+                currentCell_Row = 0;
+                currentCell_Col = 0;
+            }
+        }
+
+        private void findText(FindOptions options)
+        {
+            bool found = false;
+
+            do
+            {
+                DataGridViewCell currentCell = dataGridView[currentCell_Col, currentCell_Row];
+                if (currentCell.Value != null && currentCell.Visible && Contains(currentCell.Value.ToString(), findOptions.TextToFind, findOptions.CaseSensitive ? StringComparison.InvariantCulture : StringComparison.InvariantCultureIgnoreCase))
+                {
+                    currentCell.Style.BackColor = Color.BurlyWood;
+                    dataGridView.CurrentCell = currentCell;
+                    found = true;
+                }
+
+                if (findOptions.SearchDown)
+                    moveToNextCell();
+                else
+                    moveToPrevCell();
+            } while (!found && !endReached && !beginningReached);
+        }
+
+        private void frmFind_FindText(object sender, EventArgs e)
+        {
+            findOptions = sender as FindOptions;
+            resetColors();
+            //currentCell_Row = 0;
+            //currentCell_Col = 0;
+            setStartCell();
+            findText(findOptions);
+        }
+
+        public static bool Contains(string source, string toCheck, StringComparison comp)
+        {
+            return source.IndexOf(toCheck, comp) >= 0;
         }
     }
 }

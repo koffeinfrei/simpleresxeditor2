@@ -1,0 +1,76 @@
+﻿txtDown1		= Хотите начать закачку прямо сейчас?
+txtDown2		= Обнаружена новая версия!
+txtSave1		= Может хотите сохранить Ваши изменения?
+txtSave2		= У Вас есть несохраненные изменения
+txtOpen1		= Файлы ресурсов
+txtOpen2		= Открыть ресурсные файлы
+btnSave			= Записать изменения
+btnClose		= Закрыть
+btnCancel		= Отмена
+
+# Form: About
+frmAbout		= О программе
+lblCoded		= Программирование
+lblTranslated	= Перевод Валентин Гушан (alfa версия)
+btnWebsite		= Web сайт
+btnDonate		= Пожертвование
+
+# Form: Main
+statusHEquals	= было найдено {0} совпадений
+statusHDiffs	= было найдено {0} различий
+statusHText		= было обнаружено {0} ячеек содержащих текст 
+statusClear		= Все выделения были сброшены
+statusFText		= Показаны {0} ячеек из {1} подлежащие переводу
+statusFAll		= Показаны все ячейки ({0})
+tsbtnOpen		= Открыть
+tsbtnSave		= Сохранить изменения
+tsbtnKeys		= Показать/Скрыть ключи
+tsbtnFText		= Фильтр: только текст
+tsbtnFAll		= Сбросить фильтр
+tsbtnHDiffs		= Выделить: различия
+tsbtnHEquals	= Выделить: совпадения
+tsbtnHText		= Выделить: текст
+tsbtnClear		= Очистить выделения
+tsbtnSettings	= Настройки
+tsbtnTranslator = Переводчик
+tsbtnAbout		= О программе
+errorSaving		= Обнаружена ошибка в процессе записи изменений
+gbComment		= Комментарий:
+gbValue			= Значение:
+
+# Form: Settings
+frmSettings		= Настройки
+tpgInterface	= Интерфейс
+tpgBehavior		= Поведение
+lblLanguage		= Язык:
+lblColor1		= Цвет различий:
+lblColor2		= Цвет совпадений:
+lblColor3		= Цвет изменений:
+lblColor4		= Цвет ключей:
+lblColor5		= Цвет текста:
+errorLoading	= Не могу загрузить настройки, неверный формат!
+
+# Form: Translator
+frmTranslator	= Переводчик (На базе Bing)
+lblLanguages	= Языки:
+itemAutoDetect	= Авто-определение
+btnSwap			= Поменять
+btnTranslate	= Перевод
+llblClearAll	= Очисть все
+llblCopy1		= Копировать текст-источник в буфер обмена
+llblCopy2		= Копировать переведенный текст в буфер обмена
+
+# Form: Find
+FrmFind			= Найти
+FrmFindReplace	= Найти & заменить
+lblTextToFind	= Найти:
+lblReplaceWith	= Заменить:
+btnReplace		= Заменить
+btnReplaceAll	= Заменить все
+btnFindPrevious	= Найти предыдущее
+btnFindNext		= Найти следующее
+ckbCaseSensitive= С учетом регистра
+strEndReached_title	= Достигнут конец документа!
+strEndReached_msg	= Достигнута последняя ячейка!
+strBegReached_title = Достигнуто начало документа!
+strBegReached_msg	= Достигнута первая ячейка!

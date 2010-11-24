@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="txtDown1		" xml:space="preserve">
+    <value>هل تريد التحميل الآن؟</value>
+  </data>
+  <data name="txtDown2		" xml:space="preserve">
+    <value>!إصدار جديد متاح</value>
+  </data>
+  <data name="txtSave1		" xml:space="preserve">
+    <value>هل تريد حفظ التغييرات في الملف؟</value>
+  </data>
+  <data name="txtSave2		" xml:space="preserve">
+    <value>لم تقم بحفظ بعض التغييرات</value>
+  </data>
+  <data name="txtOpen1		" xml:space="preserve">
+    <value>ملفات الموارد</value>
+  </data>
+  <data name="txtOpen2		" xml:space="preserve">
+    <value>فتح ملف الموارد</value>
+  </data>
+  <data name="btnSave			" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="btnClose		" xml:space="preserve">
+    <value>غلق</value>
+  </data>
+  <data name="btnCancel		" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="frmAbout		" xml:space="preserve">
+    <value>بخصوص</value>
+  </data>
+  <data name="lblCoded		" xml:space="preserve">
+    <value>مشفرة عن طريق</value>
+  </data>
+  <data name="lblTranslated	" xml:space="preserve">
+    <value>Translated by Eman Ali Fhoula ** ali.fhoula@lycos.com</value>
+  </data>
+  <data name="btnWebsite		" xml:space="preserve">
+    <value>الموقع</value>
+  </data>
+  <data name="btnDonate		" xml:space="preserve">
+    <value>التبرع</value>
+  </data>
+  <data name="statusHEquals	" xml:space="preserve">
+    <value>{0} تم العثور على المتوافقين</value>
+  </data>
+  <data name="statusHDiffs	" xml:space="preserve">
+    <value>{0} تم العثور على المختلفين</value>
+  </data>
+  <data name="statusHText		" xml:space="preserve">
+    <value>{0} تم العثور على الخلايا التي تحتوي على نضّ</value>
+  </data>
+  <data name="statusClear		" xml:space="preserve">
+    <value>كافة تسليطات الأضواء أزيلت</value>
+  </data>
+  <data name="statusFText		" xml:space="preserve">
+    <value>عرض {0} خلايا {1} تحتوي على سلاسل للترجمة</value>
+  </data>
+  <data name="statusFAll		" xml:space="preserve">
+    <value>({0}) عرض كافة الخلايا</value>
+  </data>
+  <data name="tsbtnOpen		" xml:space="preserve">
+    <value>فتح</value>
+  </data>
+  <data name="tsbtnSave		" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="tsbtnKeys		" xml:space="preserve">
+    <value>إخفاء/عرض المفاتيح</value>
+  </data>
+  <data name="tsbtnFText		" xml:space="preserve">
+    <value>المرشح: النضّ أولا</value>
+  </data>
+  <data name="tsbtnFAll		" xml:space="preserve">
+    <value>المرشح: كافة</value>
+  </data>
+  <data name="tsbtnHDiffs		" xml:space="preserve">
+    <value>تسليط الضوء على: الإختلافات</value>
+  </data>
+  <data name="tsbtnHEquals	" xml:space="preserve">
+    <value>تسليط الضوء على: المتساوين</value>
+  </data>
+  <data name="tsbtnHText		" xml:space="preserve">
+    <value>تسليط الضوء على: النص</value>
+  </data>
+  <data name="tsbtnClear		" xml:space="preserve">
+    <value>مسح تسليطات الضوء</value>
+  </data>
+  <data name="tsbtnSettings	" xml:space="preserve">
+    <value>إعدادات</value>
+  </data>
+  <data name="tsbtnTranslator" xml:space="preserve">
+    <value>المترجم</value>
+  </data>
+  <data name="tsbtnAbout		" xml:space="preserve">
+    <value>بخصوص</value>
+  </data>
+  <data name="errorSaving		" xml:space="preserve">
+    <value>حدث خطأ أثناء محاولة حفظ التغييرات</value>
+  </data>
+  <data name="gbComment		" xml:space="preserve">
+    <value>التعليق:</value>
+  </data>
+  <data name="gbValue			" xml:space="preserve">
+    <value>القيمة:</value>
+  </data>
+  <data name="frmSettings		" xml:space="preserve">
+    <value>الإعدادات</value>
+  </data>
+  <data name="tpgInterface	" xml:space="preserve">
+    <value>الواجهة</value>
+  </data>
+  <data name="tpgBehavior		" xml:space="preserve">
+    <value>السلوك</value>
+  </data>
+  <data name="lblLanguage		" xml:space="preserve">
+    <value>اللغة:</value>
+  </data>
+  <data name="lblColor1		" xml:space="preserve">
+    <value>لون المختلفين:</value>
+  </data>
+  <data name="lblColor2		" xml:space="preserve">
+    <value>لون المتساوين:</value>
+  </data>
+  <data name="lblColor3		" xml:space="preserve">
+    <value>لون خلايا لم يتم حفظها:</value>
+  </data>
+  <data name="lblColor4		" xml:space="preserve">
+    <value>لون المفاتيح:</value>
+  </data>
+  <data name="lblColor5		" xml:space="preserve">
+    <value>لون النضّ:</value>
+  </data>
+  <data name="errorLoading	" xml:space="preserve">
+    <value>!غير قادر على تحميل الإعدادات،صيغة غير صالحة</value>
+  </data>
+  <data name="frmTranslator	" xml:space="preserve">
+    <value>(المترجم (بدعم من بنج</value>
+  </data>
+  <data name="lblLanguages	" xml:space="preserve">
+    <value>اللغة:</value>
+  </data>
+  <data name="itemAutoDetect	" xml:space="preserve">
+    <value>الكشف التلقائي</value>
+  </data>
+  <data name="btnSwap			" xml:space="preserve">
+    <value>مبادلة</value>
+  </data>
+  <data name="btnTranslate	" xml:space="preserve">
+    <value>ترجم</value>
+  </data>
+  <data name="llblClearAll	" xml:space="preserve">
+    <value>مسح الكلّ</value>
+  </data>
+  <data name="llblCopy1		" xml:space="preserve">
+    <value>نسخ النص المصدر إلى الحافظة</value>
+  </data>
+  <data name="llblCopy2		" xml:space="preserve">
+    <value>نسخ النص المترجم إلى الحافظة</value>
+  </data>
+  <data name="FrmFind			" xml:space="preserve">
+    <value>البحث</value>
+  </data>
+  <data name="FrmFindReplace	" xml:space="preserve">
+    <value>البحث و الإستبدال</value>
+  </data>
+  <data name="lblTextToFind	" xml:space="preserve">
+    <value>البحث:</value>
+  </data>
+  <data name="lblReplaceWith	" xml:space="preserve">
+    <value>استبدال:</value>
+  </data>
+  <data name="btnReplace		" xml:space="preserve">
+    <value>استبدال</value>
+  </data>
+  <data name="btnReplaceAll	" xml:space="preserve">
+    <value>استبدال الكل</value>
+  </data>
+  <data name="btnFindPrevious	" xml:space="preserve">
+    <value>البحث السابق</value>
+  </data>
+  <data name="btnFindNext		" xml:space="preserve">
+    <value>البحث التالي</value>
+  </data>
+  <data name="ckbCaseSensitive" xml:space="preserve">
+    <value>مربع الأحرف متغير</value>
+  </data>
+  <data name="strEndReached_title	" xml:space="preserve">
+    <value>وصل إلى نهاية الوثيقة</value>
+  </data>
+  <data name="strEndReached_msg	" xml:space="preserve">
+    <value>!وصل إلى الخلية الأخيرة</value>
+  </data>
+  <data name="strBegReached_title" xml:space="preserve">
+    <value>وصل إلى بداية الوثيقة</value>
+  </data>
+  <data name="strBegReached_msg	" xml:space="preserve">
+    <value>!وصل إلى الخلية الأولى</value>
+  </data>
+</root>

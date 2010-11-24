@@ -3,7 +3,6 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using ResxEditor.Forms;
 
 namespace ResxEditor.Helpers
 {
@@ -47,9 +46,11 @@ namespace ResxEditor.Helpers
         public Size MainWindowSize { get; set; }
         public Size PrefWindowSize { get; set; }
         public Size TranWindowSize { get; set; }
+        public Size FindWindowSize { get; set; }
         public Point MainWindowPosition { get; set; }
         public Point PrefWindowPosition { get; set; }
         public Point TranWindowPosition { get; set; }
+        public Point FindWindowPosition { get; set; }
         public FormWindowState MainWindowState { get; set; }
         public FormWindowState PrefWindowState { get; set; }
         public long LastUpdateCheck { get; set; }
@@ -68,9 +69,11 @@ namespace ResxEditor.Helpers
             MainWindowSize = new Size(600, 300);
             PrefWindowSize = new Size(600, 400);
             TranWindowSize = new Size(400, 300);
+            FindWindowSize = new Size(400, 250);
             MainWindowPosition = new Point();
             PrefWindowPosition = new Point();
             TranWindowPosition = new Point();
+            FindWindowPosition = new Point();
             MainWindowState = FormWindowState.Normal;
             PrefWindowState = FormWindowState.Normal;
             LastUpdateCheck = DateTime.Now.AddDays(-2).Ticks;
@@ -104,9 +107,11 @@ namespace ResxEditor.Helpers
                         instance.MainWindowSize = settingsData.MainWindowSize;
                         instance.PrefWindowSize = settingsData.PrefWindowSize;
                         instance.TranWindowSize = settingsData.TranWindowSize;
+                        instance.FindWindowSize = settingsData.FindWindowSize;
                         instance.MainWindowPosition = settingsData.MainWindowPosition;
                         instance.PrefWindowPosition = settingsData.PrefWindowPosition;
                         instance.TranWindowPosition = settingsData.TranWindowPosition;
+                        instance.FindWindowPosition = settingsData.FindWindowPosition;
                         instance.MainWindowState = settingsData.MainWindowState;
                         instance.PrefWindowState = settingsData.PrefWindowState;
                         instance.SplitterH = settingsData.SplitterH;
