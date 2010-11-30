@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="errorEmptySource_title" xml:space="preserve">
+    <value>Порожні початкові дані</value>
+  </data>
+  <data name="errorEmptySource_msg" xml:space="preserve">
+    <value>Початкова клітинка не містить тексту для перекладу</value>
+  </data>
+  <data name="chbSortByKeyOnSave" xml:space="preserve">
+    <value>При збереженні сортувати за ключами</value>
+  </data>
+  <data name="statusHText		" xml:space="preserve">
+    <value>Знайдено {0} клітинок, що містять текст</value>
+  </data>
+  <data name="errorLoading	" xml:space="preserve">
+    <value>Неможливо завантажити установки, невірний формат!</value>
+  </data>
+  <data name="btnClose		" xml:space="preserve">
+    <value>Закрити</value>
+  </data>
+  <data name="strEndReached_title	" xml:space="preserve">
+    <value>Досягнуто кінця документа</value>
+  </data>
+  <data name="tsbtnHEquals	" xml:space="preserve">
+    <value>Підсвітити: тотожності</value>
+  </data>
+  <data name="btnTranslate	" xml:space="preserve">
+    <value>Перекласти</value>
+  </data>
+  <data name="statusFAll		" xml:space="preserve">
+    <value>Показ всіх клітинок ({0})</value>
+  </data>
+  <data name="btnWebsite		" xml:space="preserve">
+    <value>Домівка</value>
+  </data>
+  <data name="tsbtnHText		" xml:space="preserve">
+    <value>Підсвітити: текст</value>
+  </data>
+  <data name="statusHDiffs	" xml:space="preserve">
+    <value>Знайдено {0} відмінностей</value>
+  </data>
+  <data name="strBegReached_msg	" xml:space="preserve">
+    <value>Досягнуто першої клітинки!</value>
+  </data>
+  <data name="lblReplaceWith	" xml:space="preserve">
+    <value>Замінити:</value>
+  </data>
+  <data name="errorTranslator_title" xml:space="preserve">
+    <value>Помилка двигуна перекладача</value>
+  </data>
+  <data name="btnCancel		" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="txtDown2		" xml:space="preserve">
+    <value>Доступна нова версія!</value>
+  </data>
+  <data name="txtDown1		" xml:space="preserve">
+    <value>Чи бажаєте Ви завантажити її зараз?</value>
+  </data>
+  <data name="tsbtnFText		" xml:space="preserve">
+    <value>Фільтр: лише текст</value>
+  </data>
+  <data name="frmSettings		" xml:space="preserve">
+    <value>Установки</value>
+  </data>
+  <data name="tpgInterface	" xml:space="preserve">
+    <value>Інтерфейс</value>
+  </data>
+  <data name="tsbtnHDiffs		" xml:space="preserve">
+    <value>Підсвітити: відмінності</value>
+  </data>
+  <data name="frmAbout		" xml:space="preserve">
+    <value>Про</value>
+  </data>
+  <data name="lblColor2		" xml:space="preserve">
+    <value>Колір тотожностей:</value>
+  </data>
+  <data name="lblColor3		" xml:space="preserve">
+    <value>Колір незбережених клітинок:</value>
+  </data>
+  <data name="lblColor1		" xml:space="preserve">
+    <value>Колір відміностей:</value>
+  </data>
+  <data name="lblColor4		" xml:space="preserve">
+    <value>Колір ключів:</value>
+  </data>
+  <data name="lblColor5		" xml:space="preserve">
+    <value>Колір тексту:</value>
+  </data>
+  <data name="gbComment		" xml:space="preserve">
+    <value>Коментар:</value>
+  </data>
+  <data name="btnSave			" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="txtTranslateFrom" xml:space="preserve">
+    <value>Перекласти з {0}</value>
+  </data>
+  <data name="txtSave1		" xml:space="preserve">
+    <value>Чи бажаєте Ви зберегти зміни до файла?</value>
+  </data>
+  <data name="txtSave2		" xml:space="preserve">
+    <value>Ви не зберегли зміни</value>
+  </data>
+  <data name="lblLanguages	" xml:space="preserve">
+    <value>Мови:</value>
+  </data>
+  <data name="lblLanguage		" xml:space="preserve">
+    <value>Мова:</value>
+  </data>
+  <data name="lblCoded		" xml:space="preserve">
+    <value>Розроблено</value>
+  </data>
+  <data name="lblTextToFind	" xml:space="preserve">
+    <value>Знайти:</value>
+  </data>
+  <data name="txtOpen1		" xml:space="preserve">
+    <value>Файли ресурсів</value>
+  </data>
+  <data name="txtOpen2		" xml:space="preserve">
+    <value>Відкрити файл ресурсів</value>
+  </data>
+  <data name="tsbtnAbout		" xml:space="preserve">
+    <value>Про</value>
+  </data>
+  <data name="btnSwap			" xml:space="preserve">
+    <value>Обмін</value>
+  </data>
+  <data name="llblClearAll	" xml:space="preserve">
+    <value>Очистити все</value>
+  </data>
+  <data name="tsbtnSave		" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="statusFText		" xml:space="preserve">
+    <value>Показ {0} клітинок з {1}, що містять рядки для перекладу</value>
+  </data>
+  <data name="errorSaving		" xml:space="preserve">
+    <value>Виникла помилка при спробі збереження змін</value>
+  </data>
+  <data name="btnFindPrevious	" xml:space="preserve">
+    <value>Знайти попередній</value>
+  </data>
+  <data name="chbShowKeyColumnOnStart" xml:space="preserve">
+    <value>При запуску показувати стовпець ключів</value>
+  </data>
+  <data name="strBegReached_title" xml:space="preserve">
+    <value>Досягнуто початок документа</value>
+  </data>
+  <data name="tsbtnKeys		" xml:space="preserve">
+    <value>Показати/Приховати ключі</value>
+  </data>
+  <data name="statusClear		" xml:space="preserve">
+    <value>Всі підсвічування було прибрано</value>
+  </data>
+  <data name="tsbtnOpen		" xml:space="preserve">
+    <value>Відкрити</value>
+  </data>
+  <data name="tsbtnClear		" xml:space="preserve">
+    <value>Очистити підсвічування</value>
+  </data>
+  <data name="FrmFindReplace	" xml:space="preserve">
+    <value>Знайти та замінити</value>
+  </data>
+  <data name="btnReplace		" xml:space="preserve">
+    <value>Замінити</value>
+  </data>
+  <data name="tsbtnSettings	" xml:space="preserve">
+    <value>Установки</value>
+  </data>
+  <data name="llblCopy2		" xml:space="preserve">
+    <value>Копіювати перекладений текст до буфера обміну</value>
+  </data>
+  <data name="llblCopy1		" xml:space="preserve">
+    <value>Копіювати початковий текст до буфера обміну</value>
+  </data>
+  <data name="tsbtnTranslator" xml:space="preserve">
+    <value>Перекладач</value>
+  </data>
+  <data name="tsbtnFAll		" xml:space="preserve">
+    <value>Фільтр: все</value>
+  </data>
+  <data name="gbValue			" xml:space="preserve">
+    <value>Значення:</value>
+  </data>
+  <data name="statusHEquals	" xml:space="preserve">
+    <value>Знайдено {0} збігів</value>
+  </data>
+  <data name="lblTranslated	" xml:space="preserve">
+    <value>Переклад від Олександра (6c6c6)</value>
+  </data>
+  <data name="ckbCaseSensitive" xml:space="preserve">
+    <value>Чутливий до регістру</value>
+  </data>
+  <data name="btnFindNext		" xml:space="preserve">
+    <value>Знайти наступний</value>
+  </data>
+  <data name="btnReplaceAll	" xml:space="preserve">
+    <value>Замінити всі</value>
+  </data>
+  <data name="btnDonate		" xml:space="preserve">
+    <value>Пожертви</value>
+  </data>
+  <data name="frmTranslator	" xml:space="preserve">
+    <value>Перекладач (розроблений Bing)</value>
+  </data>
+  <data name="strEndReached_msg	" xml:space="preserve">
+    <value>Досягнуто останньої клітинки!</value>
+  </data>
+  <data name="tpgBehavior		" xml:space="preserve">
+    <value>Поведінка</value>
+  </data>
+  <data name="errorTranslator_msg" xml:space="preserve">
+    <value>Здається двигун перекладача Microsoft зараз не працює.
+Будь ласка, спробуйте пізніше.
+Помилка: {0}</value>
+  </data>
+  <data name="itemAutoDetect	" xml:space="preserve">
+    <value>Авто-виявлення</value>
+  </data>
+  <data name="FrmFind			" xml:space="preserve">
+    <value>Знайти</value>
+  </data>
+  <data name="txtKeys			" xml:space="preserve">
+    <value>Keys</value>
+  </data>
+</root>

@@ -54,6 +54,8 @@ namespace ResxEditor.Helpers
         public FormWindowState MainWindowState { get; set; }
         public FormWindowState PrefWindowState { get; set; }
         public long LastUpdateCheck { get; set; }
+        public bool SortByKeyOnSave { get; set; }
+        public bool ShowKeyColumnOnStart { get; set; }
 
         private void loadDefaultValues()
         {
@@ -77,6 +79,8 @@ namespace ResxEditor.Helpers
             MainWindowState = FormWindowState.Normal;
             PrefWindowState = FormWindowState.Normal;
             LastUpdateCheck = DateTime.Now.AddDays(-2).Ticks;
+            SortByKeyOnSave = false;
+            ShowKeyColumnOnStart = false;
         }
         
         public void Read()
@@ -117,6 +121,8 @@ namespace ResxEditor.Helpers
                         instance.SplitterH = settingsData.SplitterH;
                         instance.SplitterV = settingsData.SplitterV;
                         instance.LastUpdateCheck = settingsData.LastUpdateCheck;
+                        instance.SortByKeyOnSave = settingsData.SortByKeyOnSave;
+                        instance.ShowKeyColumnOnStart = settingsData.ShowKeyColumnOnStart;
                     }
                     catch(Exception ex)
                     {

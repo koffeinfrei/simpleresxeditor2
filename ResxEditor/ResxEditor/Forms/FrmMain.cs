@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -8,7 +10,6 @@ using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
 using ResxEditor.Helpers;
-using System.Collections.Generic;
 
 namespace ResxEditor.Forms
 {
@@ -19,6 +20,7 @@ namespace ResxEditor.Forms
         private readonly string PATH_SKINS = Path.Combine(Application.StartupPath, "Skins");
         private bool initialChanges = false;
         private bool unsavedChanges = false;
+        private Dictionary<int, ContextMenuStrip> contextMenus = new Dictionary<int, ContextMenuStrip>();
 
         public FrmMain()
         {
@@ -105,26 +107,17 @@ namespace ResxEditor.Forms
                 }
             }
 
-            var ContextMenus = new Dictionary<int, ContextMenuStrip>();
-
             foreach (string file in resxFilenames)
             {
                 if (dataGridView.ColumnCount == 0)
                 {
                     dataGridView.Columns.Add("keys", "Keys");
-                    dataGridView.Columns["keys"].Visible = false;
+                    dataGridView.Columns["keys"].Visible = SettingsHandler.Instance.ShowKeyColumnOnStart;
                     dataGridView.Columns["keys"].DefaultCellStyle.BackColor = Color.FromArgb(SettingsHandler.Instance.Color4);
                     dataGridView.Columns["keys"].Tag = "Keys";
                 }
 
                 int newColIndex = dataGridView.Columns.Add(file, Path.GetFileName(file));
-
-                // Create context menus for each column, empty right now, they'll be filled when we know what columns we have
-                var column = dataGridView.Columns[newColIndex];
-                ContextMenus.Add(newColIndex, new ContextMenuStrip());
-                column.ContextMenuStrip = ContextMenus[newColIndex];
-                var lang = GetLanguageFromFileName(column.Name) ?? "en"; //TODO: configurable default language?
-                column.Tag = lang;
 
                 using (ResXResourceReader resxReader = new ResXResourceReader(file))
                 {
@@ -167,8 +160,35 @@ namespace ResxEditor.Forms
                 dataGridView.CellMouseDown += new DataGridViewCellMouseEventHandler(dataGridView_CellMouseDown);
             }
 
+            generateContextMenu();
+
+            dataGridView.ResumeLayout();
+            initialChanges = false;
+
+            dataGridView.ClearSelection();
+        }
+
+        private void generateContextMenu()
+        {
+            contextMenus.Clear();
+
+            // Create context menus for each column, empty right now, they'll be filled when we know what columns we have
+            foreach (DataGridViewColumn column in dataGridView.Columns)
+            {
+                var menuStrip = new ContextMenuStrip();
+                menuStrip.Opening += new CancelEventHandler(menuStrip_Opening);
+                
+                contextMenus.Add(column.Index, menuStrip);
+                
+                column.ContextMenuStrip = contextMenus[column.Index];
+                if (column.Name.ToLower() == "keys")
+                    column.Tag = "keys";
+                else
+                    column.Tag = GetLanguageFromFileName(column.Name) ?? "en"; //TODO: configurable default language?
+            }
+
             //Create context menus, one per column
-            foreach (var contextMenu in ContextMenus)
+            foreach (var contextMenu in contextMenus)
             {
                 foreach (var rawColumn in dataGridView.Columns)
                 {
@@ -176,13 +196,21 @@ namespace ResxEditor.Forms
                     if (column.Index != contextMenu.Key)
                     {
                         var language = column.Tag;
-                        contextMenu.Value.Items.Add("Translate from " + language, null, AutoTranslationClick).Tag = column.Index;  //TODO: Translate
+                        if (language == "keys")
+                            contextMenu.Value.Items.Add(string.Format(LangHandler.GetString("txtTranslateFrom"), LangHandler.GetString("txtKeys")), null, AutoTranslationClick).Tag = column.Index;
+                        else
+                            contextMenu.Value.Items.Add(string.Format(LangHandler.GetString("txtTranslateFrom"), language), null, AutoTranslationClick).Tag = column.Index;
                     }
                 }
             }
+        }
 
-            dataGridView.ResumeLayout();
-            initialChanges = false;
+        // Make sure the context menu is not displayed for the keys column
+        // or the last row (because it is always empty)
+        void menuStrip_Opening(object sender, CancelEventArgs e)
+        {
+            if (dataGridView.SelectedCells.Count > 0 && (dataGridView.SelectedCells[0].ColumnIndex == 0 || dataGridView.SelectedCells[0].RowIndex == dataGridView.Rows.Count - 1))
+                e.Cancel = true;
         }
 
         // Makes sure the cell under the context menu is selected
@@ -190,12 +218,11 @@ namespace ResxEditor.Forms
         {
             if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
             {
-                txtComment_Leave(null, EventArgs.Empty);
-                txtValue_Leave(null, EventArgs.Empty);
-                var ex = new DataGridViewCellEventArgs(e.ColumnIndex, e.RowIndex);
-                dataGridView_CellEnter(sender, ex);
+                //txtComment_Leave(null, EventArgs.Empty);
+                //txtValue_Leave(null, EventArgs.Empty);
                 dataGridView.ClearSelection();
                 dataGridView[e.ColumnIndex, e.RowIndex].Selected = true;
+                dataGridView_CellEnter(sender, new DataGridViewCellEventArgs(e.ColumnIndex, e.RowIndex));
             }
         }
 
@@ -211,17 +238,18 @@ namespace ResxEditor.Forms
             var cellvalue = (string)sourceCell.Value;
             if (string.IsNullOrEmpty(cellvalue))
             {
-                MessageBox.Show("Empty source data"); //TODO: Translate
+                MessageBox.Show(LangHandler.GetString("errorEmptySource_msg"), LangHandler.GetString("errorEmptySource_title"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             var fromLanguage = dataGridView.Columns[sourceCell.ColumnIndex].Tag as string;
-            if (fromLanguage == "Keys")
+            if (fromLanguage.ToLower() == "keys")
                 fromLanguage = "en"; //TODO: configurable default language?
             var toLanguage = dataGridView.Columns[cell.ColumnIndex].Tag as string;
 
             var translation = Translator.Translate(fromLanguage, toLanguage, cellvalue);
             txtValue.Text = translation;
+            txtValue.Focus();
         }
 
         private string GetLanguageFromFileName(string filename)
@@ -272,6 +300,7 @@ namespace ResxEditor.Forms
             tsbtnAbout.ToolTipText = LangHandler.GetString("tsbtnAbout");
             gbComment.Text = LangHandler.GetString("gbComment");
             gbValue.Text = LangHandler.GetString("gbValue");
+            generateContextMenu();
         }
 
         private void checkNewVersion()
@@ -366,6 +395,9 @@ namespace ResxEditor.Forms
 
                 txtComment_Leave(null, EventArgs.Empty);
                 txtValue_Leave(null, EventArgs.Empty);
+
+                if (SettingsHandler.Instance.SortByKeyOnSave && dataGridView.Columns.Contains("keys"))
+                    dataGridView.Sort(dataGridView.Columns["keys"], ListSortDirection.Ascending);
 
                 for (int column = 1; column < dataGridView.Columns.Count; column++)
                 {
@@ -731,6 +763,9 @@ namespace ResxEditor.Forms
             if (selectedCell == null)
                 return;
 
+            if (dataGridView[0, selectedCell.RowIndex].Value == null)
+                return;
+             
             if (selectedCell.Tag == null)
                 selectedCell.Tag = new ResXDataNode(dataGridView[0, selectedCell.RowIndex].Value.ToString(), string.Empty);
 
@@ -764,7 +799,7 @@ namespace ResxEditor.Forms
         private int currentCell_Row = 0;
         private bool endReached = false;
         private bool beginningReached = false;
-        
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             switch (keyData)

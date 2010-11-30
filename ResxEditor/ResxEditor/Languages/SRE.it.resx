@@ -144,6 +144,14 @@
   <data name="btnCancel		" xml:space="preserve">
     <value>Annulla</value>
   </data>
+  <data name="errorTranslator_msg" xml:space="preserve">
+    <value>Microsoft translation engine doesn't seem to be working right now.
+Please try again later.
+Error: {0}</value>
+  </data>
+  <data name="errorTranslator_title" xml:space="preserve">
+    <value>Translation engine error</value>
+  </data>
   <data name="frmAbout		" xml:space="preserve">
     <value>About</value>
   </data>
@@ -222,6 +230,18 @@
   <data name="gbValue			" xml:space="preserve">
     <value>Value:</value>
   </data>
+  <data name="txtTranslateFrom" xml:space="preserve">
+    <value>Translate from {0}</value>
+  </data>
+  <data name="txtKeys			" xml:space="preserve">
+    <value>Keys</value>
+  </data>
+  <data name="errorEmptySource_title" xml:space="preserve">
+    <value>Empty source data</value>
+  </data>
+  <data name="errorEmptySource_msg" xml:space="preserve">
+    <value>The source cell doesn't contain any translatable text</value>
+  </data>
   <data name="frmSettings		" xml:space="preserve">
     <value>Impostazioni</value>
   </data>
@@ -251,6 +271,12 @@
   </data>
   <data name="errorLoading	" xml:space="preserve">
     <value>Unable to load settings, invalid format!</value>
+  </data>
+  <data name="chbSortByKeyOnSave" xml:space="preserve">
+    <value>Sort by key on save</value>
+  </data>
+  <data name="chbShowKeyColumnOnStart" xml:space="preserve">
+    <value>Show key column on start</value>
   </data>
   <data name="frmTranslator	" xml:space="preserve">
     <value>Translator (Powered by Bing)</value>

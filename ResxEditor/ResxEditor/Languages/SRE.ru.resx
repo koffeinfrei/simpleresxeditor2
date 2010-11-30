@@ -118,123 +118,123 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="txtDown1		" xml:space="preserve">
-    <value>¿Desea descargarla ahora?</value>
+    <value>Хотите начать закачку прямо сейчас?</value>
   </data>
   <data name="txtDown2		" xml:space="preserve">
-    <value>¡Hay disponible una nueva versión!</value>
+    <value>Обнаружена новая версия!</value>
   </data>
   <data name="txtSave1		" xml:space="preserve">
-    <value>¿Desea guardar los cambios?</value>
+    <value>Может хотите сохранить Ваши изменения?</value>
   </data>
   <data name="txtSave2		" xml:space="preserve">
-    <value>Tiene cambios sin guardar</value>
+    <value>У Вас есть несохраненные изменения</value>
   </data>
   <data name="txtOpen1		" xml:space="preserve">
-    <value>Archivos de recursos</value>
+    <value>Файлы ресурсов</value>
   </data>
   <data name="txtOpen2		" xml:space="preserve">
-    <value>Abrir archivo de recursos</value>
+    <value>Открыть ресурсные файлы</value>
   </data>
   <data name="btnSave			" xml:space="preserve">
-    <value>Guardar</value>
+    <value>Записать изменения</value>
   </data>
   <data name="btnClose		" xml:space="preserve">
-    <value>Cerrar</value>
+    <value>Закрыть</value>
   </data>
   <data name="btnCancel		" xml:space="preserve">
-    <value>Cancelar</value>
+    <value>Отмена</value>
   </data>
   <data name="errorTranslator_msg" xml:space="preserve">
-    <value>El sistema de traducciones online no esta funcionando en este momento.
-Por favor, intente de nuevo más tarde.
-Error reportado: {0}</value>
+    <value>Microsoft translation engine doesn't seem to be working right now.
+Please try again later.
+Error: {0}</value>
   </data>
   <data name="errorTranslator_title" xml:space="preserve">
-    <value>Error en el motor de traducción</value>
+    <value>Translation engine error</value>
   </data>
   <data name="frmAbout		" xml:space="preserve">
-    <value>Acerca de</value>
+    <value>О программе</value>
   </data>
   <data name="lblCoded		" xml:space="preserve">
-    <value>Programado por</value>
+    <value>Программирование</value>
   </data>
   <data name="lblTranslated	" xml:space="preserve">
-    <value>Traducido por Matías E. Palomeque</value>
+    <value>Перевод Валентин Гушан (alfa версия)</value>
   </data>
   <data name="btnWebsite		" xml:space="preserve">
-    <value>Sitio web</value>
+    <value>Web сайт</value>
   </data>
   <data name="btnDonate		" xml:space="preserve">
-    <value>Donar</value>
+    <value>Пожертвование</value>
   </data>
   <data name="statusHEquals	" xml:space="preserve">
-    <value>{0} coincidencias han sido encontradas</value>
+    <value>было найдено {0} совпадений</value>
   </data>
   <data name="statusHDiffs	" xml:space="preserve">
-    <value>{0} diferencias han sido encontradas</value>
+    <value>было найдено {0} различий</value>
   </data>
   <data name="statusHText		" xml:space="preserve">
-    <value>{0} celdas conteniendo texto han sido encontradas</value>
+    <value>было обнаружено {0} ячеек содержащих текст </value>
   </data>
   <data name="statusClear		" xml:space="preserve">
-    <value>Todos los destacados han sido removidos</value>
+    <value>Все выделения были сброшены</value>
   </data>
   <data name="statusFText		" xml:space="preserve">
-    <value>Mostrando {0} celdas de {1} conteniendo frases para traducir</value>
+    <value>Показаны {0} ячеек из {1} подлежащие переводу</value>
   </data>
   <data name="statusFAll		" xml:space="preserve">
-    <value>Mostrando todas las celdas ({0})</value>
+    <value>Показаны все ячейки ({0})</value>
   </data>
   <data name="tsbtnOpen		" xml:space="preserve">
-    <value>Abrir</value>
+    <value>Открыть</value>
   </data>
   <data name="tsbtnSave		" xml:space="preserve">
-    <value>Guardar</value>
+    <value>Сохранить изменения</value>
   </data>
   <data name="tsbtnKeys		" xml:space="preserve">
-    <value>Mostrar/Ocultar claves</value>
+    <value>Показать/Скрыть ключи</value>
   </data>
   <data name="tsbtnFText		" xml:space="preserve">
-    <value>Filtrar: solo texto</value>
+    <value>Фильтр: только текст</value>
   </data>
   <data name="tsbtnFAll		" xml:space="preserve">
-    <value>Filtrar: todo</value>
+    <value>Сбросить фильтр</value>
   </data>
   <data name="tsbtnHDiffs		" xml:space="preserve">
-    <value>Destacar: diferencias</value>
+    <value>Выделить: различия</value>
   </data>
   <data name="tsbtnHEquals	" xml:space="preserve">
-    <value>Destacar: igualdades</value>
+    <value>Выделить: совпадения</value>
   </data>
   <data name="tsbtnHText		" xml:space="preserve">
-    <value>Destacar: texto</value>
+    <value>Выделить: текст</value>
   </data>
   <data name="tsbtnClear		" xml:space="preserve">
-    <value>Remover destacados</value>
+    <value>Очистить выделения</value>
   </data>
   <data name="tsbtnSettings	" xml:space="preserve">
-    <value>Preferencias</value>
+    <value>Настройки</value>
   </data>
   <data name="tsbtnTranslator" xml:space="preserve">
-    <value>Traductor</value>
+    <value>Переводчик</value>
   </data>
   <data name="tsbtnAbout		" xml:space="preserve">
-    <value>Acerca de</value>
+    <value>О программе</value>
   </data>
   <data name="errorSaving		" xml:space="preserve">
-    <value>Ocurrió un error al intentar guardar los cambios</value>
+    <value>Обнаружена ошибка в процессе записи изменений</value>
   </data>
   <data name="gbComment		" xml:space="preserve">
-    <value>Comentario:</value>
+    <value>Комментарий:</value>
   </data>
   <data name="gbValue			" xml:space="preserve">
-    <value>Valor:</value>
+    <value>Значение:</value>
   </data>
   <data name="txtTranslateFrom" xml:space="preserve">
-    <value>Traducir desde {0}</value>
+    <value>Translate from {0}</value>
   </data>
   <data name="txtKeys			" xml:space="preserve">
-    <value>Claves</value>
+    <value>Keys</value>
   </data>
   <data name="errorEmptySource_title" xml:space="preserve">
     <value>Empty source data</value>
@@ -243,102 +243,102 @@ Error reportado: {0}</value>
     <value>The source cell doesn't contain any translatable text</value>
   </data>
   <data name="frmSettings		" xml:space="preserve">
-    <value>Preferencias</value>
+    <value>Настройки</value>
   </data>
   <data name="tpgInterface	" xml:space="preserve">
-    <value>Interfaz</value>
+    <value>Интерфейс</value>
   </data>
   <data name="tpgBehavior		" xml:space="preserve">
-    <value>Comportamiento</value>
+    <value>Поведение</value>
   </data>
   <data name="lblLanguage		" xml:space="preserve">
-    <value>Idioma:</value>
+    <value>Язык:</value>
   </data>
   <data name="lblColor1		" xml:space="preserve">
-    <value>Color de diferencias:</value>
+    <value>Цвет различий:</value>
   </data>
   <data name="lblColor2		" xml:space="preserve">
-    <value>Color de igualdades:</value>
+    <value>Цвет совпадений:</value>
   </data>
   <data name="lblColor3		" xml:space="preserve">
-    <value>Color de celdas modificadas:</value>
+    <value>Цвет изменений:</value>
   </data>
   <data name="lblColor4		" xml:space="preserve">
-    <value>Color de las claves:</value>
+    <value>Цвет ключей:</value>
   </data>
   <data name="lblColor5		" xml:space="preserve">
-    <value>Color de celdas con texto:</value>
+    <value>Цвет текста:</value>
   </data>
   <data name="errorLoading	" xml:space="preserve">
-    <value>No se han podido cargar las preferencias. ¡Formato inválido!</value>
+    <value>Не могу загрузить настройки, неверный формат!</value>
   </data>
   <data name="chbSortByKeyOnSave" xml:space="preserve">
-    <value>Ordenar por clave antes de guardar</value>
+    <value>Sort by key on save</value>
   </data>
   <data name="chbShowKeyColumnOnStart" xml:space="preserve">
-    <value>Mostrar columna de claves al iniciar</value>
+    <value>Show key column on start</value>
   </data>
   <data name="frmTranslator	" xml:space="preserve">
-    <value>Traductor (Bing)</value>
+    <value>Переводчик (На базе Bing)</value>
   </data>
   <data name="lblLanguages	" xml:space="preserve">
-    <value>Idiomas:</value>
+    <value>Языки:</value>
   </data>
   <data name="itemAutoDetect	" xml:space="preserve">
-    <value>Detección automática</value>
+    <value>Авто-определение</value>
   </data>
   <data name="btnSwap			" xml:space="preserve">
-    <value>Invertir</value>
+    <value>Поменять</value>
   </data>
   <data name="btnTranslate	" xml:space="preserve">
-    <value>Traducir</value>
+    <value>Перевод</value>
   </data>
   <data name="llblClearAll	" xml:space="preserve">
-    <value>Limpiar campos</value>
+    <value>Очисть все</value>
   </data>
   <data name="llblCopy1		" xml:space="preserve">
-    <value>Copiar original al portapapeles</value>
+    <value>Копировать текст-источник в буфер обмена</value>
   </data>
   <data name="llblCopy2		" xml:space="preserve">
-    <value>Copiar traducción al portapapeles</value>
+    <value>Копировать переведенный текст в буфер обмена</value>
   </data>
   <data name="FrmFind			" xml:space="preserve">
-    <value>Buscar</value>
+    <value>Найти</value>
   </data>
   <data name="FrmFindReplace	" xml:space="preserve">
-    <value>Buscar y Reemplazar</value>
+    <value>Найти &amp; заменить</value>
   </data>
   <data name="lblTextToFind	" xml:space="preserve">
-    <value>Buscar:</value>
+    <value>Найти:</value>
   </data>
   <data name="lblReplaceWith	" xml:space="preserve">
-    <value>Reemplazar:</value>
+    <value>Заменить:</value>
   </data>
   <data name="btnReplace		" xml:space="preserve">
-    <value>Reemplazar</value>
+    <value>Заменить</value>
   </data>
   <data name="btnReplaceAll	" xml:space="preserve">
-    <value>Reemplazar Todas</value>
+    <value>Заменить все</value>
   </data>
   <data name="btnFindPrevious	" xml:space="preserve">
-    <value>Buscar Prev</value>
+    <value>Найти предыдущее</value>
   </data>
   <data name="btnFindNext		" xml:space="preserve">
-    <value>Buscar Sig</value>
+    <value>Найти следующее</value>
   </data>
   <data name="ckbCaseSensitive" xml:space="preserve">
-    <value>Distinguir mayúsculas de minúsculas</value>
+    <value>С учетом регистра</value>
   </data>
   <data name="strEndReached_title	" xml:space="preserve">
-    <value>Fin del documento</value>
+    <value>Достигнут конец документа!</value>
   </data>
   <data name="strEndReached_msg	" xml:space="preserve">
-    <value>¡Se alcanzó la última celda!</value>
+    <value>Достигнута последняя ячейка!</value>
   </data>
   <data name="strBegReached_title" xml:space="preserve">
-    <value>Inicio del documento</value>
+    <value>Достигнуто начало документа!</value>
   </data>
   <data name="strBegReached_msg	" xml:space="preserve">
-    <value>¡Se alcanzó la primera celda!</value>
+    <value>Достигнута первая ячейка!</value>
   </data>
 </root>

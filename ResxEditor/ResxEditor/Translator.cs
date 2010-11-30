@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -24,6 +23,7 @@ namespace ResxEditor.Forms
             httpWebRequest.Method = "POST";
             httpWebRequest.ContentType = "text/plain";
             httpWebRequest.Timeout = 4000;
+            httpWebRequest.ReadWriteTimeout = 2000;
             byte[] bytes = Encoding.UTF8.GetBytes(text);
 
             try
@@ -40,12 +40,9 @@ namespace ResxEditor.Forms
                 return translatedText;
 
             }
-            catch (WebException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(@"Microsoft translation engine doesn't seem to be working right now.
-                    Please try again later.
-                    Error: " + ex.Message, "Translation engine error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show(string.Format(LangHandler.GetString("errorTranslator_msg"), ex.Message), LangHandler.GetString("errorTranslator_title"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return string.Empty;
             }
         }

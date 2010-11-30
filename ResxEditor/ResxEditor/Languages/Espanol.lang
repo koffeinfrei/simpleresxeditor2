@@ -7,6 +7,8 @@ txtOpen2		= Abrir archivo de recursos
 btnSave			= Guardar
 btnClose		= Cerrar
 btnCancel		= Cancelar
+errorTranslator_msg = El sistema de traducciones online no esta funcionando en este momento.\nPor favor, intente de nuevo más tarde.\nError reportado: {0}
+errorTranslator_title = Error en el motor de traducción
 
 # Form: About
 frmAbout		= Acerca de
@@ -37,6 +39,10 @@ tsbtnAbout		= Acerca de
 errorSaving		= Ocurrió un error al intentar guardar los cambios
 gbComment		= Comentario:
 gbValue			= Valor:
+txtTranslateFrom= Traducir desde {0}
+txtKeys			= Claves
+errorEmptySource_title = Empty source data
+errorEmptySource_msg = The source cell doesn't contain any translatable text
 
 # Form: Settings
 frmSettings		= Preferencias
@@ -49,6 +55,8 @@ lblColor3		= Color de celdas modificadas:
 lblColor4		= Color de las claves:
 lblColor5		= Color de celdas con texto:
 errorLoading	= No se han podido cargar las preferencias. ¡Formato inválido!
+chbSortByKeyOnSave = Ordenar por clave antes de guardar
+chbShowKeyColumnOnStart = Mostrar columna de claves al iniciar
 
 # Form: Translator
 frmTranslator	= Traductor (Bing)

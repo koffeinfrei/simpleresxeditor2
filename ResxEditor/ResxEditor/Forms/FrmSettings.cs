@@ -118,6 +118,10 @@ namespace ResxEditor.Forms
             // Buttons
             btnSave.Text = LangHandler.GetString("btnSave");
             btnCancel.Text = LangHandler.GetString("btnCancel");
+
+            //Checkboxes
+            chbSortByKeyOnSave.Text = LangHandler.GetString("chbSortByKeyOnSave");
+            chbShowKeyColumnOnStart.Text = LangHandler.GetString("chbShowKeyColumnOnStart");
         }
 
         private void loadSettings()
@@ -133,6 +137,9 @@ namespace ResxEditor.Forms
             btnColor4.BackColor = Color.FromArgb(SettingsHandler.Instance.Color4);
             colorDialog5.Color = Color.FromArgb(SettingsHandler.Instance.Color5);
             btnColor5.BackColor = Color.FromArgb(SettingsHandler.Instance.Color5);
+
+            chbSortByKeyOnSave.Checked = SettingsHandler.Instance.SortByKeyOnSave;
+            chbShowKeyColumnOnStart.Checked = SettingsHandler.Instance.ShowKeyColumnOnStart;
         }
 
         private void saveSettings()
@@ -143,6 +150,8 @@ namespace ResxEditor.Forms
             SettingsHandler.Instance.Color3 = btnColor3.BackColor.ToArgb();
             SettingsHandler.Instance.Color4 = btnColor4.BackColor.ToArgb();
             SettingsHandler.Instance.Color5 = btnColor5.BackColor.ToArgb();
+            SettingsHandler.Instance.SortByKeyOnSave = chbSortByKeyOnSave.Checked;
+            SettingsHandler.Instance.ShowKeyColumnOnStart = chbShowKeyColumnOnStart.Checked;
             SettingsHandler.Instance.Save();
         }
     }

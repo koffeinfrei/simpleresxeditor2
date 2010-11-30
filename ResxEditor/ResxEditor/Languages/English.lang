@@ -7,6 +7,8 @@ txtOpen2		= Open resources file
 btnSave			= Save
 btnClose		= Close
 btnCancel		= Cancel
+errorTranslator_msg = Microsoft translation engine doesn't seem to be working right now.\nPlease try again later.\nError: {0}
+errorTranslator_title = Translation engine error
 
 # Form: About
 frmAbout		= About
@@ -37,6 +39,10 @@ tsbtnAbout		= About
 errorSaving		= An error ocurred trying to save changes
 gbComment		= Comment:
 gbValue			= Value:
+txtTranslateFrom= Translate from {0}
+txtKeys			= Keys
+errorEmptySource_title = Empty source data
+errorEmptySource_msg = The source cell doesn't contain any translatable text
 
 # Form: Settings
 frmSettings		= Settings
@@ -49,6 +55,8 @@ lblColor3		= Color unsaved cells:
 lblColor4		= Color keys:
 lblColor5		= Color text:
 errorLoading	= Unable to load settings, invalid format!
+chbSortByKeyOnSave = Sort by key on save
+chbShowKeyColumnOnStart = Show key column on start
 
 # Form: Translator
 frmTranslator	= Translator (Powered by Bing)

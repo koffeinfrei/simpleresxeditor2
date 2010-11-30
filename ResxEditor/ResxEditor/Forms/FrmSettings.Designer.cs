@@ -44,6 +44,8 @@
             this.lblColor5 = new System.Windows.Forms.Label();
             this.btnColor5 = new System.Windows.Forms.Button();
             this.tpgBehavior = new System.Windows.Forms.TabPage();
+            this.chbShowKeyColumnOnStart = new System.Windows.Forms.CheckBox();
+            this.chbSortByKeyOnSave = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
@@ -51,9 +53,12 @@
             this.colorDialog3 = new System.Windows.Forms.ColorDialog();
             this.colorDialog4 = new System.Windows.Forms.ColorDialog();
             this.colorDialog5 = new System.Windows.Forms.ColorDialog();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tpgInterface.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tpgBehavior.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -237,6 +242,7 @@
             // 
             // tpgBehavior
             // 
+            this.tpgBehavior.Controls.Add(this.tableLayoutPanel2);
             this.tpgBehavior.Location = new System.Drawing.Point(4, 22);
             this.tpgBehavior.Name = "tpgBehavior";
             this.tpgBehavior.Padding = new System.Windows.Forms.Padding(3);
@@ -244,6 +250,28 @@
             this.tpgBehavior.TabIndex = 1;
             this.tpgBehavior.Text = "tpgBehavior";
             this.tpgBehavior.UseVisualStyleBackColor = true;
+            // 
+            // chbShowKeyColumnOnStart
+            // 
+            this.chbShowKeyColumnOnStart.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chbShowKeyColumnOnStart.AutoSize = true;
+            this.chbShowKeyColumnOnStart.Location = new System.Drawing.Point(3, 26);
+            this.chbShowKeyColumnOnStart.Name = "chbShowKeyColumnOnStart";
+            this.chbShowKeyColumnOnStart.Size = new System.Drawing.Size(160, 17);
+            this.chbShowKeyColumnOnStart.TabIndex = 1;
+            this.chbShowKeyColumnOnStart.Text = "chbShowKeyColumnOnStart";
+            this.chbShowKeyColumnOnStart.UseVisualStyleBackColor = true;
+            // 
+            // chbSortByKeyOnSave
+            // 
+            this.chbSortByKeyOnSave.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chbSortByKeyOnSave.AutoSize = true;
+            this.chbSortByKeyOnSave.Location = new System.Drawing.Point(3, 3);
+            this.chbSortByKeyOnSave.Name = "chbSortByKeyOnSave";
+            this.chbSortByKeyOnSave.Size = new System.Drawing.Size(132, 17);
+            this.chbSortByKeyOnSave.TabIndex = 0;
+            this.chbSortByKeyOnSave.Text = "chbSortByKeyOnSave";
+            this.chbSortByKeyOnSave.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
@@ -269,6 +297,22 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.chbSortByKeyOnSave, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.chbShowKeyColumnOnStart, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(546, 277);
+            this.tableLayoutPanel2.TabIndex = 2;
+            // 
             // FrmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,6 +331,9 @@
             this.tpgInterface.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tpgBehavior.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,5 +364,8 @@
         private System.Windows.Forms.ColorDialog colorDialog3;
         private System.Windows.Forms.ColorDialog colorDialog4;
         private System.Windows.Forms.ColorDialog colorDialog5;
+        private System.Windows.Forms.CheckBox chbSortByKeyOnSave;
+        private System.Windows.Forms.CheckBox chbShowKeyColumnOnStart;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }

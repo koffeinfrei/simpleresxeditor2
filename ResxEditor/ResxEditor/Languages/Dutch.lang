@@ -1,4 +1,11 @@
-﻿txtDown1=Nu downloaden?
+﻿errorTranslator_msg = Microsoft translation engine doesn't seem to be working right now.\nPlease try again later.\nError: {0}
+errorTranslator_title = Translation engine error
+txtTranslateFrom= Translate from {0}
+errorEmptySource_title = Empty source data
+errorEmptySource_msg = The source cell doesn't contain any translatable text
+chbSortByKeyOnSave = Sort by key on save
+chbShowKeyColumnOnStart = Show key column on start
+txtDown1=Nu downloaden?
 txtDown2=Een nieuwe versie is beschikbaar!
 txtSave1=De veranderingen opslaan?
 txtSave2=Niet alle wijzigingen zijn opgeslagen
@@ -65,3 +72,4 @@ strEndReached_title	= Document end reached
 strEndReached_msg	= Last cell reached!
 strBegReached_title = Document begin reached
 strBegReached_msg	= First cell reached!
+txtKeys			= Keys

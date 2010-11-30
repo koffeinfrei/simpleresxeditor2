@@ -7,6 +7,8 @@ txtOpen2		= فتح ملف الموارد
 btnSave			= حفظ
 btnClose		= غلق
 btnCancel		= إلغاء
+errorTranslator_msg = Microsoft translation engine doesn't seem to be working right now.\nPlease try again later.\nError: {0}
+errorTranslator_title = Translation engine error
 
 # Form: About
 frmAbout		= بخصوص
@@ -37,6 +39,10 @@ tsbtnAbout		= بخصوص
 errorSaving		= حدث خطأ أثناء محاولة حفظ التغييرات
 gbComment		= التعليق:
 gbValue			= القيمة:
+txtTranslateFrom= Translate from {0}
+txtKeys			= Keys
+errorEmptySource_title = Empty source data
+errorEmptySource_msg = The source cell doesn't contain any translatable text
 
 # Form: Settings
 frmSettings		= الإعدادات
@@ -49,6 +55,8 @@ lblColor3		= لون خلايا لم يتم حفظها:
 lblColor4		= لون المفاتيح:
 lblColor5		= لون النضّ:
 errorLoading	= !غير قادر على تحميل الإعدادات،صيغة غير صالحة
+chbSortByKeyOnSave = Sort by key on save
+chbShowKeyColumnOnStart = Show key column on start
 
 # Form: Translator
 frmTranslator	= (المترجم (بدعم من بنج

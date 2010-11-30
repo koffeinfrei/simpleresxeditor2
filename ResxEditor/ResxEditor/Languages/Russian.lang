@@ -7,6 +7,8 @@ txtOpen2		= Открыть ресурсные файлы
 btnSave			= Записать изменения
 btnClose		= Закрыть
 btnCancel		= Отмена
+errorTranslator_msg = Microsoft translation engine doesn't seem to be working right now.\nPlease try again later.\nError: {0}
+errorTranslator_title = Translation engine error
 
 # Form: About
 frmAbout		= О программе
@@ -37,6 +39,10 @@ tsbtnAbout		= О программе
 errorSaving		= Обнаружена ошибка в процессе записи изменений
 gbComment		= Комментарий:
 gbValue			= Значение:
+txtTranslateFrom= Translate from {0}
+txtKeys			= Keys
+errorEmptySource_title = Empty source data
+errorEmptySource_msg = The source cell doesn't contain any translatable text
 
 # Form: Settings
 frmSettings		= Настройки
@@ -49,6 +55,8 @@ lblColor3		= Цвет изменений:
 lblColor4		= Цвет ключей:
 lblColor5		= Цвет текста:
 errorLoading	= Не могу загрузить настройки, неверный формат!
+chbSortByKeyOnSave = Sort by key on save
+chbShowKeyColumnOnStart = Show key column on start
 
 # Form: Translator
 frmTranslator	= Переводчик (На базе Bing)

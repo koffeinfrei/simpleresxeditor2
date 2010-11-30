@@ -128,8 +128,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Languages\Arabic.lang" />
     <None Include="Languages\Dutch.lang" />
     <None Include="Languages\Espanol.lang" />
+    <None Include="Languages\French.lang" />
+    <None Include="Languages\Russian.lang" />
+    <None Include="Languages\Ukrainian.lang" />
     <None Include="Resources\tsbtnTranslator.png" />
     <None Include="Resources\tsbtnSettings.png" />
     <None Include="Resources\tsbtnSave.png" />
