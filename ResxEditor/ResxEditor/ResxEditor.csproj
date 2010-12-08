@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ResxEditor</RootNamespace>
     <AssemblyName>Simple Resx Editor</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
@@ -34,7 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocX, Version=1.0.0.58104, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_lib\DocX.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -72,6 +79,7 @@
     <Compile Include="Forms\FrmTranslator.Designer.cs">
       <DependentUpon>FrmTranslator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DocxTableExtensionMethods.cs" />
     <Compile Include="Translator.cs" />
     <Compile Include="Helpers\BaseForm.cs">
       <SubType>Form</SubType>
@@ -118,6 +126,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CommonResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="WordDocument.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo.ico" />
@@ -128,6 +137,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <Content Include="Resources\tsbtnExport.png" />
+    <Content Include="Resources\tsbtnImport.png" />
     <None Include="Languages\Arabic.lang" />
     <None Include="Languages\Dutch.lang" />
     <None Include="Languages\Espanol.lang" />

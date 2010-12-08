@@ -21,6 +21,7 @@ namespace ResxEditor.Forms
         private bool initialChanges = false;
         private bool unsavedChanges = false;
         private Dictionary<int, ContextMenuStrip> contextMenus = new Dictionary<int, ContextMenuStrip>();
+        private WordDocument wordDocument;
 
         public FrmMain()
         {
@@ -70,6 +71,8 @@ namespace ResxEditor.Forms
             tsbtnSettings.Image = Properties.Resources.tsbtnSettings;
             tsbtnAbout.Image = Properties.Resources.tsbtnAbout;
             tsbtnTranslator.Image = Properties.Resources.tsbtnTranslator;
+            tsbtnExport.Image = Properties.Resources.tsbtnExport;
+            tsbtnImport.Image = Properties.Resources.tsbtnImport;
 
             //tsbtnOpen.ImageScaling      = ToolStripItemImageScaling.SizeToFit;
             //tsbtnSave.ImageScaling = ToolStripItemImageScaling.SizeToFit;
@@ -292,6 +295,10 @@ namespace ResxEditor.Forms
             tsbtnHText.ToolTipText = LangHandler.GetString("tsbtnHText");
             tsbtnClear.Text = LangHandler.GetString("tsbtnClear");
             tsbtnClear.ToolTipText = LangHandler.GetString("tsbtnClear");
+            tsbtnImport.Text = LangHandler.GetString("tsbtnImport");
+            tsbtnImport.ToolTipText = LangHandler.GetString("tsbtnImport");
+            tsbtnExport.Text = LangHandler.GetString("tsbtnExport");
+            tsbtnExport.ToolTipText = LangHandler.GetString("tsbtnExport");
             tsbtnTranslator.Text = LangHandler.GetString("tsbtnTranslator");
             tsbtnTranslator.ToolTipText = LangHandler.GetString("tsbtnTranslator");
             tsbtnSettings.Text = LangHandler.GetString("tsbtnSettings");
@@ -946,6 +953,38 @@ namespace ResxEditor.Forms
         public static bool Contains(string source, string toCheck, StringComparison comp)
         {
             return source.IndexOf(toCheck, comp) >= 0;
+        }
+
+        private void tsbtnImport_Click(object sender, EventArgs e)
+        {
+            if (AssertDocx())
+            {
+                saveResxFiles(true);
+                wordDocument.Import();
+            }
+        }
+
+        private void tsbtnExport_Click(object sender, EventArgs e)
+        {
+            if (AssertDocx())
+            {
+                wordDocument.Export();
+            }
+        }
+
+        private bool AssertDocx()
+        {
+            if (dataGridView.Rows.Count == 0 && dataGridView.Columns.Count == 0)
+            {
+                return false;
+            }
+
+            if (wordDocument == null)
+            {
+                wordDocument = new WordDocument(dataGridView);
+            }
+
+            return true;
         }
     }
 }

@@ -58,7 +58,10 @@
             this.tsbtnSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnExport = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnImport = new System.Windows.Forms.ToolStripButton();
             this.imgListMain = new System.Windows.Forms.ImageList(this.components);
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.tscContainer.ContentPanel.SuspendLayout();
             this.tscContainer.TopToolStripPanel.SuspendLayout();
@@ -98,14 +101,14 @@
             this.dataGridView.Location = new System.Drawing.Point(0, 0);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(584, 106);
+            this.dataGridView.Size = new System.Drawing.Size(584, 105);
             this.dataGridView.TabIndex = 0;
+            this.dataGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEnter);
+            this.dataGridView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView_CellPainting);
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             this.dataGridView.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dataGridView_SortCompare);
-            this.dataGridView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView_CellPainting);
-            this.dataGridView.DragEnter += new System.Windows.Forms.DragEventHandler(this.dataGridView_DragEnter);
-            this.dataGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEnter);
             this.dataGridView.DragDrop += new System.Windows.Forms.DragEventHandler(this.dataGridView_DragDrop);
+            this.dataGridView.DragEnter += new System.Windows.Forms.DragEventHandler(this.dataGridView_DragEnter);
             // 
             // tscContainer
             // 
@@ -140,7 +143,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(584, 215);
-            this.splitContainer1.SplitterDistance = 106;
+            this.splitContainer1.SplitterDistance = 105;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 3;
             // 
@@ -157,7 +160,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.gbValue);
-            this.splitContainer2.Size = new System.Drawing.Size(584, 107);
+            this.splitContainer2.Size = new System.Drawing.Size(584, 108);
             this.splitContainer2.SplitterDistance = 200;
             this.splitContainer2.SplitterWidth = 2;
             this.splitContainer2.TabIndex = 0;
@@ -169,7 +172,7 @@
             this.gbComment.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbComment.Location = new System.Drawing.Point(0, 0);
             this.gbComment.Name = "gbComment";
-            this.gbComment.Size = new System.Drawing.Size(200, 107);
+            this.gbComment.Size = new System.Drawing.Size(200, 108);
             this.gbComment.TabIndex = 0;
             this.gbComment.TabStop = false;
             this.gbComment.Text = "gbComment";
@@ -187,7 +190,7 @@
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
             this.txtComment.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtComment.Size = new System.Drawing.Size(182, 79);
+            this.txtComment.Size = new System.Drawing.Size(182, 80);
             this.txtComment.TabIndex = 0;
             this.txtComment.Leave += new System.EventHandler(this.txtComment_Leave);
             // 
@@ -198,7 +201,7 @@
             this.gbValue.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbValue.Location = new System.Drawing.Point(0, 0);
             this.gbValue.Name = "gbValue";
-            this.gbValue.Size = new System.Drawing.Size(382, 107);
+            this.gbValue.Size = new System.Drawing.Size(382, 108);
             this.gbValue.TabIndex = 1;
             this.gbValue.TabStop = false;
             this.gbValue.Text = "gbValue";
@@ -216,7 +219,7 @@
             this.txtValue.Multiline = true;
             this.txtValue.Name = "txtValue";
             this.txtValue.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtValue.Size = new System.Drawing.Size(364, 79);
+            this.txtValue.Size = new System.Drawing.Size(364, 80);
             this.txtValue.TabIndex = 0;
             this.txtValue.Leave += new System.EventHandler(this.txtValue_Leave);
             // 
@@ -251,6 +254,9 @@
             this.tsbtnHText,
             this.tsbtnClear,
             this.toolStripSeparator3,
+            this.tsbtnExport,
+            this.tsbtnImport,
+            this.toolStripSeparator6,
             this.tsbtnTranslator,
             this.toolStripSeparator4,
             this.tsbtnSettings,
@@ -258,7 +264,7 @@
             this.tsbtnAbout});
             this.tspMain.Location = new System.Drawing.Point(3, 0);
             this.tspMain.Name = "tspMain";
-            this.tspMain.Size = new System.Drawing.Size(316, 25);
+            this.tspMain.Size = new System.Drawing.Size(401, 25);
             this.tspMain.TabIndex = 0;
             this.tspMain.Text = "tspMain";
             // 
@@ -395,11 +401,34 @@
             this.tsbtnAbout.Text = "tsbtnAbout";
             this.tsbtnAbout.Click += new System.EventHandler(this.tsbtnAbout_Click);
             // 
+            // tsbtnExport
+            // 
+            this.tsbtnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnExport.Name = "tsbtnExport";
+            this.tsbtnExport.Size = new System.Drawing.Size(23, 22);
+            this.tsbtnExport.Text = "toolStripButton1";
+            this.tsbtnExport.Click += new System.EventHandler(this.tsbtnExport_Click);
+            // 
+            // tsbtnImport
+            // 
+            this.tsbtnImport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnImport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnImport.Name = "tsbtnImport";
+            this.tsbtnImport.Size = new System.Drawing.Size(23, 22);
+            this.tsbtnImport.Text = "toolStripButton2";
+            this.tsbtnImport.Click += new System.EventHandler(this.tsbtnImport_Click);
+            // 
             // imgListMain
             // 
             this.imgListMain.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             this.imgListMain.ImageSize = new System.Drawing.Size(32, 32);
             this.imgListMain.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
             // 
             // FrmMain
             // 
@@ -409,10 +438,10 @@
             this.Controls.Add(this.tscContainer);
             this.MinimumSize = new System.Drawing.Size(400, 100);
             this.Name = "FrmMain";
-            this.Load += new System.EventHandler(this.FrmMain_Load);
-            this.Move += new System.EventHandler(this.FrmMain_Move);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ResizeEnd += new System.EventHandler(this.FrmMain_ResizeEnd);
+            this.Move += new System.EventHandler(this.FrmMain_Move);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.tscContainer.ContentPanel.ResumeLayout(false);
             this.tscContainer.ContentPanel.PerformLayout();
@@ -469,6 +498,9 @@
         private System.Windows.Forms.TextBox txtValue;
         private System.Windows.Forms.ToolStripButton tsbtnTranslator;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton tsbtnExport;
+        private System.Windows.Forms.ToolStripButton tsbtnImport;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
     }
 }
 
