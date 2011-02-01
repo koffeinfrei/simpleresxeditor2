@@ -21,20 +21,25 @@ using Novacode;
 namespace ResxEditor.Helpers
 {
     /// <summary>
-    /// Extension methods for the <see cref="Paragraph"/> class from the <see cref="DocX"/> library.
+    ///   Extension methods for the <see cref = "Paragraph" /> class from the <see cref = "DocX" /> library.
     /// </summary>
     public static class DocxTableExtensionMethods
     {
         /// <summary>
-        /// Sets the cell text, i.e. replaces the existing text or inserts it if none is present.
+        ///   Sets the cell text, i.e. replaces the existing text or inserts it if none is present.
         /// </summary>
-        /// <param name="table">The table.</param>
-        /// <param name="text">The text.</param>
-        /// <param name="row">The row.</param>
-        /// <param name="col">The col.</param>
+        /// <param name = "table">The table.</param>
+        /// <param name = "text">The text.</param>
+        /// <param name = "row">The row.</param>
+        /// <param name = "col">The col.</param>
         /// <returns></returns>
         public static Paragraph SetCellText(this Table table, string text, int row, int col)
         {
+            if (table.RowCount < row + 1)
+            {
+                table.InsertRow();
+            }
+
             Paragraph paragraph = table.Rows[row].Cells[col].Paragraphs.First();
 
             if (!string.IsNullOrEmpty(paragraph.Text))
@@ -45,11 +50,11 @@ namespace ResxEditor.Helpers
         }
 
         /// <summary>
-        /// Gets the joined cell text of all the paragraphs inside the table cell.
+        ///   Gets the joined cell text of all the paragraphs inside the table cell.
         /// </summary>
-        /// <param name="table">The table.</param>
-        /// <param name="row">The row.</param>
-        /// <param name="col">The col.</param>
+        /// <param name = "table">The table.</param>
+        /// <param name = "row">The row.</param>
+        /// <param name = "col">The col.</param>
         /// <returns></returns>
         public static string GetCellText(this Table table, int row, int col)
         {

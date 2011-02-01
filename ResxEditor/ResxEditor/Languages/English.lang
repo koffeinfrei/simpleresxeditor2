@@ -45,6 +45,9 @@ txtTranslateFrom= Translate from {0}
 txtKeys			= Keys
 errorEmptySource_title = Empty source data
 errorEmptySource_msg = The source cell doesn't contain any translatable text
+statusImportExport_title = DocX Import / Export
+statusImportOk_msg = Documented was successfully imported from {0}
+statusExportOk_msg = Documented was successfully exported to {0}
 
 # Form: Settings
 frmSettings		= Settings
@@ -84,3 +87,7 @@ strEndReached_title	= Document end reached
 strEndReached_msg	= Last cell reached!
 strBegReached_title = Document begin reached
 strBegReached_msg	= First cell reached!
+
+# DocX
+titleComment = Comment
+titleScreenshot = Screenshot

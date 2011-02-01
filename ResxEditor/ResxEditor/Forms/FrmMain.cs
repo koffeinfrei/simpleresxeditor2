@@ -961,6 +961,8 @@ namespace ResxEditor.Forms
             {
                 saveResxFiles(true);
                 wordDocument.Import();
+                MessageBox.Show(string.Format(LangHandler.GetString("statusImportOk_msg"), wordDocument.FilePath), 
+                    LangHandler.GetString("statusImportExport_title"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -969,6 +971,8 @@ namespace ResxEditor.Forms
             if (AssertDocx())
             {
                 wordDocument.Export();
+                MessageBox.Show(string.Format(LangHandler.GetString("statusExportOk_msg"), wordDocument.FilePath), 
+                    LangHandler.GetString("statusImportExport_title"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -979,10 +983,8 @@ namespace ResxEditor.Forms
                 return false;
             }
 
-            if (wordDocument == null)
-            {
-                wordDocument = new WordDocument(dataGridView);
-            }
+            // return a new instance every time, as row count may have changed
+            wordDocument = new WordDocument(dataGridView);
 
             return true;
         }
