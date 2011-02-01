@@ -56,6 +56,7 @@ namespace ResxEditor.Helpers
         public long LastUpdateCheck { get; set; }
         public bool SortByKeyOnSave { get; set; }
         public bool ShowKeyColumnOnStart { get; set; }
+        public bool PromptForDocxPaths { get; set; }
 
         private void loadDefaultValues()
         {
@@ -81,6 +82,7 @@ namespace ResxEditor.Helpers
             LastUpdateCheck = DateTime.Now.AddDays(-2).Ticks;
             SortByKeyOnSave = false;
             ShowKeyColumnOnStart = false;
+            PromptForDocxPaths = false;
         }
         
         public void Read()
@@ -123,6 +125,7 @@ namespace ResxEditor.Helpers
                         instance.LastUpdateCheck = settingsData.LastUpdateCheck;
                         instance.SortByKeyOnSave = settingsData.SortByKeyOnSave;
                         instance.ShowKeyColumnOnStart = settingsData.ShowKeyColumnOnStart;
+                        instance.PromptForDocxPaths = settingsData.PromptForDocxPaths;
                     }
                     catch(Exception ex)
                     {

@@ -4,6 +4,9 @@ txtSave1		= Do you want to save changes to file?
 txtSave2		= You have unsaved changes
 txtOpen1		= Resources files
 txtOpen2		= Open resources file
+txtOpenDocx1	= DocX files
+txtOpenDocx2	= Open DocX file
+txtSaveDocx 	= Save DocX file
 btnSave			= Save
 btnClose		= Close
 btnCancel		= Cancel
@@ -45,6 +48,9 @@ txtTranslateFrom= Translate from {0}
 txtKeys			= Keys
 errorEmptySource_title = Empty source data
 errorEmptySource_msg = The source cell doesn't contain any translatable text
+statusImportExport_title = DocX Import / Export
+statusImportOk_msg = Documented was imported from {0}
+statusExportOk_msg = Documented was exported to {0}
 
 # Form: Settings
 frmSettings		= Settings
@@ -59,6 +65,7 @@ lblColor5		= Color text:
 errorLoading	= Unable to load settings, invalid format!
 chbSortByKeyOnSave = Sort by key on save
 chbShowKeyColumnOnStart = Show key column on start
+chbPromptForDocxPaths = Prompt for document import/export file paths
 
 # Form: Translator
 frmTranslator	= Translator (Powered by Bing)
@@ -84,3 +91,7 @@ strEndReached_title	= Document end reached
 strEndReached_msg	= Last cell reached!
 strBegReached_title = Document begin reached
 strBegReached_msg	= First cell reached!
+
+# DocX
+titleComment = Comment
+titleScreenshot = Screenshot

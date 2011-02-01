@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Novacode;
+using ResxEditor.Forms;
 using ResxEditor.Helpers;
 using Orientation = Novacode.Orientation;
 
@@ -28,11 +29,15 @@ namespace ResxEditor
     /// </summary>
     public class WordDocument
     {
+        private static readonly string TitleComment = LangHandler.GetString("titleComment");
+        private static readonly string TitleScreenshot = LangHandler.GetString("titleScreenshot");
+
         private readonly DataGridView gridView;
         private readonly int columns;
         private readonly int rows;
         private readonly string title;
-        private readonly string filepath;
+
+        public string FilePath { get; private set; }
 
         public WordDocument(DataGridView gridView)
         {
@@ -43,7 +48,7 @@ namespace ResxEditor
             FileInfo fileInfo = new FileInfo(gridView.Columns[1].Name);
             string filename = fileInfo.Name.Substring(0, fileInfo.Name.IndexOf("."));
             title = filename;
-            filepath = Path.Combine(fileInfo.DirectoryName, filename + ".docx");
+            FilePath = Path.Combine(fileInfo.DirectoryName, filename + ".docx");
         }
 
 
@@ -59,15 +64,15 @@ namespace ResxEditor
             DocX document;
             Table table;
 
-            bool update = File.Exists(filepath);
+            bool update = File.Exists(FilePath);
             if (update)
             {
-                document = DocX.Load(filepath);
+                document = DocX.Load(FilePath);
                 table = document.Tables.First();
             }
             else
             {
-                document = DocX.Create(filepath);
+                document = DocX.Create(FilePath);
                 document.InsertParagraph().Append(title).Bold().AppendLine();
                 document.PageLayout.Orientation = Orientation.Landscape;
 
@@ -80,22 +85,29 @@ namespace ResxEditor
             {
                 table.SetCellText(gridView.Columns[i].Tag.ToString(), 0, i).Bold().CapsStyle(CapsStyle.caps);
             }
-            table.SetCellText("Comment", 0, columns).Bold(); // TODO localize
-            table.SetCellText("Screenshot", 0, columns + 1).Bold(); // TODO localize
+            table.SetCellText(TitleComment, 0, columns).Bold(); // TODO localize
+            table.SetCellText(TitleScreenshot, 0, columns + 1).Bold(); // TODO localize
 
             for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < columns; j++)
+                if (!gridView.Rows[i].IsNewRow)
                 {
-                    if (!gridView.Rows[i].IsNewRow)
+                    for (int j = 0; j < columns; j++)
                     {
-                        Paragraph paragraph = table.SetCellText(gridView.Rows[i].Cells[j].Value.ToString(), i + 1, j);
+                        Paragraph paragraph =
+                            table.SetCellText(gridView.Rows[i].Cells[j].EditedFormattedValue.ToString(), i + 1, j);
                         if (j == 0)
                         {
                             paragraph.Bold().Highlight(Highlight.lightGray);
                         }
                     }
                 }
+            }
+
+            // remove spare rows
+            for (int i = rows + 1; i <= table.RowCount; i++)
+            {
+                table.RemoveRow(i - 1);
             }
 
             if (!update)
@@ -108,28 +120,60 @@ namespace ResxEditor
         }
 
         /// <summary>
+        ///   Exports to a word file. The file is saved to the specified <paramref name = "filePath" />.
+        ///   If the file already exists, the translations are updated, without changing the comments
+        ///   and screenshots or any other modification made to the word document outside of the translation
+        ///   table.
+        /// </summary>
+        /// <param name = "filePath">The file path.</param>
+        public void Export(string filePath)
+        {
+            FilePath = filePath;
+            Export();
+        }
+
+        /// <summary>
         ///   Imports the translations from a word file. The file is loaded from the directory where the resx files
         ///   are located. The filename corresponds to the name of the resx files, without the locale identifier.
         /// </summary>
         public void Import()
         {
-            using (DocX document = DocX.Load(filepath))
+            using (DocX document = DocX.Load(FilePath))
             {
                 Table table = document.Tables.First();
 
-                for (int i = 0; i < rows; i++)
+                for (int i = 0; i < table.RowCount - 1; i++)
                 {
                     for (int j = 0; j < columns; j++)
                     {
                         string importText = table.GetCellText(i + 1, j);
-                        string originalText = (gridView.Rows[i].Cells[j].Value ?? "").ToString();
+                        string originalText = (gridView.Rows[i].Cells[j].EditedFormattedValue ?? "").ToString();
                         if (importText != originalText)
                         {
                             gridView.Rows[i].Cells[j].Value = importText;
                         }
                     }
                 }
+
+                // remove spare rows
+                for (int i = rows - 1; i >= table.RowCount - 1; i--)
+                {
+                    if (!gridView.Rows[i].IsNewRow)
+                    {
+                        gridView.Rows.RemoveAt(i);
+                    }
+                }
             }
+        }
+
+        /// <summary>
+        ///   Imports the translations from a word file. The file is loaded from the specified <paramref name = "filePath" />.
+        /// </summary>
+        /// <param name = "filePath">The file path.</param>
+        public void Import(string filePath)
+        {
+            FilePath = filePath;
+            Import();
         }
     }
 }
