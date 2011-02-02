@@ -18,3 +18,4 @@ See license file for details.
 ## Links
 
 [simpleresxeditor](http://code.google.com/p/simpleresxeditor/)
+[DocX library](http://docx.codeplex.com)
