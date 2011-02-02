@@ -122,6 +122,7 @@ namespace ResxEditor.Forms
             //Checkboxes
             chbSortByKeyOnSave.Text = LangHandler.GetString("chbSortByKeyOnSave");
             chbShowKeyColumnOnStart.Text = LangHandler.GetString("chbShowKeyColumnOnStart");
+            chbPromptForDocxPaths.Text = LangHandler.GetString("chbPromptForDocxPaths");
         }
 
         private void loadSettings()
@@ -140,6 +141,7 @@ namespace ResxEditor.Forms
 
             chbSortByKeyOnSave.Checked = SettingsHandler.Instance.SortByKeyOnSave;
             chbShowKeyColumnOnStart.Checked = SettingsHandler.Instance.ShowKeyColumnOnStart;
+            chbPromptForDocxPaths.Checked = SettingsHandler.Instance.PromptForDocxPaths;
         }
 
         private void saveSettings()
@@ -152,6 +154,8 @@ namespace ResxEditor.Forms
             SettingsHandler.Instance.Color5 = btnColor5.BackColor.ToArgb();
             SettingsHandler.Instance.SortByKeyOnSave = chbSortByKeyOnSave.Checked;
             SettingsHandler.Instance.ShowKeyColumnOnStart = chbShowKeyColumnOnStart.Checked;
+            SettingsHandler.Instance.PromptForDocxPaths = chbPromptForDocxPaths.Checked;
+
             SettingsHandler.Instance.Save();
         }
     }

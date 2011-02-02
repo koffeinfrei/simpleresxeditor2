@@ -960,9 +960,35 @@ namespace ResxEditor.Forms
             if (AssertDocx())
             {
                 saveResxFiles(true);
-                wordDocument.Import();
-                MessageBox.Show(string.Format(LangHandler.GetString("statusImportOk_msg"), wordDocument.FilePath), 
+
+                bool success = false;
+
+                if (SettingsHandler.Instance.PromptForDocxPaths)
+                {
+                    OpenFileDialog openFileDialog = new OpenFileDialog
+                    {
+                        DefaultExt = "docx",
+                        Filter = string.Format("{0}|*.docx", LangHandler.GetString("txtOpenDocx1")),
+                        Multiselect = false,
+                        Title = LangHandler.GetString("txtOpenDocx2")
+                    };
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        wordDocument.Import(openFileDialog.FileName);
+                        success = true;
+                    }
+                }
+                else
+                {
+                    wordDocument.Import();
+                }
+                
+                if (success)
+                {
+                    MessageBox.Show(string.Format(LangHandler.GetString("statusImportOk_msg"), wordDocument.FilePath), 
                     LangHandler.GetString("statusImportExport_title"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -970,9 +996,34 @@ namespace ResxEditor.Forms
         {
             if (AssertDocx())
             {
-                wordDocument.Export();
-                MessageBox.Show(string.Format(LangHandler.GetString("statusExportOk_msg"), wordDocument.FilePath), 
+                bool success = false;
+
+                if (SettingsHandler.Instance.PromptForDocxPaths)
+                {
+                    SaveFileDialog saveFileDialog = new SaveFileDialog
+                    {
+                        DefaultExt = "docx",
+                        Filter = string.Format("{0}|*.docx", LangHandler.GetString("txtOpenDocx1")),
+                        Title = LangHandler.GetString("txtSaveDocx")
+                    };
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        wordDocument.Export(saveFileDialog.FileName);
+                        success = true;
+                    }
+                }
+                else
+                {
+                    wordDocument.Export();
+                    success = true;
+                }
+
+                if (success)
+                {
+                    MessageBox.Show(string.Format(LangHandler.GetString("statusExportOk_msg"), wordDocument.FilePath), 
                     LangHandler.GetString("statusImportExport_title"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 

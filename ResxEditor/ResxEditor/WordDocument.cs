@@ -120,6 +120,19 @@ namespace ResxEditor
         }
 
         /// <summary>
+        ///   Exports to a word file. The file is saved to the specified <paramref name = "filePath" />.
+        ///   If the file already exists, the translations are updated, without changing the comments
+        ///   and screenshots or any other modification made to the word document outside of the translation
+        ///   table.
+        /// </summary>
+        /// <param name = "filePath">The file path.</param>
+        public void Export(string filePath)
+        {
+            FilePath = filePath;
+            Export();
+        }
+
+        /// <summary>
         ///   Imports the translations from a word file. The file is loaded from the directory where the resx files
         ///   are located. The filename corresponds to the name of the resx files, without the locale identifier.
         /// </summary>
@@ -151,6 +164,16 @@ namespace ResxEditor
                     }
                 }
             }
+        }
+
+        /// <summary>
+        ///   Imports the translations from a word file. The file is loaded from the specified <paramref name = "filePath" />.
+        /// </summary>
+        /// <param name = "filePath">The file path.</param>
+        public void Import(string filePath)
+        {
+            FilePath = filePath;
+            Import();
         }
     }
 }
