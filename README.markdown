@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a fork of the [simpleresxeditor](http://code.google.com/p/simpleresxeditor/), because I am morbidly impatient, i.e. it took too long for my patches to get into the original source.
+This is a fork of the [simpleresxeditor](http://code.google.com/p/simpleresxeditor/), because I am morbidly impatient, i.e. it took too long for my patches to get into the original source (well, to be fair, the first one got accepted quickly, but the consecutive ones didn't).
 
 Nevertheless, all credits for this great tool go to matias.ar@gmail.com.
 
